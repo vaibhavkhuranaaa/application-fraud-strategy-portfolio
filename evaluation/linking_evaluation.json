@@ -1,0 +1,444 @@
+{
+  "all_gates_pass": true,
+  "code_sha": "7e68b2fcfaf0f4e6972ed70ee0d285731c354b54",
+  "elapsed_seconds": 85.93,
+  "evidence_id": "EV-M3-LINKING-20260805",
+  "evidence_source": "synthetic_link_fixture",
+  "fixture_contract": {
+    "applications": 50000,
+    "positive_pairs": 1000,
+    "privacy": "Only HMAC exact and HMAC n-gram tokens enter matching; raw generated values are transient.",
+    "rings": 200,
+    "signals": [
+      "email",
+      "phone",
+      "device",
+      "address"
+    ],
+    "truth_boundary": "entity_id and ring_id are held only by evaluation and are never passed to matching."
+  },
+  "gates": {
+    "clean_pairwise_f1_at_least_0_90": true,
+    "false_merge_rate_at_most_0_02": true,
+    "fifteen_percent_pairwise_f1_at_least_0_80": true,
+    "reference_runtime_under_five_minutes": true,
+    "stable_within_two_percentage_points": true
+  },
+  "limitation": "Fixture quality is not evidence that BAF or production identities can be resolved.",
+  "runs": [
+    {
+      "accepted_pairs": 1000,
+      "applications": 50000,
+      "b_cubed": {
+        "f1": 1.0,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "candidate_pairs": 3000,
+      "corruption": 0.0,
+      "elapsed_seconds": 1.214,
+      "false_merge_rate": 0.0,
+      "false_splits": 0,
+      "pairwise": {
+        "f1": 1.0,
+        "false_negative": 0,
+        "false_positive": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "true_positive": 1000
+      },
+      "positive_pairs": 1000,
+      "ring_flags": {
+        "false_ring_groups": 0,
+        "flagged_rings": 200,
+        "median_applications_to_flag_after_first_ring_application": 15629.0,
+        "queue_impact_applications": 1000,
+        "ring_recall": 1.0,
+        "truth_rings": 200
+      },
+      "seed": 20260805
+    },
+    {
+      "accepted_pairs": 1000,
+      "applications": 50000,
+      "b_cubed": {
+        "f1": 1.0,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "candidate_pairs": 3000,
+      "corruption": 0.0,
+      "elapsed_seconds": 1.255,
+      "false_merge_rate": 0.0,
+      "false_splits": 0,
+      "pairwise": {
+        "f1": 1.0,
+        "false_negative": 0,
+        "false_positive": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "true_positive": 1000
+      },
+      "positive_pairs": 1000,
+      "ring_flags": {
+        "false_ring_groups": 0,
+        "flagged_rings": 200,
+        "median_applications_to_flag_after_first_ring_application": 16182.0,
+        "queue_impact_applications": 1000,
+        "ring_recall": 1.0,
+        "truth_rings": 200
+      },
+      "seed": 20260806
+    },
+    {
+      "accepted_pairs": 1000,
+      "applications": 50000,
+      "b_cubed": {
+        "f1": 1.0,
+        "precision": 1.0,
+        "recall": 1.0
+      },
+      "candidate_pairs": 3000,
+      "corruption": 0.0,
+      "elapsed_seconds": 1.246,
+      "false_merge_rate": 0.0,
+      "false_splits": 0,
+      "pairwise": {
+        "f1": 1.0,
+        "false_negative": 0,
+        "false_positive": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "true_positive": 1000
+      },
+      "positive_pairs": 1000,
+      "ring_flags": {
+        "false_ring_groups": 0,
+        "flagged_rings": 200,
+        "median_applications_to_flag_after_first_ring_application": 15290.5,
+        "queue_impact_applications": 1000,
+        "ring_recall": 1.0,
+        "truth_rings": 200
+      },
+      "seed": 20260807
+    },
+    {
+      "accepted_pairs": 993,
+      "applications": 50000,
+      "b_cubed": {
+        "f1": 0.999929995099657,
+        "precision": 1.0,
+        "recall": 0.99986
+      },
+      "candidate_pairs": 2988,
+      "corruption": 0.05,
+      "elapsed_seconds": 1.281,
+      "false_merge_rate": 0.0,
+      "false_splits": 7,
+      "pairwise": {
+        "f1": 0.9964877069744105,
+        "false_negative": 7,
+        "false_positive": 0,
+        "precision": 1.0,
+        "recall": 0.993,
+        "true_positive": 993
+      },
+      "positive_pairs": 1000,
+      "ring_flags": {
+        "false_ring_groups": 0,
+        "flagged_rings": 200,
+        "median_applications_to_flag_after_first_ring_application": 17165.5,
+        "queue_impact_applications": 921,
+        "ring_recall": 1.0,
+        "truth_rings": 200
+      },
+      "seed": 20260805
+    },
+    {
+      "accepted_pairs": 991,
+      "applications": 50000,
+      "b_cubed": {
+        "f1": 0.9999099918992709,
+        "precision": 1.0,
+        "recall": 0.99982
+      },
+      "candidate_pairs": 3004,
+      "corruption": 0.05,
+      "elapsed_seconds": 1.285,
+      "false_merge_rate": 0.0,
+      "false_splits": 9,
+      "pairwise": {
+        "f1": 0.9954796584630838,
+        "false_negative": 9,
+        "false_positive": 0,
+        "precision": 1.0,
+        "recall": 0.991,
+        "true_positive": 991
+      },
+      "positive_pairs": 1000,
+      "ring_flags": {
+        "false_ring_groups": 0,
+        "flagged_rings": 198,
+        "median_applications_to_flag_after_first_ring_application": 17965.0,
+        "queue_impact_applications": 921,
+        "ring_recall": 0.99,
+        "truth_rings": 200
+      },
+      "seed": 20260806
+    },
+    {
+      "accepted_pairs": 995,
+      "applications": 50000,
+      "b_cubed": {
+        "f1": 0.999949997499875,
+        "precision": 1.0,
+        "recall": 0.9999
+      },
+      "candidate_pairs": 2997,
+      "corruption": 0.05,
+      "elapsed_seconds": 1.301,
+      "false_merge_rate": 0.0,
+      "false_splits": 5,
+      "pairwise": {
+        "f1": 0.9974937343358395,
+        "false_negative": 5,
+        "false_positive": 0,
+        "precision": 1.0,
+        "recall": 0.995,
+        "true_positive": 995
+      },
+      "positive_pairs": 1000,
+      "ring_flags": {
+        "false_ring_groups": 0,
+        "flagged_rings": 200,
+        "median_applications_to_flag_after_first_ring_application": 17261.5,
+        "queue_impact_applications": 930,
+        "ring_recall": 1.0,
+        "truth_rings": 200
+      },
+      "seed": 20260807
+    },
+    {
+      "accepted_pairs": 910,
+      "applications": 50000,
+      "b_cubed": {
+        "f1": 0.9990991892703432,
+        "precision": 1.0,
+        "recall": 0.9982
+      },
+      "candidate_pairs": 2936,
+      "corruption": 0.15,
+      "elapsed_seconds": 1.272,
+      "false_merge_rate": 0.0,
+      "false_splits": 90,
+      "pairwise": {
+        "f1": 0.9528795811518325,
+        "false_negative": 90,
+        "false_positive": 0,
+        "precision": 1.0,
+        "recall": 0.91,
+        "true_positive": 910
+      },
+      "positive_pairs": 1000,
+      "ring_flags": {
+        "false_ring_groups": 0,
+        "flagged_rings": 187,
+        "median_applications_to_flag_after_first_ring_application": 22447.0,
+        "queue_impact_applications": 758,
+        "ring_recall": 0.935,
+        "truth_rings": 200
+      },
+      "seed": 20260805
+    },
+    {
+      "accepted_pairs": 935,
+      "applications": 50000,
+      "b_cubed": {
+        "f1": 0.9993495772251965,
+        "precision": 1.0,
+        "recall": 0.9987
+      },
+      "candidate_pairs": 2943,
+      "corruption": 0.15,
+      "elapsed_seconds": 1.274,
+      "false_merge_rate": 0.0,
+      "false_splits": 65,
+      "pairwise": {
+        "f1": 0.9664082687338501,
+        "false_negative": 65,
+        "false_positive": 0,
+        "precision": 1.0,
+        "recall": 0.935,
+        "true_positive": 935
+      },
+      "positive_pairs": 1000,
+      "ring_flags": {
+        "false_ring_groups": 0,
+        "flagged_rings": 183,
+        "median_applications_to_flag_after_first_ring_application": 20565.0,
+        "queue_impact_applications": 728,
+        "ring_recall": 0.915,
+        "truth_rings": 200
+      },
+      "seed": 20260806
+    },
+    {
+      "accepted_pairs": 929,
+      "applications": 50000,
+      "b_cubed": {
+        "f1": 0.9992894955418347,
+        "precision": 1.0,
+        "recall": 0.99858
+      },
+      "candidate_pairs": 2899,
+      "corruption": 0.15,
+      "elapsed_seconds": 1.304,
+      "false_merge_rate": 0.0,
+      "false_splits": 71,
+      "pairwise": {
+        "f1": 0.9631933644375325,
+        "false_negative": 71,
+        "false_positive": 0,
+        "precision": 1.0,
+        "recall": 0.929,
+        "true_positive": 929
+      },
+      "positive_pairs": 1000,
+      "ring_flags": {
+        "false_ring_groups": 0,
+        "flagged_rings": 173,
+        "median_applications_to_flag_after_first_ring_application": 20892.0,
+        "queue_impact_applications": 702,
+        "ring_recall": 0.865,
+        "truth_rings": 200
+      },
+      "seed": 20260807
+    },
+    {
+      "accepted_pairs": 785,
+      "applications": 50000,
+      "b_cubed": {
+        "f1": 0.9978453675402115,
+        "precision": 1.0,
+        "recall": 0.9957
+      },
+      "candidate_pairs": 2617,
+      "corruption": 0.3,
+      "elapsed_seconds": 1.266,
+      "false_merge_rate": 0.0,
+      "false_splits": 215,
+      "pairwise": {
+        "f1": 0.8795518207282913,
+        "false_negative": 215,
+        "false_positive": 0,
+        "precision": 1.0,
+        "recall": 0.785,
+        "true_positive": 785
+      },
+      "positive_pairs": 1000,
+      "ring_flags": {
+        "false_ring_groups": 0,
+        "flagged_rings": 121,
+        "median_applications_to_flag_after_first_ring_application": 25531.0,
+        "queue_impact_applications": 427,
+        "ring_recall": 0.605,
+        "truth_rings": 200
+      },
+      "seed": 20260805
+    },
+    {
+      "accepted_pairs": 736,
+      "applications": 50000,
+      "b_cubed": {
+        "f1": 0.9973530119515521,
+        "precision": 1.0,
+        "recall": 0.99472
+      },
+      "candidate_pairs": 2536,
+      "corruption": 0.3,
+      "elapsed_seconds": 1.258,
+      "false_merge_rate": 0.0,
+      "false_splits": 264,
+      "pairwise": {
+        "f1": 0.847926267281106,
+        "false_negative": 264,
+        "false_positive": 0,
+        "precision": 1.0,
+        "recall": 0.736,
+        "true_positive": 736
+      },
+      "positive_pairs": 1000,
+      "ring_flags": {
+        "false_ring_groups": 0,
+        "flagged_rings": 114,
+        "median_applications_to_flag_after_first_ring_application": 25827.0,
+        "queue_impact_applications": 406,
+        "ring_recall": 0.57,
+        "truth_rings": 200
+      },
+      "seed": 20260806
+    },
+    {
+      "accepted_pairs": 757,
+      "applications": 50000,
+      "b_cubed": {
+        "f1": 0.9975640807161402,
+        "precision": 1.0,
+        "recall": 0.99514
+      },
+      "candidate_pairs": 2596,
+      "corruption": 0.3,
+      "elapsed_seconds": 1.25,
+      "false_merge_rate": 0.0,
+      "false_splits": 243,
+      "pairwise": {
+        "f1": 0.8616960728514513,
+        "false_negative": 243,
+        "false_positive": 0,
+        "precision": 1.0,
+        "recall": 0.757,
+        "true_positive": 757
+      },
+      "positive_pairs": 1000,
+      "ring_flags": {
+        "false_ring_groups": 0,
+        "flagged_rings": 123,
+        "median_applications_to_flag_after_first_ring_application": 24127.0,
+        "queue_impact_applications": 429,
+        "ring_recall": 0.615,
+        "truth_rings": 200
+      },
+      "seed": 20260807
+    }
+  ],
+  "summary": {
+    "0.00": {
+      "false_merge_rate_max": 0.0,
+      "max_elapsed_seconds": 1.255,
+      "pairwise_f1_mean": 1.0,
+      "pairwise_f1_min": 1.0,
+      "pairwise_f1_range": 0.0
+    },
+    "0.05": {
+      "false_merge_rate_max": 0.0,
+      "max_elapsed_seconds": 1.301,
+      "pairwise_f1_mean": 0.996487033257778,
+      "pairwise_f1_min": 0.9954796584630838,
+      "pairwise_f1_range": 0.002014075872755705
+    },
+    "0.15": {
+      "false_merge_rate_max": 0.0,
+      "max_elapsed_seconds": 1.304,
+      "pairwise_f1_mean": 0.9608270714410717,
+      "pairwise_f1_min": 0.9528795811518325,
+      "pairwise_f1_range": 0.01352868758201764
+    },
+    "0.30": {
+      "false_merge_rate_max": 0.0,
+      "max_elapsed_seconds": 1.266,
+      "pairwise_f1_mean": 0.8630580536202829,
+      "pairwise_f1_min": 0.847926267281106,
+      "pairwise_f1_range": 0.03162555344718532
+    }
+  }
+}

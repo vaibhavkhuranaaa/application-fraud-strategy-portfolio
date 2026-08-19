@@ -1,0 +1,1264 @@
+{
+  "channel": [
+    {
+      "applications": 131685,
+      "channel": "Online",
+      "fraud_attempts": 1485,
+      "fraud_caught": 743,
+      "good_customers_reviewed": 5830,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 0"
+    },
+    {
+      "applications": 755,
+      "channel": "Phone",
+      "fraud_attempts": 15,
+      "fraud_caught": 10,
+      "good_customers_reviewed": 40,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 0"
+    },
+    {
+      "applications": 131685,
+      "channel": "Online",
+      "fraud_attempts": 1485,
+      "fraud_caught": 281,
+      "good_customers_reviewed": 6398,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 0"
+    },
+    {
+      "applications": 755,
+      "channel": "Phone",
+      "fraud_attempts": 15,
+      "fraud_caught": 1,
+      "good_customers_reviewed": 19,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 0"
+    },
+    {
+      "applications": 126554,
+      "channel": "Online",
+      "fraud_attempts": 1182,
+      "fraud_caught": 647,
+      "good_customers_reviewed": 5663,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 1"
+    },
+    {
+      "applications": 1066,
+      "channel": "Phone",
+      "fraud_attempts": 16,
+      "fraud_caught": 9,
+      "good_customers_reviewed": 63,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 1"
+    },
+    {
+      "applications": 126554,
+      "channel": "Online",
+      "fraud_attempts": 1182,
+      "fraud_caught": 228,
+      "good_customers_reviewed": 6227,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 1"
+    },
+    {
+      "applications": 1066,
+      "channel": "Phone",
+      "fraud_attempts": 16,
+      "fraud_caught": 2,
+      "good_customers_reviewed": 23,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 1"
+    },
+    {
+      "applications": 136277,
+      "channel": "Online",
+      "fraud_attempts": 1194,
+      "fraud_caught": 639,
+      "good_customers_reviewed": 6148,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 2"
+    },
+    {
+      "applications": 702,
+      "channel": "Phone",
+      "fraud_attempts": 4,
+      "fraud_caught": 2,
+      "good_customers_reviewed": 60,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 2"
+    },
+    {
+      "applications": 136277,
+      "channel": "Online",
+      "fraud_attempts": 1194,
+      "fraud_caught": 249,
+      "good_customers_reviewed": 6733,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 2"
+    },
+    {
+      "applications": 702,
+      "channel": "Phone",
+      "fraud_attempts": 4,
+      "fraud_caught": 0,
+      "good_customers_reviewed": 34,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 2"
+    },
+    {
+      "applications": 149676,
+      "channel": "Online",
+      "fraud_attempts": 1374,
+      "fraud_caught": 790,
+      "good_customers_reviewed": 6688,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 3"
+    },
+    {
+      "applications": 1260,
+      "channel": "Phone",
+      "fraud_attempts": 18,
+      "fraud_caught": 11,
+      "good_customers_reviewed": 58,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 3"
+    },
+    {
+      "applications": 149676,
+      "channel": "Online",
+      "fraud_attempts": 1374,
+      "fraud_caught": 314,
+      "good_customers_reviewed": 7287,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 3"
+    },
+    {
+      "applications": 1260,
+      "channel": "Phone",
+      "fraud_attempts": 18,
+      "fraud_caught": 4,
+      "good_customers_reviewed": 40,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 3"
+    },
+    {
+      "applications": 126404,
+      "channel": "Online",
+      "fraud_attempts": 1432,
+      "fraud_caught": 806,
+      "good_customers_reviewed": 5495,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 4"
+    },
+    {
+      "applications": 1287,
+      "channel": "Phone",
+      "fraud_attempts": 20,
+      "fraud_caught": 14,
+      "good_customers_reviewed": 70,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 4"
+    },
+    {
+      "applications": 126404,
+      "channel": "Online",
+      "fraud_attempts": 1432,
+      "fraud_caught": 314,
+      "good_customers_reviewed": 6135,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 4"
+    },
+    {
+      "applications": 1287,
+      "channel": "Phone",
+      "fraud_attempts": 20,
+      "fraud_caught": 2,
+      "good_customers_reviewed": 57,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 4"
+    },
+    {
+      "applications": 118656,
+      "channel": "Online",
+      "fraud_attempts": 1404,
+      "fraud_caught": 761,
+      "good_customers_reviewed": 5174,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 5"
+    },
+    {
+      "applications": 667,
+      "channel": "Phone",
+      "fraud_attempts": 7,
+      "fraud_caught": 2,
+      "good_customers_reviewed": 30,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 5"
+    },
+    {
+      "applications": 118656,
+      "channel": "Online",
+      "fraud_attempts": 1404,
+      "fraud_caught": 272,
+      "good_customers_reviewed": 5731,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 5"
+    },
+    {
+      "applications": 667,
+      "channel": "Phone",
+      "fraud_attempts": 7,
+      "fraud_caught": 0,
+      "good_customers_reviewed": 26,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 5"
+    },
+    {
+      "applications": 107235,
+      "channel": "Online",
+      "fraud_attempts": 1432,
+      "fraud_caught": 699,
+      "good_customers_reviewed": 4655,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 6"
+    },
+    {
+      "applications": 933,
+      "channel": "Phone",
+      "fraud_attempts": 18,
+      "fraud_caught": 5,
+      "good_customers_reviewed": 50,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 6"
+    },
+    {
+      "applications": 107235,
+      "channel": "Online",
+      "fraud_attempts": 1432,
+      "fraud_caught": 271,
+      "good_customers_reviewed": 5178,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 6"
+    },
+    {
+      "applications": 933,
+      "channel": "Phone",
+      "fraud_attempts": 18,
+      "fraud_caught": 1,
+      "good_customers_reviewed": 28,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 6"
+    },
+    {
+      "applications": 96465,
+      "channel": "Online",
+      "fraud_attempts": 1414,
+      "fraud_caught": 758,
+      "good_customers_reviewed": 4059,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 7"
+    },
+    {
+      "applications": 378,
+      "channel": "Phone",
+      "fraud_attempts": 14,
+      "fraud_caught": 8,
+      "good_customers_reviewed": 18,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 7"
+    },
+    {
+      "applications": 96465,
+      "channel": "Online",
+      "fraud_attempts": 1414,
+      "fraud_caught": 294,
+      "good_customers_reviewed": 4611,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 7"
+    },
+    {
+      "applications": 378,
+      "channel": "Phone",
+      "fraud_attempts": 14,
+      "fraud_caught": 1,
+      "good_customers_reviewed": 10,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 7"
+    }
+  ],
+  "code_sha": "81a4b0b644f0d68fe28d0c6e2433c08a88bbdeb8",
+  "dataset_version": "baf-2026-08-05-fb8d6d8b96f9",
+  "evidence_id": "m9-monthly-fraud-kpi-v1",
+  "limitations": [
+    "BAF is privacy-preserving synthetic account-opening data, not observed originations.",
+    "Periods are relative BAF months labelled Period 0 to Period 7, not calendar months.",
+    "`credit_risk_score` is an incumbent score proxy standing in for a third-party decision score. It is not a verified vendor product and its performance here is not a vendor SLA.",
+    "Catch rate assumes review prevents the fraud it finds; review effectiveness and loss-given-fraud are not modelled, so every figure is an upper bound.",
+    "No period in this pack authorises a policy. Both scenario runs carry the recorded refusal.",
+    "Reviewer hit rate is a leading indicator, available within days, because a review confirms fraud at review time. Catch rate shares that numerator but divides by all fraud in the period including what slipped past review, so it is lagging by 30 to 90 days and longer. The most recent periods here will get worse as labels arrive, so the rise in attempt rate is a floor rather than a point estimate. See docs/label-latency.md.",
+    "`capacity_overshoot` is the queue above the reviewer headcount the capacity implies. It is a property of cutting a tied score, not a modelling error: applications at the cutting value cannot be split, so a low-cardinality score overshoots by its tied block."
+  ],
+  "monthly": [
+    {
+      "applications": 132440,
+      "approval_state": "rejected",
+      "capacity_headcount": 6622,
+      "capacity_overshoot": 1,
+      "catch_rate": 0.502,
+      "catch_rate_change": null,
+      "fraud_attempts": 1500,
+      "fraud_caught": 753,
+      "fraud_missed": 747,
+      "fraud_rate_bps": 113.26,
+      "fraud_rate_bps_change": null,
+      "friction_rate": 0.04483,
+      "good_customers_reviewed": 5870,
+      "investigator_yield": 0.113695,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 0",
+      "queue_size": 6623,
+      "review_rate": 0.050008
+    },
+    {
+      "applications": 132440,
+      "approval_state": "retained_baseline",
+      "capacity_headcount": 6622,
+      "capacity_overshoot": 77,
+      "catch_rate": 0.188,
+      "catch_rate_change": null,
+      "fraud_attempts": 1500,
+      "fraud_caught": 282,
+      "fraud_missed": 1218,
+      "fraud_rate_bps": 113.26,
+      "fraud_rate_bps_change": null,
+      "friction_rate": 0.049007,
+      "good_customers_reviewed": 6417,
+      "investigator_yield": 0.042096,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 0",
+      "queue_size": 6699,
+      "review_rate": 0.050581
+    },
+    {
+      "applications": 127620,
+      "approval_state": "rejected",
+      "capacity_headcount": 6381,
+      "capacity_overshoot": 1,
+      "catch_rate": 0.547579,
+      "catch_rate_change": 0.045579,
+      "fraud_attempts": 1198,
+      "fraud_caught": 656,
+      "fraud_missed": 542,
+      "fraud_rate_bps": 93.87,
+      "fraud_rate_bps_change": -19.39,
+      "friction_rate": 0.045293,
+      "good_customers_reviewed": 5726,
+      "investigator_yield": 0.102789,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 1",
+      "queue_size": 6382,
+      "review_rate": 0.050008
+    },
+    {
+      "applications": 127620,
+      "approval_state": "retained_baseline",
+      "capacity_headcount": 6381,
+      "capacity_overshoot": 99,
+      "catch_rate": 0.191987,
+      "catch_rate_change": 0.003987,
+      "fraud_attempts": 1198,
+      "fraud_caught": 230,
+      "fraud_missed": 968,
+      "fraud_rate_bps": 93.87,
+      "fraud_rate_bps_change": -19.39,
+      "friction_rate": 0.049438,
+      "good_customers_reviewed": 6250,
+      "investigator_yield": 0.035494,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 1",
+      "queue_size": 6480,
+      "review_rate": 0.050776
+    },
+    {
+      "applications": 136979,
+      "approval_state": "rejected",
+      "capacity_headcount": 6848,
+      "capacity_overshoot": 1,
+      "catch_rate": 0.535058,
+      "catch_rate_change": -0.012521,
+      "fraud_attempts": 1198,
+      "fraud_caught": 641,
+      "fraud_missed": 557,
+      "fraud_rate_bps": 87.46,
+      "fraud_rate_bps_change": -6.41,
+      "friction_rate": 0.045721,
+      "good_customers_reviewed": 6208,
+      "investigator_yield": 0.09359,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 2",
+      "queue_size": 6849,
+      "review_rate": 0.05
+    },
+    {
+      "applications": 136979,
+      "approval_state": "retained_baseline",
+      "capacity_headcount": 6848,
+      "capacity_overshoot": 168,
+      "catch_rate": 0.207846,
+      "catch_rate_change": 0.015859,
+      "fraud_attempts": 1198,
+      "fraud_caught": 249,
+      "fraud_missed": 949,
+      "fraud_rate_bps": 87.46,
+      "fraud_rate_bps_change": -6.41,
+      "friction_rate": 0.049838,
+      "good_customers_reviewed": 6767,
+      "investigator_yield": 0.03549,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 2",
+      "queue_size": 7016,
+      "review_rate": 0.05122
+    },
+    {
+      "applications": 150936,
+      "approval_state": "rejected",
+      "capacity_headcount": 7546,
+      "capacity_overshoot": 1,
+      "catch_rate": 0.575431,
+      "catch_rate_change": 0.040373,
+      "fraud_attempts": 1392,
+      "fraud_caught": 801,
+      "fraud_missed": 591,
+      "fraud_rate_bps": 92.22,
+      "fraud_rate_bps_change": 4.76,
+      "friction_rate": 0.04511,
+      "good_customers_reviewed": 6746,
+      "investigator_yield": 0.106135,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 3",
+      "queue_size": 7547,
+      "review_rate": 0.050001
+    },
+    {
+      "applications": 150936,
+      "approval_state": "retained_baseline",
+      "capacity_headcount": 7546,
+      "capacity_overshoot": 99,
+      "catch_rate": 0.228448,
+      "catch_rate_change": 0.020602,
+      "fraud_attempts": 1392,
+      "fraud_caught": 318,
+      "fraud_missed": 1074,
+      "fraud_rate_bps": 92.22,
+      "fraud_rate_bps_change": 4.76,
+      "friction_rate": 0.048996,
+      "good_customers_reviewed": 7327,
+      "investigator_yield": 0.041596,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 3",
+      "queue_size": 7645,
+      "review_rate": 0.050651
+    },
+    {
+      "applications": 127691,
+      "approval_state": "rejected",
+      "capacity_headcount": 6384,
+      "capacity_overshoot": 1,
+      "catch_rate": 0.564738,
+      "catch_rate_change": -0.010693,
+      "fraud_attempts": 1452,
+      "fraud_caught": 820,
+      "fraud_missed": 632,
+      "fraud_rate_bps": 113.71,
+      "fraud_rate_bps_change": 21.49,
+      "friction_rate": 0.044083,
+      "good_customers_reviewed": 5565,
+      "investigator_yield": 0.128426,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 4",
+      "queue_size": 6385,
+      "review_rate": 0.050004
+    },
+    {
+      "applications": 127691,
+      "approval_state": "retained_baseline",
+      "capacity_headcount": 6384,
+      "capacity_overshoot": 124,
+      "catch_rate": 0.217631,
+      "catch_rate_change": -0.010817,
+      "fraud_attempts": 1452,
+      "fraud_caught": 316,
+      "fraud_missed": 1136,
+      "fraud_rate_bps": 113.71,
+      "fraud_rate_bps_change": 21.49,
+      "friction_rate": 0.04905,
+      "good_customers_reviewed": 6192,
+      "investigator_yield": 0.048556,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 4",
+      "queue_size": 6508,
+      "review_rate": 0.050967
+    },
+    {
+      "applications": 119323,
+      "approval_state": "rejected",
+      "capacity_headcount": 5966,
+      "capacity_overshoot": 1,
+      "catch_rate": 0.540751,
+      "catch_rate_change": -0.023987,
+      "fraud_attempts": 1411,
+      "fraud_caught": 763,
+      "fraud_missed": 648,
+      "fraud_rate_bps": 118.25,
+      "fraud_rate_bps_change": 4.54,
+      "friction_rate": 0.044135,
+      "good_customers_reviewed": 5204,
+      "investigator_yield": 0.12787,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 5",
+      "queue_size": 5967,
+      "review_rate": 0.050007
+    },
+    {
+      "applications": 119323,
+      "approval_state": "retained_baseline",
+      "capacity_headcount": 5966,
+      "capacity_overshoot": 63,
+      "catch_rate": 0.192771,
+      "catch_rate_change": -0.02486,
+      "fraud_attempts": 1411,
+      "fraud_caught": 272,
+      "fraud_missed": 1139,
+      "fraud_rate_bps": 118.25,
+      "fraud_rate_bps_change": 4.54,
+      "friction_rate": 0.048825,
+      "good_customers_reviewed": 5757,
+      "investigator_yield": 0.045115,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 5",
+      "queue_size": 6029,
+      "review_rate": 0.050527
+    },
+    {
+      "applications": 108168,
+      "approval_state": "rejected",
+      "capacity_headcount": 5408,
+      "capacity_overshoot": 1,
+      "catch_rate": 0.485517,
+      "catch_rate_change": -0.055234,
+      "fraud_attempts": 1450,
+      "fraud_caught": 704,
+      "fraud_missed": 746,
+      "fraud_rate_bps": 134.05,
+      "fraud_rate_bps_change": 15.8,
+      "friction_rate": 0.044088,
+      "good_customers_reviewed": 4705,
+      "investigator_yield": 0.130153,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 6",
+      "queue_size": 5409,
+      "review_rate": 0.050006
+    },
+    {
+      "applications": 108168,
+      "approval_state": "retained_baseline",
+      "capacity_headcount": 5408,
+      "capacity_overshoot": 70,
+      "catch_rate": 0.187586,
+      "catch_rate_change": -0.005185,
+      "fraud_attempts": 1450,
+      "fraud_caught": 272,
+      "fraud_missed": 1178,
+      "fraud_rate_bps": 134.05,
+      "fraud_rate_bps_change": 15.8,
+      "friction_rate": 0.048783,
+      "good_customers_reviewed": 5206,
+      "investigator_yield": 0.049653,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 6",
+      "queue_size": 5478,
+      "review_rate": 0.050643
+    },
+    {
+      "applications": 96843,
+      "approval_state": "rejected",
+      "capacity_headcount": 4842,
+      "capacity_overshoot": 1,
+      "catch_rate": 0.536415,
+      "catch_rate_change": 0.050898,
+      "fraud_attempts": 1428,
+      "fraud_caught": 766,
+      "fraud_missed": 662,
+      "fraud_rate_bps": 147.46,
+      "fraud_rate_bps_change": 13.41,
+      "friction_rate": 0.042729,
+      "good_customers_reviewed": 4077,
+      "investigator_yield": 0.158166,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 7",
+      "queue_size": 4843,
+      "review_rate": 0.050009
+    },
+    {
+      "applications": 96843,
+      "approval_state": "retained_baseline",
+      "capacity_headcount": 4842,
+      "capacity_overshoot": 74,
+      "catch_rate": 0.206583,
+      "catch_rate_change": 0.018997,
+      "fraud_attempts": 1428,
+      "fraud_caught": 295,
+      "fraud_missed": 1133,
+      "fraud_rate_bps": 147.46,
+      "fraud_rate_bps_change": 13.41,
+      "friction_rate": 0.048431,
+      "good_customers_reviewed": 4621,
+      "investigator_yield": 0.060008,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 7",
+      "queue_size": 4916,
+      "review_rate": 0.050763
+    }
+  ],
+  "periods": [
+    "Period 0",
+    "Period 1",
+    "Period 2",
+    "Period 3",
+    "Period 4",
+    "Period 5",
+    "Period 6",
+    "Period 7"
+  ],
+  "review_capacity": 0.05,
+  "risk_bands": [
+    {
+      "applications": 983,
+      "fraud_attempts": 308,
+      "fraud_caught": 308,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 0",
+      "risk_band": "critical"
+    },
+    {
+      "applications": 4251,
+      "fraud_attempts": 369,
+      "fraud_caught": 369,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 0",
+      "risk_band": "high"
+    },
+    {
+      "applications": 109148,
+      "fraud_attempts": 364,
+      "fraud_caught": 0,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 0",
+      "risk_band": "low"
+    },
+    {
+      "applications": 18058,
+      "fraud_attempts": 459,
+      "fraud_caught": 76,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 0",
+      "risk_band": "medium"
+    },
+    {
+      "applications": 1627,
+      "fraud_attempts": 121,
+      "fraud_caught": 121,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 0",
+      "risk_band": "critical"
+    },
+    {
+      "applications": 3147,
+      "fraud_attempts": 121,
+      "fraud_caught": 121,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 0",
+      "risk_band": "high"
+    },
+    {
+      "applications": 114572,
+      "fraud_attempts": 1030,
+      "fraud_caught": 0,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 0",
+      "risk_band": "low"
+    },
+    {
+      "applications": 13094,
+      "fraud_attempts": 228,
+      "fraud_caught": 40,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 0",
+      "risk_band": "medium"
+    },
+    {
+      "applications": 622,
+      "fraud_attempts": 180,
+      "fraud_caught": 180,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 1",
+      "risk_band": "critical"
+    },
+    {
+      "applications": 3136,
+      "fraud_attempts": 343,
+      "fraud_caught": 343,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 1",
+      "risk_band": "high"
+    },
+    {
+      "applications": 108707,
+      "fraud_attempts": 283,
+      "fraud_caught": 0,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 1",
+      "risk_band": "low"
+    },
+    {
+      "applications": 15155,
+      "fraud_attempts": 392,
+      "fraud_caught": 133,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 1",
+      "risk_band": "medium"
+    },
+    {
+      "applications": 1372,
+      "fraud_attempts": 78,
+      "fraud_caught": 78,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 1",
+      "risk_band": "critical"
+    },
+    {
+      "applications": 3754,
+      "fraud_attempts": 121,
+      "fraud_caught": 121,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 1",
+      "risk_band": "high"
+    },
+    {
+      "applications": 110737,
+      "fraud_attempts": 808,
+      "fraud_caught": 0,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 1",
+      "risk_band": "low"
+    },
+    {
+      "applications": 11757,
+      "fraud_attempts": 191,
+      "fraud_caught": 31,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 1",
+      "risk_band": "medium"
+    },
+    {
+      "applications": 729,
+      "fraud_attempts": 207,
+      "fraud_caught": 207,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 2",
+      "risk_band": "critical"
+    },
+    {
+      "applications": 3101,
+      "fraud_attempts": 294,
+      "fraud_caught": 294,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 2",
+      "risk_band": "high"
+    },
+    {
+      "applications": 118472,
+      "fraud_attempts": 318,
+      "fraud_caught": 0,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 2",
+      "risk_band": "low"
+    },
+    {
+      "applications": 14677,
+      "fraud_attempts": 379,
+      "fraud_caught": 140,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 2",
+      "risk_band": "medium"
+    },
+    {
+      "applications": 1138,
+      "fraud_attempts": 57,
+      "fraud_caught": 57,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 2",
+      "risk_band": "critical"
+    },
+    {
+      "applications": 3320,
+      "fraud_attempts": 120,
+      "fraud_caught": 120,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 2",
+      "risk_band": "high"
+    },
+    {
+      "applications": 122158,
+      "fraud_attempts": 813,
+      "fraud_caught": 0,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 2",
+      "risk_band": "low"
+    },
+    {
+      "applications": 10363,
+      "fraud_attempts": 208,
+      "fraud_caught": 72,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 2",
+      "risk_band": "medium"
+    },
+    {
+      "applications": 1400,
+      "fraud_attempts": 353,
+      "fraud_caught": 353,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 3",
+      "risk_band": "critical"
+    },
+    {
+      "applications": 5634,
+      "fraud_attempts": 434,
+      "fraud_caught": 434,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 3",
+      "risk_band": "high"
+    },
+    {
+      "applications": 124527,
+      "fraud_attempts": 219,
+      "fraud_caught": 0,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 3",
+      "risk_band": "low"
+    },
+    {
+      "applications": 19375,
+      "fraud_attempts": 386,
+      "fraud_caught": 14,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 3",
+      "risk_band": "medium"
+    },
+    {
+      "applications": 2427,
+      "fraud_attempts": 126,
+      "fraud_caught": 126,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 3",
+      "risk_band": "critical"
+    },
+    {
+      "applications": 7420,
+      "fraud_attempts": 249,
+      "fraud_caught": 192,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 3",
+      "risk_band": "high"
+    },
+    {
+      "applications": 118718,
+      "fraud_attempts": 680,
+      "fraud_caught": 0,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 3",
+      "risk_band": "low"
+    },
+    {
+      "applications": 22371,
+      "fraud_attempts": 337,
+      "fraud_caught": 0,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 3",
+      "risk_band": "medium"
+    },
+    {
+      "applications": 1190,
+      "fraud_attempts": 340,
+      "fraud_caught": 340,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 4",
+      "risk_band": "critical"
+    },
+    {
+      "applications": 5188,
+      "fraud_attempts": 479,
+      "fraud_caught": 479,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 4",
+      "risk_band": "high"
+    },
+    {
+      "applications": 102887,
+      "fraud_attempts": 204,
+      "fraud_caught": 0,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 4",
+      "risk_band": "low"
+    },
+    {
+      "applications": 18426,
+      "fraud_attempts": 429,
+      "fraud_caught": 1,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 4",
+      "risk_band": "medium"
+    },
+    {
+      "applications": 1193,
+      "fraud_attempts": 90,
+      "fraud_caught": 90,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 4",
+      "risk_band": "critical"
+    },
+    {
+      "applications": 4053,
+      "fraud_attempts": 179,
+      "fraud_caught": 179,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 4",
+      "risk_band": "high"
+    },
+    {
+      "applications": 107166,
+      "fraud_attempts": 841,
+      "fraud_caught": 0,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 4",
+      "risk_band": "low"
+    },
+    {
+      "applications": 15279,
+      "fraud_attempts": 342,
+      "fraud_caught": 47,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 4",
+      "risk_band": "medium"
+    },
+    {
+      "applications": 860,
+      "fraud_attempts": 305,
+      "fraud_caught": 305,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 5",
+      "risk_band": "critical"
+    },
+    {
+      "applications": 3607,
+      "fraud_attempts": 387,
+      "fraud_caught": 387,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 5",
+      "risk_band": "high"
+    },
+    {
+      "applications": 99543,
+      "fraud_attempts": 279,
+      "fraud_caught": 0,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 5",
+      "risk_band": "low"
+    },
+    {
+      "applications": 15313,
+      "fraud_attempts": 440,
+      "fraud_caught": 71,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 5",
+      "risk_band": "medium"
+    },
+    {
+      "applications": 1381,
+      "fraud_attempts": 90,
+      "fraud_caught": 90,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 5",
+      "risk_band": "critical"
+    },
+    {
+      "applications": 4648,
+      "fraud_attempts": 182,
+      "fraud_caught": 182,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 5",
+      "risk_band": "high"
+    },
+    {
+      "applications": 97364,
+      "fraud_attempts": 819,
+      "fraud_caught": 0,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 5",
+      "risk_band": "low"
+    },
+    {
+      "applications": 15930,
+      "fraud_attempts": 320,
+      "fraud_caught": 0,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 5",
+      "risk_band": "medium"
+    },
+    {
+      "applications": 1082,
+      "fraud_attempts": 303,
+      "fraud_caught": 303,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 6",
+      "risk_band": "critical"
+    },
+    {
+      "applications": 4327,
+      "fraud_attempts": 401,
+      "fraud_caught": 401,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 6",
+      "risk_band": "high"
+    },
+    {
+      "applications": 86534,
+      "fraud_attempts": 281,
+      "fraud_caught": 0,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 6",
+      "risk_band": "low"
+    },
+    {
+      "applications": 16225,
+      "fraud_attempts": 465,
+      "fraud_caught": 0,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 6",
+      "risk_band": "medium"
+    },
+    {
+      "applications": 1102,
+      "fraud_attempts": 82,
+      "fraud_caught": 82,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 6",
+      "risk_band": "critical"
+    },
+    {
+      "applications": 4376,
+      "fraud_attempts": 190,
+      "fraud_caught": 190,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 6",
+      "risk_band": "high"
+    },
+    {
+      "applications": 86113,
+      "fraud_attempts": 821,
+      "fraud_caught": 0,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 6",
+      "risk_band": "low"
+    },
+    {
+      "applications": 16577,
+      "fraud_attempts": 357,
+      "fraud_caught": 0,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 6",
+      "risk_band": "medium"
+    },
+    {
+      "applications": 970,
+      "fraud_attempts": 313,
+      "fraud_caught": 313,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 7",
+      "risk_band": "critical"
+    },
+    {
+      "applications": 3519,
+      "fraud_attempts": 422,
+      "fraud_caught": 422,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 7",
+      "risk_band": "high"
+    },
+    {
+      "applications": 78744,
+      "fraud_attempts": 268,
+      "fraud_caught": 0,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 7",
+      "risk_band": "low"
+    },
+    {
+      "applications": 13610,
+      "fraud_attempts": 425,
+      "fraud_caught": 31,
+      "model_version": "catboost_hybrid-m3-v1",
+      "period": "Period 7",
+      "risk_band": "medium"
+    },
+    {
+      "applications": 1277,
+      "fraud_attempts": 118,
+      "fraud_caught": 118,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 7",
+      "risk_band": "critical"
+    },
+    {
+      "applications": 3773,
+      "fraud_attempts": 180,
+      "fraud_caught": 177,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 7",
+      "risk_band": "high"
+    },
+    {
+      "applications": 78972,
+      "fraud_attempts": 810,
+      "fraud_caught": 0,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 7",
+      "risk_band": "low"
+    },
+    {
+      "applications": 12821,
+      "fraud_attempts": 320,
+      "fraud_caught": 0,
+      "model_version": "incumbent-proxy-m3-v1",
+      "period": "Period 7",
+      "risk_band": "medium"
+    }
+  ],
+  "scenario_runs": [
+    {
+      "approval_state": "rejected",
+      "model_version": "catboost_hybrid-m3-v1",
+      "recommendation": "no robust recommendation",
+      "refusal_reasons": [
+        "Model promotion gates failed: calibration_intercept_abs_at_most_0_10, fairness_governance_review_resolved, no_automatic_promotion_psi_blocks.",
+        "Segment evidence requires unresolved governance review.",
+        "16 PSI results meet the automatic-promotion block threshold."
+      ]
+    },
+    {
+      "approval_state": "retained_baseline",
+      "model_version": "incumbent-proxy-m3-v1",
+      "recommendation": "no robust recommendation",
+      "refusal_reasons": [
+        "Model promotion gates failed: calibration_intercept_abs_at_most_0_10, fairness_governance_review_resolved, no_automatic_promotion_psi_blocks.",
+        "Segment evidence requires unresolved governance review.",
+        "16 PSI results meet the automatic-promotion block threshold."
+      ]
+    }
+  ],
+  "source": "PostgreSQL Fraud Schema, analytics.fact_daily_strategy",
+  "vendor_performance": [
+    {
+      "additional_fraud_caught": 471,
+      "catch_rate_gap": 0.314,
+      "challenger_catch_rate": 0.502,
+      "challenger_fraud_caught": 753,
+      "incumbent_catch_rate": 0.188,
+      "incumbent_fraud_caught": 282,
+      "period": "Period 0",
+      "queue_size": 6623,
+      "review_capacity": 0.05
+    },
+    {
+      "additional_fraud_caught": 426,
+      "catch_rate_gap": 0.355592,
+      "challenger_catch_rate": 0.547579,
+      "challenger_fraud_caught": 656,
+      "incumbent_catch_rate": 0.191987,
+      "incumbent_fraud_caught": 230,
+      "period": "Period 1",
+      "queue_size": 6382,
+      "review_capacity": 0.05
+    },
+    {
+      "additional_fraud_caught": 392,
+      "catch_rate_gap": 0.327212,
+      "challenger_catch_rate": 0.535058,
+      "challenger_fraud_caught": 641,
+      "incumbent_catch_rate": 0.207846,
+      "incumbent_fraud_caught": 249,
+      "period": "Period 2",
+      "queue_size": 6849,
+      "review_capacity": 0.05
+    },
+    {
+      "additional_fraud_caught": 483,
+      "catch_rate_gap": 0.346983,
+      "challenger_catch_rate": 0.575431,
+      "challenger_fraud_caught": 801,
+      "incumbent_catch_rate": 0.228448,
+      "incumbent_fraud_caught": 318,
+      "period": "Period 3",
+      "queue_size": 7547,
+      "review_capacity": 0.05
+    },
+    {
+      "additional_fraud_caught": 504,
+      "catch_rate_gap": 0.347107,
+      "challenger_catch_rate": 0.564738,
+      "challenger_fraud_caught": 820,
+      "incumbent_catch_rate": 0.217631,
+      "incumbent_fraud_caught": 316,
+      "period": "Period 4",
+      "queue_size": 6385,
+      "review_capacity": 0.05
+    },
+    {
+      "additional_fraud_caught": 491,
+      "catch_rate_gap": 0.34798,
+      "challenger_catch_rate": 0.540751,
+      "challenger_fraud_caught": 763,
+      "incumbent_catch_rate": 0.192771,
+      "incumbent_fraud_caught": 272,
+      "period": "Period 5",
+      "queue_size": 5967,
+      "review_capacity": 0.05
+    },
+    {
+      "additional_fraud_caught": 432,
+      "catch_rate_gap": 0.297931,
+      "challenger_catch_rate": 0.485517,
+      "challenger_fraud_caught": 704,
+      "incumbent_catch_rate": 0.187586,
+      "incumbent_fraud_caught": 272,
+      "period": "Period 6",
+      "queue_size": 5409,
+      "review_capacity": 0.05
+    },
+    {
+      "additional_fraud_caught": 471,
+      "catch_rate_gap": 0.329832,
+      "challenger_catch_rate": 0.536415,
+      "challenger_fraud_caught": 766,
+      "incumbent_catch_rate": 0.206583,
+      "incumbent_fraud_caught": 295,
+      "period": "Period 7",
+      "queue_size": 4843,
+      "review_capacity": 0.05
+    }
+  ]
+}

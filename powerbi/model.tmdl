@@ -1,0 +1,899 @@
+/// Semantic model for the application fraud strategy report.
+///
+/// Source: the governed analytics extract in powerbi/data/, rebuilt with
+///   PYTHONPATH=src uv run python scripts/build_analytics_extract.py
+///   PYTHONPATH=src uv run python scripts/build_kpi_pack.py     (operational KPI tables)
+///
+/// The extract holds aggregate evidence only. No application-level record, no raw
+/// BAF data, and no linking-fixture entity or ring truth reaches this model.
+///
+/// Every measure below is either observed evidence measured on a named period, or a
+/// scenario value computed from analyst assumptions. Measures of the second kind are
+/// named with an "(assumption)" suffix and must be labelled as such on any visual.
+
+model FraudStrategy
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	discourageImplicitMeasures
+
+expression ExtractFolder = "..\data" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+
+	/// Folder holding the generated CSV extract. Point this at powerbi/data.
+
+table dim_comparator
+
+	column comparator_key
+		dataType: string
+		isKey
+		summarizeBy: none
+
+	column comparator_name
+		dataType: string
+		summarizeBy: none
+		/// Plain-language name shown to readers, e.g. "Incumbent score proxy".
+
+	column comparator_kind
+		dataType: string
+		summarizeBy: none
+
+	column is_champion
+		dataType: boolean
+		summarizeBy: none
+		/// True for the retained champion. At this evidence revision that is the
+		/// incumbent score proxy, not a machine-learned model.
+
+	column is_challenger
+		dataType: boolean
+		summarizeBy: none
+
+	partition dim_comparator = m
+		mode: import
+		source =
+			let
+				Source = Csv.Document(File.Contents(ExtractFolder & "\dim_comparator.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				Typed = Table.TransformColumnTypes(Promoted, {{"comparator_key", type text}, {"comparator_name", type text}, {"comparator_kind", type text}, {"is_champion", type logical}, {"is_challenger", type logical}})
+			in
+				Typed
+
+table dim_evidence_source
+
+	column evidence_source_key
+		dataType: string
+		isKey
+		summarizeBy: none
+
+	column evidence_source_name
+		dataType: string
+		summarizeBy: none
+		/// Required on every visual: "BAF Base", "BAF Variant I"–"V", or
+		/// "Synthetic linking fixture".
+
+	column evidence_source_family
+		dataType: string
+		summarizeBy: none
+
+	partition dim_evidence_source = m
+		mode: import
+		source =
+			let
+				Source = Csv.Document(File.Contents(ExtractFolder & "\dim_evidence_source.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+			in
+				Promoted
+
+table fact_model_metric
+
+	column comparator_key
+		dataType: string
+		summarizeBy: none
+
+	column evidence_source_key
+		dataType: string
+		summarizeBy: none
+
+	column month
+		dataType: int64
+		summarizeBy: none
+
+	column metric_name
+		dataType: string
+		summarizeBy: none
+
+	column metric_value
+		dataType: double
+		summarizeBy: none
+		/// Left unsummarised on purpose: averaging across different metrics is
+		/// meaningless and must not be possible by accident.
+
+	partition fact_model_metric = m
+		mode: import
+		source =
+			let
+				Source = Csv.Document(File.Contents(ExtractFolder & "\fact_model_metric.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				Typed = Table.TransformColumnTypes(Promoted, {{"month", Int64.Type}, {"metric_value", type number}})
+			in
+				Typed
+
+table fact_capacity
+
+	column comparator_key
+		dataType: string
+		summarizeBy: none
+
+	column review_capacity
+		dataType: double
+		formatString: 0.0%
+		summarizeBy: none
+
+	column capacity_count
+		dataType: int64
+		summarizeBy: sum
+
+	column queue_size
+		dataType: int64
+		summarizeBy: sum
+
+	column governance_referrals
+		dataType: int64
+		summarizeBy: sum
+
+	column overflow
+		dataType: int64
+		summarizeBy: sum
+
+	column fraud_caught
+		dataType: int64
+		summarizeBy: sum
+
+	column catch_rate
+		dataType: double
+		formatString: 0.0%
+		summarizeBy: none
+
+	column catch_rate_ci_lower
+		dataType: double
+		formatString: 0.0%
+		summarizeBy: none
+
+	column catch_rate_ci_upper
+		dataType: double
+		formatString: 0.0%
+		summarizeBy: none
+
+	column false_positive_count
+		dataType: int64
+		summarizeBy: sum
+
+	column false_positive_rate
+		dataType: double
+		formatString: 0.00%
+		summarizeBy: none
+
+	column precision
+		dataType: double
+		formatString: 0.0%
+		summarizeBy: none
+
+	column review_rate
+		dataType: double
+		formatString: 0.00%
+		summarizeBy: none
+
+	partition fact_capacity = m
+		mode: import
+		source =
+			let
+				Source = Csv.Document(File.Contents(ExtractFolder & "\fact_capacity.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				Typed = Table.TransformColumnTypes(Promoted, {{"review_capacity", type number}, {"capacity_count", Int64.Type}, {"queue_size", Int64.Type}, {"governance_referrals", Int64.Type}, {"overflow", Int64.Type}, {"fraud_caught", Int64.Type}, {"catch_rate", type number}, {"catch_rate_ci_lower", type number}, {"catch_rate_ci_upper", type number}, {"false_positive_count", Int64.Type}, {"false_positive_rate", type number}, {"precision", type number}, {"review_rate", type number}})
+			in
+				Typed
+
+table fact_promotion_gate
+
+	column gate_key
+		dataType: string
+		isKey
+		summarizeBy: none
+
+	column gate_name
+		dataType: string
+		summarizeBy: none
+
+	column gate_passed
+		dataType: boolean
+		summarizeBy: none
+
+	column gate_family
+		dataType: string
+		summarizeBy: none
+
+	partition fact_promotion_gate = m
+		mode: import
+		source =
+			let
+				Source = Csv.Document(File.Contents(ExtractFolder & "\fact_promotion_gate.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				Typed = Table.TransformColumnTypes(Promoted, {{"gate_passed", type logical}})
+			in
+				Typed
+
+table fact_strategy_policy
+
+	column policy_id
+		dataType: string
+		isKey
+		summarizeBy: none
+
+	column review_capacity
+		dataType: double
+		formatString: 0.0%
+		summarizeBy: none
+
+	column rules_enabled
+		dataType: boolean
+		summarizeBy: none
+
+	column on_frontier
+		dataType: boolean
+		summarizeBy: none
+
+	column catch_rate
+		dataType: double
+		formatString: 0.0%
+		summarizeBy: none
+
+	column false_positive_rate
+		dataType: double
+		formatString: 0.00%
+		summarizeBy: none
+
+	column review_rate
+		dataType: double
+		formatString: 0.00%
+		summarizeBy: none
+
+	column queue_size
+		dataType: int64
+		summarizeBy: sum
+
+	column governance_referrals
+		dataType: int64
+		summarizeBy: sum
+
+	column overflow
+		dataType: int64
+		summarizeBy: sum
+
+	column fraud_caught
+		dataType: int64
+		summarizeBy: sum
+
+	column precision
+		dataType: double
+		formatString: 0.0%
+		summarizeBy: none
+
+	column scenario_utility
+		dataType: double
+		formatString: \$#,0;(\$#,0);\$#,0
+		summarizeBy: none
+		/// Assumption arithmetic at the recorded reference assumptions. Never label
+		/// this as profit, loss, saving, or benefit.
+
+	column assumption_grid_positive_share
+		dataType: double
+		formatString: 0%
+		summarizeBy: none
+
+	column incremental_utility_min
+		dataType: double
+		formatString: \$#,0;(\$#,0);\$#,0
+		summarizeBy: none
+
+	column incremental_utility_median
+		dataType: double
+		formatString: \$#,0;(\$#,0);\$#,0
+		summarizeBy: none
+
+	column incremental_utility_max
+		dataType: double
+		formatString: \$#,0;(\$#,0);\$#,0
+		summarizeBy: none
+
+	partition fact_strategy_policy = m
+		mode: import
+		source =
+			let
+				Source = Csv.Document(File.Contents(ExtractFolder & "\fact_strategy_policy.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				Typed = Table.TransformColumnTypes(Promoted, {{"review_capacity", type number}, {"rules_enabled", type logical}, {"on_frontier", type logical}, {"catch_rate", type number}, {"false_positive_rate", type number}, {"review_rate", type number}, {"queue_size", Int64.Type}, {"governance_referrals", Int64.Type}, {"overflow", Int64.Type}, {"fraud_caught", Int64.Type}, {"precision", type number}, {"scenario_utility", type number}, {"assumption_grid_positive_share", type number}, {"incremental_utility_min", type number}, {"incremental_utility_median", type number}, {"incremental_utility_max", type number}})
+			in
+				Typed
+
+table fact_fairness_group
+
+	column segment_key
+		dataType: string
+		summarizeBy: none
+
+	column segment_name
+		dataType: string
+		summarizeBy: none
+
+	column group_name
+		dataType: string
+		summarizeBy: none
+
+	column applications
+		dataType: int64
+		summarizeBy: sum
+
+	column positive_labels
+		dataType: int64
+		summarizeBy: sum
+
+	column is_publishable
+		dataType: boolean
+		summarizeBy: none
+		/// False when the group has fewer than 200 positive labels. Unpublishable
+		/// groups must be shown as withheld, never as zero or blank.
+
+	column catch_rate
+		dataType: double
+		formatString: 0.0%
+		summarizeBy: none
+
+	column false_positive_rate
+		dataType: double
+		formatString: 0.00%
+		summarizeBy: none
+
+	column precision
+		dataType: double
+		formatString: 0.0%
+		summarizeBy: none
+
+	column review_rate
+		dataType: double
+		formatString: 0.00%
+		summarizeBy: none
+
+	column calibration_error
+		dataType: double
+		summarizeBy: none
+
+	column segment_max_min_tpr_gap
+		dataType: double
+		formatString: 0.0%
+		summarizeBy: none
+
+	column segment_max_min_fpr_gap
+		dataType: double
+		formatString: 0.0%
+		summarizeBy: none
+
+	column segment_review_rate_ratio
+		dataType: double
+		summarizeBy: none
+
+	partition fact_fairness_group = m
+		mode: import
+		source =
+			let
+				Source = Csv.Document(File.Contents(ExtractFolder & "\fact_fairness_group.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				Typed = Table.TransformColumnTypes(Promoted, {{"applications", Int64.Type}, {"positive_labels", Int64.Type}, {"is_publishable", type logical}, {"catch_rate", type number}, {"false_positive_rate", type number}, {"precision", type number}, {"review_rate", type number}, {"calibration_error", type number}, {"segment_max_min_tpr_gap", type number}, {"segment_max_min_fpr_gap", type number}, {"segment_review_rate_ratio", type number}})
+			in
+				Typed
+
+table fact_drift
+
+	column feature_name
+		dataType: string
+		summarizeBy: none
+
+	column month
+		dataType: int64
+		summarizeBy: none
+
+	column psi
+		dataType: double
+		formatString: 0.000
+		summarizeBy: none
+
+	column psi_status
+		dataType: string
+		summarizeBy: none
+		/// One of pass, warn, block.
+
+	column reference_window
+		dataType: string
+		summarizeBy: none
+		/// The pooled training window the stability comparison is measured against.
+
+	column in_training_window
+		dataType: boolean
+		summarizeBy: none
+		/// True when the compared month is itself inside the reference window.
+
+	partition fact_drift = m
+		mode: import
+		source =
+			let
+				Source = Csv.Document(File.Contents(ExtractFolder & "\fact_drift.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				Typed = Table.TransformColumnTypes(Promoted, {{"month", Int64.Type}, {"psi", type number}, {"in_training_window", type logical}})
+			in
+				Typed
+
+table fact_variant_stress
+
+	column evidence_source_key
+		dataType: string
+		summarizeBy: none
+
+	column applications
+		dataType: int64
+		summarizeBy: none
+
+	column metric_name
+		dataType: string
+		summarizeBy: none
+
+	column metric_value
+		dataType: double
+		summarizeBy: none
+
+	partition fact_variant_stress = m
+		mode: import
+		source =
+			let
+				Source = Csv.Document(File.Contents(ExtractFolder & "\fact_variant_stress.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				Typed = Table.TransformColumnTypes(Promoted, {{"applications", Int64.Type}, {"metric_value", type number}})
+			in
+				Typed
+
+table fact_linking_run
+
+	column corruption
+		dataType: double
+		formatString: 0%
+		summarizeBy: none
+
+	column seed
+		dataType: int64
+		summarizeBy: none
+
+	column applications
+		dataType: int64
+		summarizeBy: none
+
+	column pairwise_precision
+		dataType: double
+		formatString: 0.000
+		summarizeBy: none
+
+	column pairwise_recall
+		dataType: double
+		formatString: 0.000
+		summarizeBy: none
+
+	column pairwise_f1
+		dataType: double
+		formatString: 0.000
+		summarizeBy: none
+
+	column b_cubed_f1
+		dataType: double
+		formatString: 0.000
+		summarizeBy: none
+
+	column false_merge_rate
+		dataType: double
+		formatString: 0.00%
+		summarizeBy: none
+
+	column false_splits
+		dataType: int64
+		summarizeBy: sum
+
+	column ring_recall
+		dataType: double
+		formatString: 0.000
+		summarizeBy: none
+		/// Fixture rings only. This is not evidence that BAF contains rings.
+
+	column flagged_rings
+		dataType: int64
+		summarizeBy: none
+
+	column queue_impact_applications
+		dataType: int64
+		summarizeBy: none
+
+	column elapsed_seconds
+		dataType: double
+		formatString: 0.000
+		summarizeBy: none
+
+	partition fact_linking_run = m
+		mode: import
+		source =
+			let
+				Source = Csv.Document(File.Contents(ExtractFolder & "\fact_linking_run.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				Typed = Table.TransformColumnTypes(Promoted, {{"corruption", type number}, {"seed", Int64.Type}, {"applications", Int64.Type}, {"pairwise_precision", type number}, {"pairwise_recall", type number}, {"pairwise_f1", type number}, {"b_cubed_f1", type number}, {"false_merge_rate", type number}, {"false_splits", Int64.Type}, {"ring_recall", type number}, {"flagged_rings", Int64.Type}, {"queue_impact_applications", Int64.Type}, {"elapsed_seconds", type number}})
+			in
+				Typed
+
+table fact_data_quality
+
+	column evidence_source_key
+		dataType: string
+		summarizeBy: none
+
+	column file_name
+		dataType: string
+		summarizeBy: none
+
+	column rows
+		dataType: int64
+		summarizeBy: sum
+
+	column source_columns
+		dataType: int64
+		summarizeBy: none
+
+	column curated_columns
+		dataType: int64
+		summarizeBy: none
+
+	column positive_count
+		dataType: int64
+		summarizeBy: sum
+
+	column prevalence
+		dataType: double
+		formatString: 0.0000%
+		summarizeBy: none
+
+	column source_sha256
+		dataType: string
+		summarizeBy: none
+
+	column curated_sha256
+		dataType: string
+		summarizeBy: none
+
+	column curation_seconds
+		dataType: double
+		summarizeBy: none
+
+	partition fact_data_quality = m
+		mode: import
+		source =
+			let
+				Source = Csv.Document(File.Contents(ExtractFolder & "\fact_data_quality.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				Typed = Table.TransformColumnTypes(Promoted, {{"rows", Int64.Type}, {"source_columns", Int64.Type}, {"curated_columns", Int64.Type}, {"positive_count", Int64.Type}, {"prevalence", type number}, {"curation_seconds", type number}})
+			in
+				Typed
+
+table fact_run_context
+
+	column context_key
+		dataType: string
+		isKey
+		summarizeBy: none
+
+	column context_value
+		dataType: string
+		summarizeBy: none
+
+	partition fact_run_context = m
+		mode: import
+		source =
+			let
+				Source = Csv.Document(File.Contents(ExtractFolder & "\fact_run_context.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+			in
+				Promoted
+
+table fact_monthly_kpi
+
+	/// Monthly Fraud KPI grain, aggregated in PostgreSQL from analytics.fact_daily_strategy.
+	/// One row per period and model. Periods are relative BAF months, not calendar months.
+
+	column period
+		dataType: string
+		summarizeBy: none
+		/// Period 0 to Period 7. A relative BAF month, never a calendar date.
+
+	column model_version
+		dataType: string
+		summarizeBy: none
+
+	column approval_state
+		dataType: string
+		summarizeBy: none
+		/// rejected or retained_baseline. Neither model is promoted.
+
+	column applications
+		dataType: int64
+		formatString: #,0
+		summarizeBy: none
+
+	column fraud_attempts
+		dataType: int64
+		formatString: #,0
+		summarizeBy: none
+
+	column fraud_rate_bps
+		dataType: double
+		formatString: 0.0
+		summarizeBy: none
+		/// Fraud attempts per 10,000 applications.
+
+	column queue_size
+		dataType: int64
+		formatString: #,0
+		summarizeBy: none
+		/// Applications routed to manual review at the operating capacity.
+
+	column review_rate
+		dataType: double
+		formatString: 0.00%
+		summarizeBy: none
+
+	column fraud_caught
+		dataType: int64
+		formatString: #,0
+		summarizeBy: none
+
+	column catch_rate
+		dataType: double
+		formatString: 0.0%
+		summarizeBy: none
+		/// Fraud caught divided by fraud attempted. Assumes review prevents what it finds.
+
+	column investigator_yield
+		dataType: double
+		formatString: 0.0%
+		summarizeBy: none
+		/// Confirmed fraud per application reviewed. The hit rate a reviewer experiences.
+
+	column good_customers_reviewed
+		dataType: int64
+		formatString: #,0
+		summarizeBy: none
+
+	column friction_rate
+		dataType: double
+		formatString: 0.00%
+		summarizeBy: none
+		/// Good customers reviewed divided by good customers.
+
+	column fraud_missed
+		dataType: int64
+		formatString: #,0
+		summarizeBy: none
+
+	column capacity_headcount
+		dataType: int64
+		formatString: #,0
+		summarizeBy: none
+		/// Reviews the capacity implies.
+
+	column capacity_overshoot
+		dataType: int64
+		formatString: #,0
+		summarizeBy: none
+		/// Queue above headcount. A tied score cannot cut on an exact count.
+
+	column catch_rate_change
+		dataType: double
+		formatString: +0.0%;-0.0%;0.0%
+		summarizeBy: none
+		/// Movement against the prior period for the same model.
+
+	column fraud_rate_bps_change
+		dataType: double
+		formatString: +0.0;-0.0;0.0
+		summarizeBy: none
+
+	partition fact_monthly_kpi = m
+		mode: import
+		source =
+			let
+				Source = Csv.Document(File.Contents(ExtractFolder & "\fact_monthly_kpi.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				Typed = Table.TransformColumnTypes(Promoted, {{"applications", Int64.Type}, {"fraud_attempts", Int64.Type}, {"fraud_rate_bps", type number}, {"queue_size", Int64.Type}, {"review_rate", type number}, {"fraud_caught", Int64.Type}, {"catch_rate", type number}, {"investigator_yield", type number}, {"good_customers_reviewed", Int64.Type}, {"friction_rate", type number}, {"fraud_missed", Int64.Type}, {"capacity_headcount", Int64.Type}, {"capacity_overshoot", Int64.Type}, {"catch_rate_change", type number}, {"fraud_rate_bps_change", type number}})
+			in
+				Typed
+
+table fact_channel_kpi
+
+	/// Monthly KPI split by application channel.
+
+	column period
+		dataType: string
+		summarizeBy: none
+
+	column model_version
+		dataType: string
+		summarizeBy: none
+
+	column channel
+		dataType: string
+		summarizeBy: none
+
+	column applications
+		dataType: int64
+		formatString: #,0
+		summarizeBy: none
+
+	column fraud_attempts
+		dataType: int64
+		formatString: #,0
+		summarizeBy: none
+
+	column fraud_caught
+		dataType: int64
+		formatString: #,0
+		summarizeBy: none
+
+	column good_customers_reviewed
+		dataType: int64
+		formatString: #,0
+		summarizeBy: none
+
+	partition fact_channel_kpi = m
+		mode: import
+		source =
+			let
+				Source = Csv.Document(File.Contents(ExtractFolder & "\fact_channel_kpi.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				Typed = Table.TransformColumnTypes(Promoted, {{"applications", Int64.Type}, {"fraud_attempts", Int64.Type}, {"fraud_caught", Int64.Type}, {"good_customers_reviewed", Int64.Type}})
+			in
+				Typed
+
+table fact_risk_band_kpi
+
+	/// Monthly KPI split by operational risk band. Band edges are fixed on the
+	/// calibration period and reused, so a band means the same thing in every period.
+
+	column period
+		dataType: string
+		summarizeBy: none
+
+	column model_version
+		dataType: string
+		summarizeBy: none
+
+	column risk_band
+		dataType: string
+		summarizeBy: none
+
+	column applications
+		dataType: int64
+		formatString: #,0
+		summarizeBy: none
+
+	column fraud_attempts
+		dataType: int64
+		formatString: #,0
+		summarizeBy: none
+
+	column fraud_caught
+		dataType: int64
+		formatString: #,0
+		summarizeBy: none
+
+	partition fact_risk_band_kpi = m
+		mode: import
+		source =
+			let
+				Source = Csv.Document(File.Contents(ExtractFolder & "\fact_risk_band_kpi.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				Typed = Table.TransformColumnTypes(Promoted, {{"applications", Int64.Type}, {"fraud_attempts", Int64.Type}, {"fraud_caught", Int64.Type}})
+			in
+				Typed
+
+table fact_vendor_performance
+
+	/// Incumbent score proxy against the challenger at identical review capacity.
+	/// credit_risk_score stands in for a third-party decision score. It is not a
+	/// verified vendor product and nothing here is a vendor service level.
+
+	column period
+		dataType: string
+		summarizeBy: none
+
+	column incumbent_catch_rate
+		dataType: double
+		formatString: 0.0%
+		summarizeBy: none
+
+	column challenger_catch_rate
+		dataType: double
+		formatString: 0.0%
+		summarizeBy: none
+
+	column catch_rate_gap
+		dataType: double
+		formatString: +0.0%;-0.0%;0.0%
+		summarizeBy: none
+
+	column incumbent_fraud_caught
+		dataType: int64
+		formatString: #,0
+		summarizeBy: none
+
+	column challenger_fraud_caught
+		dataType: int64
+		formatString: #,0
+		summarizeBy: none
+
+	column additional_fraud_caught
+		dataType: int64
+		formatString: +#,0;-#,0;0
+		summarizeBy: none
+
+	column review_capacity
+		dataType: double
+		formatString: 0.0%
+		summarizeBy: none
+
+	column queue_size
+		dataType: int64
+		formatString: #,0
+		summarizeBy: none
+
+	partition fact_vendor_performance = m
+		mode: import
+		source =
+			let
+				Source = Csv.Document(File.Contents(ExtractFolder & "\fact_vendor_performance.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				Typed = Table.TransformColumnTypes(Promoted, {{"incumbent_catch_rate", type number}, {"challenger_catch_rate", type number}, {"catch_rate_gap", type number}, {"incumbent_fraud_caught", Int64.Type}, {"challenger_fraud_caught", Int64.Type}, {"additional_fraud_caught", Int64.Type}, {"review_capacity", type number}, {"queue_size", Int64.Type}})
+			in
+				Typed
+
+relationship dim_comparator_fact_model_metric
+	fromColumn: fact_model_metric.comparator_key
+	toColumn: dim_comparator.comparator_key
+	crossFilteringBehavior: oneDirection
+
+relationship dim_comparator_fact_capacity
+	fromColumn: fact_capacity.comparator_key
+	toColumn: dim_comparator.comparator_key
+	crossFilteringBehavior: oneDirection
+
+relationship dim_evidence_source_fact_model_metric
+	fromColumn: fact_model_metric.evidence_source_key
+	toColumn: dim_evidence_source.evidence_source_key
+	crossFilteringBehavior: oneDirection
+
+relationship dim_evidence_source_fact_variant_stress
+	fromColumn: fact_variant_stress.evidence_source_key
+	toColumn: dim_evidence_source.evidence_source_key
+	crossFilteringBehavior: oneDirection
+
+relationship dim_evidence_source_fact_data_quality
+	fromColumn: fact_data_quality.evidence_source_key
+	toColumn: dim_evidence_source.evidence_source_key
+	crossFilteringBehavior: oneDirection
+
+relationship fact_monthly_kpi_fact_channel_kpi
+	fromColumn: fact_channel_kpi.period
+	toColumn: fact_monthly_kpi.period
+	crossFilteringBehavior: oneDirection
+
+relationship fact_monthly_kpi_fact_vendor_performance
+	fromColumn: fact_vendor_performance.period
+	toColumn: fact_monthly_kpi.period
+	crossFilteringBehavior: oneDirection

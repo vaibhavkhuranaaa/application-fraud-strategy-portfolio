@@ -1,0 +1,47 @@
+{
+  "accepted_reasons": [
+    "customer_age max_min_tpr_gap exceeds 0.10",
+    "customer_age review-rate ratio is outside 0.80-1.25",
+    "housing_status max_min_tpr_gap exceeds 0.10",
+    "housing_status max_min_fpr_gap exceeds 0.10",
+    "housing_status review-rate ratio is outside 0.80-1.25"
+  ],
+  "accountable": "vaibhavkhuranaaa@gmail.com",
+  "basis": "docs/fairness-review.md, sections 2 to 5; evaluation/fairness_ablation.json",
+  "date": "2026-08-10",
+  "decision": "accepted",
+  "decision_id": "GOV-FAIRNESS-20260810",
+  "evaluation_period": "month 7, 5% review capacity",
+  "feature_decision": "housing_status is retained in the feature contract. Removing it was measured and costs 2.39 percentage points of catch at 5% capacity and 63 month-7 fraud cases, is a partial mitigation only, and closes the gap partly by levelling down.",
+  "granted_against": {
+    "customer_age": {
+      "max_min_fpr_gap": 0.04938936943395933,
+      "max_min_tpr_gap": 0.23421103395061726,
+      "review_rate_ratio": 0.3973520419068506
+    },
+    "housing_status": {
+      "max_min_fpr_gap": 0.15560972021936512,
+      "max_min_tpr_gap": 0.37708983247886124,
+      "review_rate_ratio": 0.07316993956507606
+    }
+  },
+  "limits": [
+    "This acceptance is granted against the values in granted_against and lapses if any accepted metric worsens past the recorded tolerance.",
+    "It is matched reason by reason. A segment that begins failing later is not covered.",
+    "It resolves gate 5 only. The calibration intercept and the stability blocks fail independently and the challenger remains rejected.",
+    "It authorises no group-specific threshold and no automatic decline. Neither exists in the code or the schema.",
+    "BAF is synthetic account-opening data. Neither the disparity nor this acceptance transfers to a real portfolio, and a production version would need the same measurement on observed data plus legal review of the attribute."
+  ],
+  "reasoning": {
+    "customer_age": "Accepted as a prevalence artifact. The feature is audit-only and never trained on, and its review-rate ratio moves from 0.397 to 0.836, inside the 0.80 to 1.25 band, once each band's own fraud rate is accounted for.",
+    "housing_status": "Accepted on the business-justification record. The disparity is real and survives the prevalence adjustment at 0.484. Removal was measured rather than assumed: it costs 2.39 points of catch, brings the prevalence-adjusted ratio to 1.119 and the FPR gap under its trigger, and still leaves the raw ratio at 0.169 and the TPR gap at 0.190, so it does not close the check either. Group membership stays recoverable from the 32 remaining inputs at AUROC 0.799 and 0.770, so removal would remove the audit handle rather than the behaviour."
+  },
+  "scope": [
+    "customer_age",
+    "housing_status"
+  ],
+  "tolerance": {
+    "gap": 0.05,
+    "ratio": 0.05
+  }
+}

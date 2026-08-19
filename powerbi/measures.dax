@@ -1,0 +1,296 @@
+// Measure library for the application fraud strategy report.
+//
+// Naming rule: any measure whose value depends on an analyst assumption carries the
+// "(assumption)" suffix, and every visual using one must repeat that word in its
+// title or subtitle. Measures without the suffix are observed evidence measured on a
+// named period.
+//
+// Add these to the FraudStrategy semantic model (powerbi/model.tmdl).
+
+// ---------------------------------------------------------------- headline state
+
+Champion =
+CALCULATE (
+    SELECTEDVALUE ( dim_comparator[comparator_name] ),
+    dim_comparator[is_champion] = TRUE ()
+)
+
+Challenger =
+CALCULATE (
+    SELECTEDVALUE ( dim_comparator[comparator_name] ),
+    dim_comparator[is_challenger] = TRUE ()
+)
+
+Strategy decision =
+LOOKUPVALUE ( fact_run_context[context_value], fact_run_context[context_key], "strategy_recommendation" )
+
+Decision headline =
+VAR Decision = [Strategy decision]
+RETURN
+    IF (
+        Decision = "no robust recommendation",
+        "No robust recommendation - the incumbent score proxy is retained",
+        "Recommended strategy: " & Decision
+    )
+
+Evidence period label =
+"BAF Base, month 7 (untouched test period) - "
+    & LOOKUPVALUE ( fact_run_context[context_value], fact_run_context[context_key], "test_applications" )
+    & " applications"
+
+Evidence revision =
+LOOKUPVALUE ( fact_run_context[context_value], fact_run_context[context_key], "evidence_revision" )
+
+Dataset version =
+LOOKUPVALUE ( fact_run_context[context_value], fact_run_context[context_key], "dataset_version" )
+
+// ---------------------------------------------------------------- promotion gates
+
+Gates total = COUNTROWS ( fact_promotion_gate )
+
+Gates passed = CALCULATE ( COUNTROWS ( fact_promotion_gate ), fact_promotion_gate[gate_passed] = TRUE () )
+
+Gates failed = [Gates total] - [Gates passed]
+
+Gate result label =
+VAR Passed = SELECTEDVALUE ( fact_promotion_gate[gate_passed] )
+RETURN
+    IF ( ISBLANK ( Passed ), BLANK (), IF ( Passed, "PASS", "FAIL" ) )
+
+Promotion summary =
+[Gates passed] & " of " & [Gates total] & " gates passed. "
+    & IF ( [Gates failed] > 0, "A single failure retains the incumbent proxy.", "" )
+
+// ---------------------------------------------------------------- capacity and catch
+
+Fraud caught = SUM ( fact_capacity[fraud_caught] )
+
+Catch rate = SELECTEDVALUE ( fact_capacity[catch_rate] )
+
+Catch rate interval =
+VAR Lower = SELECTEDVALUE ( fact_capacity[catch_rate_ci_lower] )
+VAR Upper = SELECTEDVALUE ( fact_capacity[catch_rate_ci_upper] )
+RETURN
+    IF (
+        ISBLANK ( Lower ),
+        BLANK (),
+        FORMAT ( Lower, "0.0%" ) & " to " & FORMAT ( Upper, "0.0%" ) & " (95% interval)"
+    )
+
+Champion catch rate =
+CALCULATE ( SELECTEDVALUE ( fact_capacity[catch_rate] ), dim_comparator[is_champion] = TRUE () )
+
+Challenger catch rate =
+CALCULATE ( SELECTEDVALUE ( fact_capacity[catch_rate] ), dim_comparator[is_challenger] = TRUE () )
+
+Catch gain over champion = [Challenger catch rate] - [Champion catch rate]
+
+Review demand = SUM ( fact_capacity[queue_size] ) + SUM ( fact_capacity[governance_referrals] )
+
+Beyond capacity = SUM ( fact_capacity[overflow] )
+
+Capacity feasibility =
+IF (
+    [Beyond capacity] = 0,
+    "Fits within the reviewer team",
+    FORMAT ( [Beyond capacity], "#,0" ) & " applications beyond capacity - referred, never declined"
+)
+
+// ---------------------------------------------------------------- strategy policies
+
+Policy scenario value (assumption) = SELECTEDVALUE ( fact_strategy_policy[scenario_utility] )
+
+Policy assumption grid positive share = SELECTEDVALUE ( fact_strategy_policy[assumption_grid_positive_share] )
+
+Policy frontier label =
+IF ( SELECTEDVALUE ( fact_strategy_policy[on_frontier] ) = TRUE (), "On frontier", "Dominated" )
+
+Policies with overflow =
+CALCULATE ( COUNTROWS ( fact_strategy_policy ), fact_strategy_policy[overflow] > 0 )
+
+Refusal reasons =
+CONCATENATEX (
+    FILTER ( fact_run_context, LEFT ( fact_run_context[context_key], 15 ) = "refusal_reason_" ),
+    fact_run_context[context_value],
+    UNICHAR ( 10 ) & "• ",
+    fact_run_context[context_key],
+    ASC
+)
+
+Assumption notice =
+LOOKUPVALUE ( fact_run_context[context_value], fact_run_context[context_key], "assumption_notice" )
+
+// ---------------------------------------------------------------- model comparison
+
+Metric value = SELECTEDVALUE ( fact_model_metric[metric_value] )
+
+PR-AUC =
+CALCULATE ( SELECTEDVALUE ( fact_model_metric[metric_value] ), fact_model_metric[metric_name] = "pr_auc" )
+
+Calibration intercept =
+CALCULATE (
+    SELECTEDVALUE ( fact_model_metric[metric_value] ),
+    fact_model_metric[metric_name] = "calibration_intercept"
+)
+
+Calibration intercept status =
+VAR Value = [Calibration intercept]
+RETURN
+    IF (
+        ISBLANK ( Value ),
+        BLANK (),
+        IF ( ABS ( Value ) <= 0.10, "Within the ±0.10 gate", "FAILS the ±0.10 gate" )
+    )
+
+Ranking lift =
+VALUE ( LOOKUPVALUE ( fact_run_context[context_value], fact_run_context[context_key], "pr_auc_lift_observed" ) )
+
+Ranking lift interval =
+"95% interval "
+    & FORMAT ( VALUE ( LOOKUPVALUE ( fact_run_context[context_value], fact_run_context[context_key], "pr_auc_lift_ci_lower" ) ), "0.0000" )
+    & " to "
+    & FORMAT ( VALUE ( LOOKUPVALUE ( fact_run_context[context_value], fact_run_context[context_key], "pr_auc_lift_ci_upper" ) ), "0.0000" )
+
+// ---------------------------------------------------------------- fairness
+
+Publishable groups =
+CALCULATE ( COUNTROWS ( fact_fairness_group ), fact_fairness_group[is_publishable] = TRUE () )
+
+Withheld groups =
+CALCULATE ( COUNTROWS ( fact_fairness_group ), fact_fairness_group[is_publishable] = FALSE () )
+
+Group catch rate =
+// Withheld groups return blank rather than zero: fewer than 200 positive labels means
+// the estimate is not stable enough to publish, not that the value is zero.
+IF (
+    SELECTEDVALUE ( fact_fairness_group[is_publishable] ) = TRUE (),
+    SELECTEDVALUE ( fact_fairness_group[catch_rate] ),
+    BLANK ()
+)
+
+Group display note =
+IF (
+    SELECTEDVALUE ( fact_fairness_group[is_publishable] ) = TRUE (),
+    BLANK (),
+    "Withheld - fewer than 200 fraud cases"
+)
+
+Segments triggering review =
+CALCULATE (
+    DISTINCTCOUNT ( fact_fairness_group[segment_key] ),
+    FILTER (
+        fact_fairness_group,
+        fact_fairness_group[segment_max_min_tpr_gap] > 0.10
+            || fact_fairness_group[segment_max_min_fpr_gap] > 0.10
+            || NOT (
+                fact_fairness_group[segment_review_rate_ratio] >= 0.80
+                    && fact_fairness_group[segment_review_rate_ratio] <= 1.25
+            )
+    )
+)
+
+// ---------------------------------------------------------------- drift
+
+Drift checks = COUNTROWS ( fact_drift )
+
+Drift warnings = CALCULATE ( COUNTROWS ( fact_drift ), fact_drift[psi_status] = "warn" )
+
+Drift blocks = CALCULATE ( COUNTROWS ( fact_drift ), fact_drift[psi_status] = "block" )
+
+Drift summary =
+FORMAT ( [Drift blocks], "#,0" ) & " blocking and " & FORMAT ( [Drift warnings], "#,0" )
+    & " warning results across " & FORMAT ( [Drift checks], "#,0" ) & " feature-month checks"
+
+Max PSI = MAX ( fact_drift[psi] )
+
+// ---------------------------------------------------------------- identity linking
+
+Worst pairwise F1 = MIN ( fact_linking_run[pairwise_f1] )
+
+Worst false-merge rate = MAX ( fact_linking_run[false_merge_rate] )
+
+Slowest linking run = MAX ( fact_linking_run[elapsed_seconds] )
+
+Linking boundary notice =
+"Measured on the synthetic linking fixture only. BAF rows were generated independently "
+    & "and contain no recoverable shared identity or ring."
+
+// ---------------------------------------------------------------- data quality
+
+Source rows = SUM ( fact_data_quality[rows] )
+
+Files verified = COUNTROWS ( fact_data_quality )
+
+Fraud rate = DIVIDE ( SUM ( fact_data_quality[positive_count] ), SUM ( fact_data_quality[rows] ) )
+
+// ------------------------------------------------- monthly fraud KPI (operational)
+//
+// These read the operational grain built by scripts/build_kpi_pack.py from the
+// PostgreSQL Fraud Schema. They describe how the desk performed in a period. They do
+// not authorise a policy: both models in this grain carry the recorded refusal.
+
+Applications = SUM ( fact_monthly_kpi[applications] )
+
+Fraud attempts = SUM ( fact_monthly_kpi[fraud_attempts] )
+
+Fraud rate bps =
+DIVIDE ( [Fraud attempts], [Applications] ) * 10000
+
+Fraud caught = SUM ( fact_monthly_kpi[fraud_caught] )
+
+Fraud missed = SUM ( fact_monthly_kpi[fraud_missed] )
+
+Catch rate = DIVIDE ( [Fraud caught], [Fraud attempts] )
+
+Review queue = SUM ( fact_monthly_kpi[queue_size] )
+
+Review rate = DIVIDE ( [Review queue], [Applications] )
+
+Investigator yield = DIVIDE ( [Fraud caught], [Review queue] )
+
+Good customers reviewed = SUM ( fact_monthly_kpi[good_customers_reviewed] )
+
+Friction rate =
+DIVIDE ( [Good customers reviewed], [Applications] - [Fraud attempts] )
+
+Capacity overshoot = SUM ( fact_monthly_kpi[capacity_overshoot] )
+
+Capacity overshoot rate =
+DIVIDE ( [Capacity overshoot], SUM ( fact_monthly_kpi[capacity_headcount] ) )
+
+// A tied score cannot cut on an exact reviewer count: every application at the cutting
+// value has to be treated alike. The incumbent proxy is a low-cardinality integer score,
+// so its queue runs over the staffed headcount every period.
+Capacity overshoot notice =
+VAR Rate = [Capacity overshoot rate]
+RETURN
+    IF (
+        Rate > 0.005,
+        "Queue exceeds staffed capacity by "
+            & FORMAT ( Rate, "0.0%" )
+            & ". The score ties at the cut, so the block at the cutting value cannot be split.",
+        "Queue lands within staffed capacity."
+    )
+
+Catch rate change =
+VAR Latest = SUM ( fact_monthly_kpi[catch_rate_change] )
+RETURN Latest
+
+// ------------------------------------------------- vendor performance (incumbent proxy)
+
+Vendor catch rate = SUM ( fact_vendor_performance[incumbent_catch_rate] )
+
+Challenger catch rate = SUM ( fact_vendor_performance[challenger_catch_rate] )
+
+Catch rate gap = [Challenger catch rate] - [Vendor catch rate]
+
+Additional fraud caught = SUM ( fact_vendor_performance[additional_fraud_caught] )
+
+Vendor boundary notice =
+"credit_risk_score is an incumbent score proxy standing in for a third-party decision "
+    & "score. It is not a verified vendor product and this is not a vendor service level."
+
+Operational boundary notice =
+"Periods are relative BAF months labelled Period 0 to Period 7, not calendar months. "
+    & "Catch rate assumes review prevents the fraud it finds, so every figure is an "
+    & "upper bound. No period here authorises a policy."

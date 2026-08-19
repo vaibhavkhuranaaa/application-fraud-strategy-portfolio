@@ -1,0 +1,890 @@
+{
+  "boundary": "BAF has no cross-row identity or ring truth and no BAF application is linked, duplicated, or described as part of a ring anywhere in this report.",
+  "code_sha": "66cbe208811db7e26c36cc4b8265c1d52e889ede",
+  "days": [
+    {
+      "applications_received": 2500,
+      "applications_referred": 8,
+      "day": 0,
+      "duplicate_identity_flags": 4,
+      "flag_count": 4,
+      "suspected_ring_flags": 0
+    },
+    {
+      "applications_received": 2500,
+      "applications_referred": 22,
+      "day": 1,
+      "duplicate_identity_flags": 6,
+      "flag_count": 8,
+      "suspected_ring_flags": 2
+    },
+    {
+      "applications_received": 2500,
+      "applications_referred": 45,
+      "day": 2,
+      "duplicate_identity_flags": 10,
+      "flag_count": 15,
+      "suspected_ring_flags": 5
+    },
+    {
+      "applications_received": 2500,
+      "applications_referred": 83,
+      "day": 3,
+      "duplicate_identity_flags": 24,
+      "flag_count": 31,
+      "suspected_ring_flags": 7
+    },
+    {
+      "applications_received": 2500,
+      "applications_referred": 71,
+      "day": 4,
+      "duplicate_identity_flags": 23,
+      "flag_count": 28,
+      "suspected_ring_flags": 5
+    },
+    {
+      "applications_received": 2500,
+      "applications_referred": 119,
+      "day": 5,
+      "duplicate_identity_flags": 32,
+      "flag_count": 43,
+      "suspected_ring_flags": 11
+    },
+    {
+      "applications_received": 2500,
+      "applications_referred": 133,
+      "day": 6,
+      "duplicate_identity_flags": 44,
+      "flag_count": 53,
+      "suspected_ring_flags": 9
+    },
+    {
+      "applications_received": 2500,
+      "applications_referred": 189,
+      "day": 7,
+      "duplicate_identity_flags": 32,
+      "flag_count": 57,
+      "suspected_ring_flags": 25
+    },
+    {
+      "applications_received": 2500,
+      "applications_referred": 163,
+      "day": 8,
+      "duplicate_identity_flags": 39,
+      "flag_count": 56,
+      "suspected_ring_flags": 17
+    },
+    {
+      "applications_received": 2500,
+      "applications_referred": 189,
+      "day": 9,
+      "duplicate_identity_flags": 37,
+      "flag_count": 60,
+      "suspected_ring_flags": 23
+    },
+    {
+      "applications_received": 2500,
+      "applications_referred": 218,
+      "day": 10,
+      "duplicate_identity_flags": 54,
+      "flag_count": 76,
+      "suspected_ring_flags": 22
+    },
+    {
+      "applications_received": 2500,
+      "applications_referred": 199,
+      "day": 11,
+      "duplicate_identity_flags": 62,
+      "flag_count": 77,
+      "suspected_ring_flags": 15
+    },
+    {
+      "applications_received": 2500,
+      "applications_referred": 190,
+      "day": 12,
+      "duplicate_identity_flags": 50,
+      "flag_count": 68,
+      "suspected_ring_flags": 18
+    },
+    {
+      "applications_received": 2500,
+      "applications_referred": 180,
+      "day": 13,
+      "duplicate_identity_flags": 65,
+      "flag_count": 75,
+      "suspected_ring_flags": 10
+    },
+    {
+      "applications_received": 2500,
+      "applications_referred": 237,
+      "day": 14,
+      "duplicate_identity_flags": 81,
+      "flag_count": 96,
+      "suspected_ring_flags": 15
+    },
+    {
+      "applications_received": 2500,
+      "applications_referred": 156,
+      "day": 15,
+      "duplicate_identity_flags": 68,
+      "flag_count": 72,
+      "suspected_ring_flags": 4
+    },
+    {
+      "applications_received": 2500,
+      "applications_referred": 197,
+      "day": 16,
+      "duplicate_identity_flags": 86,
+      "flag_count": 91,
+      "suspected_ring_flags": 5
+    },
+    {
+      "applications_received": 2500,
+      "applications_referred": 204,
+      "day": 17,
+      "duplicate_identity_flags": 87,
+      "flag_count": 93,
+      "suspected_ring_flags": 6
+    },
+    {
+      "applications_received": 2500,
+      "applications_referred": 193,
+      "day": 18,
+      "duplicate_identity_flags": 94,
+      "flag_count": 95,
+      "suspected_ring_flags": 1
+    },
+    {
+      "applications_received": 2500,
+      "applications_referred": 204,
+      "day": 19,
+      "duplicate_identity_flags": 102,
+      "flag_count": 102,
+      "suspected_ring_flags": 0
+    }
+  ],
+  "elapsed_seconds": 0.33512912500009406,
+  "evidence_id": "m9-daily-suspect-report-v1",
+  "evidence_source": "synthetic_link_fixture",
+  "latest_day_flags": [
+    {
+      "applications": [
+        "8ee1367ecd578491af1671639d623ed7",
+        "ac3cd4c23e9a1e64f48af38983ad92b6"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "57983cb5a0a5d4d9a32e16dbeb0070ee",
+        "744d3420652a73251c67de1e9c7310e2"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "6c5e8a951fc333893d179b5cd3709fec",
+        "9afc58c296b9e68b5b7774f47aba4d41"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "a3e8022b80ba2a492ceb3f4959610847",
+        "7537992a53b350a742dc7463a0229f8b"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "683de3d2afc6ffd63a3446cc2de11c58",
+        "ce416bf077f37f781b0ecbeb62d49072"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "1b78d4f60065126f52c0180e8b87e4ba",
+        "f87faac78974ee2928f0148b28f2c131"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "e6c5f6c87e2a478c73cf408f5beeb478",
+        "40ebbbadfc98d110be29389d1c3c352d"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "2c75635e735f650095d57550c0e05876",
+        "1a63c40b4797a5dab992fad5fa5409b3"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "a1f237ad1e59148c272520fb007eb84e",
+        "4962e7988dffc8e11fa13b23ac58fe48"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "60c03d21852356410ec7ec7cafbabc87",
+        "e31d3016b3836607db8edcbe399608fa"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "c11cc4cef5d9541731776e0466b8238b",
+        "0150d7e8d8b8619eadc79dc6829aee65"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "7410b45046d6d0fe8d980ad0caca1efe",
+        "f1b7b2922561663d7891a7c69fc54fb3"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "fc92750c45ae4be8b9b5075ee37d87d1",
+        "3a9b34b9d2154aea665bdbc90923cbe4"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "68126b6060068f9704018d5637fb946b",
+        "51c1f12605a02e3c4803a7fd4916d717"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "43b9488d18387b5f140e05bf29e47a9d",
+        "6644761c65286308159e564a93b7ed87"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "361fc74f5b804c34b9e47fa33658fc87",
+        "6098749e2ce23545a1847372913e85d7"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "b91118594a33811b3a8abb601e3dd90e",
+        "cf3f87567a4b73b18c806909456d8da9"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "c4385f2c2de3984277ea6e874d63d549",
+        "2f455f5564df7b4d06dea82ede83f5a6"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "384d09164a929a4edd7d248bb2467896",
+        "fce26528394a4cd03559e030cc618be6"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "75fd28ef21efdff5d334e3b245e99e7a",
+        "b9c7f12e0a34b55de4d5a25a9c25d6b8"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "e089b7886f8cc8710b1893036814e08b",
+        "e5a0f693adf207c78384821b0021c991"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "f06933689dd7bf2fcc21be4447e200ea",
+        "082d42eb9fa14abf8a6520e73c3f7778"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "daeedce8d61daa40cd3457883dce08b7",
+        "4c1b0eeeda181b1bbf8093137604c79a"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "a24b55a1e7db5af45608eb372be424f1",
+        "4b54ce76813fe469c2eb05d9f8756031"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "a5002a64a132ee584a8dc8264b0c9e01",
+        "7479190bd2dd347aeda2324c6b0b3f32"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "91ee2fa00a013012764fc02fb888dc5b",
+        "a8a303508b69adef86c7c2ee2097039d"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "d9913ffae5a563ba54ad25abd8e2d5a6",
+        "08ef941d85be1e52dd2796f6ea5f7663"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "fd335f669f737319f9018f5be5b5004e",
+        "0eaf45da916a337db6fcc231055cf751"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "d6206ecb684e4d5c1e17825d64417070",
+        "b85297e2167dc08b158e2a5ce62ca450"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "c5c0d3ce47889b4a17519244071f8281",
+        "271146b392fccc573064773da8f48708"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "42faa919076f075fb50dcffdd1f0c1ec",
+        "d61cce065e1303246059d350b1890455"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "224db3590888c9278a17f6b1218181a4",
+        "520cd1ae4dcc32119a174988e87f9468"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "833520ed2f9fc06556c40507e5738952",
+        "53ea6dc90e4051899b164bdf20fe7620"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "c7c5911a3350c2666172a5f3f3d65978",
+        "0b18f6019a698d31fb1329b4d9784ecb"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "b7d0582ffe1475730f98249c2b1f39f3",
+        "8698a7a1e53c7c92383114221547925e"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "95ac689f5a1115313d2bc29cf14e0a53",
+        "d6089b451834e9aff6d367929a1d0b51"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "ca72dc439040f0675de6355c8cf66028",
+        "48fbbda373fb8327a09d2a6c6e2ac080"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "636d297b367ed3bca341062cf32ded14",
+        "93e332b8d5c2a7f3bdfaa3d65fe85055"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "847046ef8ba178d83b6bb43d881fa763",
+        "0cb518714cdbf630a85aa12efb149f6f"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "2ab90aff1023071e7ecc8ebc312b56c6",
+        "6e8f0d8615f4ab11930bb9a0541a1b48"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "4c91496c46373bc8230aa3abd8a3a502",
+        "686e22df5395ab918499dd495e9eefd5"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "e0915ca0f380175905a4024b8d45952e",
+        "2dcef0cce8d48f936285bd72133e758c"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "e8386c6be5259d7ce5f79c4519fd04ec",
+        "c0a0598f5d827d599806d0f0a1d5e29f"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "0f1e1d504083146b8980b14d0fd1ff3d",
+        "7148cee8ad1d149ab9d2baa4c7ca30ef"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "f2ffc5318bb063c731181206dee53445",
+        "9aa48b074d496ed688d2590df7c11aae"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "d5be7dee00e381bb7f376d904a7aaa3d",
+        "fae036d4753fbc1223cc183e2c222780"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "6bd1efda73cb6afe6b3c5daecfdf6307",
+        "f688306f38e180c97ec49e71c33e9264"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "8bb412b07efb15d64fdbb7cb7baccdd7",
+        "827506e0cd5b511e4e5bf0763d2df91c"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "70c04656c8825767db79ae44763dd738",
+        "8f443d773293944ae76db300a4c23ab1"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    },
+    {
+      "applications": [
+        "966b62413009282da423e5a46eb0691a",
+        "2ac3b8934e2b33ca2dab5a1796a3070c"
+      ],
+      "exact_signals": [
+        "address",
+        "device",
+        "email",
+        "phone"
+      ],
+      "match_score": 1.0,
+      "type": "duplicate_identity"
+    }
+  ],
+  "seed": 20260805,
+  "totals": {
+    "applications": 50000,
+    "applications_referred": 3000,
+    "days": 20,
+    "duplicate_identity_flags": 1000,
+    "median_daily_referrals": 189,
+    "open_clusters_at_period_end": 200,
+    "suspected_ring_flags": 200
+  },
+  "validation": {
+    "duplicate_pair_precision": 1.0,
+    "duplicate_pair_recall": 1.0,
+    "false_ring_groups": 0,
+    "ring_recall": 1.0,
+    "rings_touched_by_a_flag": 200,
+    "scope": "deterministic synthetic fixture only; no BAF row is linked or claimed",
+    "truth_rings": 200
+  }
+}

@@ -1,0 +1,595 @@
+{
+  "assumptions": {
+    "maturity_basis": "First-payment default at roughly 30 to 45 days, never-pay and straight-rollers through 60 to 90, confirmed identity theft trailing from 60 to 180 days and beyond. Nothing is due at period close, so a just-closed cohort is unobservable.",
+    "maturity_curve": {
+      "0": 0.0,
+      "1": 0.35,
+      "12": 1.0,
+      "2": 0.6,
+      "3": 0.78,
+      "4": 0.86,
+      "6": 0.92
+    },
+    "never_labelled_basis": "Synthetic identity fraud frequently never receives a fraud label and charges off as credit loss. This is target misclassification rather than delay.",
+    "never_labelled_share": 0.15,
+    "trigger_threshold_logit": 0.1
+  },
+  "censored_trigger": [
+    {
+      "bias_versus_trigger_threshold": null,
+      "cohort_maturity": 0.0,
+      "comparison_cohort_maturity": 0.35,
+      "decisions_agreeing_with_true_priors": 0,
+      "decisions_available": 0,
+      "differential_bias_logit": null,
+      "reporting_lag_periods": 0,
+      "transitions": [
+        {
+          "agrees": null,
+          "observed_fires": null,
+          "observed_move_logit": null,
+          "transition": "0 to 1",
+          "true_fires": true,
+          "true_move_logit": -0.18969792260257634
+        },
+        {
+          "agrees": null,
+          "observed_fires": null,
+          "observed_move_logit": null,
+          "transition": "1 to 2",
+          "true_fires": false,
+          "true_move_logit": -0.07141777650067826
+        },
+        {
+          "agrees": null,
+          "observed_fires": null,
+          "observed_move_logit": null,
+          "transition": "2 to 3",
+          "true_fires": false,
+          "true_move_logit": 0.05354069201023215
+        },
+        {
+          "agrees": null,
+          "observed_fires": null,
+          "observed_move_logit": null,
+          "transition": "3 to 4",
+          "true_fires": true,
+          "true_move_logit": 0.21161408275373628
+        },
+        {
+          "agrees": null,
+          "observed_fires": null,
+          "observed_move_logit": null,
+          "transition": "4 to 5",
+          "true_fires": false,
+          "true_move_logit": 0.039595108580286364
+        },
+        {
+          "agrees": null,
+          "observed_fires": null,
+          "observed_move_logit": null,
+          "transition": "5 to 6",
+          "true_fires": true,
+          "true_move_logit": 0.1270136257342429
+        },
+        {
+          "agrees": null,
+          "observed_fires": null,
+          "observed_move_logit": null,
+          "transition": "6 to 7",
+          "true_fires": false,
+          "true_move_logit": 0.09666535004805255
+        }
+      ]
+    },
+    {
+      "bias_versus_trigger_threshold": 5.389965007326869,
+      "cohort_maturity": 0.35,
+      "comparison_cohort_maturity": 0.6,
+      "decisions_agreeing_with_true_priors": 3,
+      "decisions_available": 7,
+      "differential_bias_logit": -0.5389965007326869,
+      "reporting_lag_periods": 1,
+      "transitions": [
+        {
+          "agrees": true,
+          "observed_fires": true,
+          "observed_move_logit": -0.7297318304372817,
+          "transition": "0 to 1",
+          "true_fires": true,
+          "true_move_logit": -0.18969792260257634
+        },
+        {
+          "agrees": false,
+          "observed_fires": true,
+          "observed_move_logit": -0.6119607365881539,
+          "transition": "1 to 2",
+          "true_fires": false,
+          "true_move_logit": -0.07141777650067826
+        },
+        {
+          "agrees": false,
+          "observed_fires": true,
+          "observed_move_logit": -0.4876596337535961,
+          "transition": "2 to 3",
+          "true_fires": false,
+          "true_move_logit": 0.05354069201023215
+        },
+        {
+          "agrees": true,
+          "observed_fires": true,
+          "observed_move_logit": -0.3308794024167918,
+          "transition": "3 to 4",
+          "true_fires": true,
+          "true_move_logit": 0.21161408275373628
+        },
+        {
+          "agrees": false,
+          "observed_fires": true,
+          "observed_move_logit": -0.5021526030926307,
+          "transition": "4 to 5",
+          "true_fires": false,
+          "true_move_logit": 0.039595108580286364
+        },
+        {
+          "agrees": true,
+          "observed_fires": true,
+          "observed_move_logit": -0.4156361388905987,
+          "transition": "5 to 6",
+          "true_fires": true,
+          "true_move_logit": 0.1270136257342429
+        },
+        {
+          "agrees": false,
+          "observed_fires": true,
+          "observed_move_logit": -0.44615435257961167,
+          "transition": "6 to 7",
+          "true_fires": false,
+          "true_move_logit": 0.09666535004805255
+        }
+      ]
+    },
+    {
+      "bias_versus_trigger_threshold": 2.623642644674911,
+      "cohort_maturity": 0.6,
+      "comparison_cohort_maturity": 0.78,
+      "decisions_agreeing_with_true_priors": 2,
+      "decisions_available": 7,
+      "differential_bias_logit": -0.2623642644674911,
+      "reporting_lag_periods": 2,
+      "transitions": [
+        {
+          "agrees": true,
+          "observed_fires": true,
+          "observed_move_logit": -0.4528416633999477,
+          "transition": "0 to 1",
+          "true_fires": true,
+          "true_move_logit": -0.18969792260257634
+        },
+        {
+          "agrees": false,
+          "observed_fires": true,
+          "observed_move_logit": -0.33490761704960814,
+          "transition": "1 to 2",
+          "true_fires": false,
+          "true_move_logit": -0.07141777650067826
+        },
+        {
+          "agrees": false,
+          "observed_fires": true,
+          "observed_move_logit": -0.21040531813805252,
+          "transition": "2 to 3",
+          "true_fires": false,
+          "true_move_logit": 0.05354069201023215
+        },
+        {
+          "agrees": false,
+          "observed_fires": false,
+          "observed_move_logit": -0.05323834885620915,
+          "transition": "3 to 4",
+          "true_fires": true,
+          "true_move_logit": 0.21161408275373628
+        },
+        {
+          "agrees": false,
+          "observed_fires": true,
+          "observed_move_logit": -0.22474696358834745,
+          "transition": "4 to 5",
+          "true_fires": false,
+          "true_move_logit": 0.039595108580286364
+        },
+        {
+          "agrees": true,
+          "observed_fires": true,
+          "observed_move_logit": -0.13796168922629182,
+          "transition": "5 to 6",
+          "true_fires": true,
+          "true_move_logit": 0.1270136257342429
+        },
+        {
+          "agrees": false,
+          "observed_fires": true,
+          "observed_move_logit": -0.1684371547114507,
+          "transition": "6 to 7",
+          "true_fires": false,
+          "true_move_logit": 0.09666535004805255
+        }
+      ]
+    },
+    {
+      "bias_versus_trigger_threshold": 0.9763846956391593,
+      "cohort_maturity": 0.78,
+      "comparison_cohort_maturity": 0.86,
+      "decisions_agreeing_with_true_priors": 5,
+      "decisions_available": 7,
+      "differential_bias_logit": -0.09763846956391593,
+      "reporting_lag_periods": 3,
+      "transitions": [
+        {
+          "agrees": true,
+          "observed_fires": true,
+          "observed_move_logit": -0.28744795703736337,
+          "transition": "0 to 1",
+          "true_fires": true,
+          "true_move_logit": -0.18969792260257634
+        },
+        {
+          "agrees": false,
+          "observed_fires": true,
+          "observed_move_logit": -0.16947934185510682,
+          "transition": "1 to 2",
+          "true_fires": false,
+          "true_move_logit": -0.07141777650067826
+        },
+        {
+          "agrees": true,
+          "observed_fires": false,
+          "observed_move_logit": -0.044859180584507996,
+          "transition": "2 to 3",
+          "true_fires": false,
+          "true_move_logit": 0.05354069201023215
+        },
+        {
+          "agrees": true,
+          "observed_fires": true,
+          "observed_move_logit": 0.11260773713509664,
+          "transition": "3 to 4",
+          "true_fires": true,
+          "true_move_logit": 0.21161408275373628
+        },
+        {
+          "agrees": true,
+          "observed_fires": false,
+          "observed_move_logit": -0.058978719892103904,
+          "transition": "4 to 5",
+          "true_fires": false,
+          "true_move_logit": 0.039595108580286364
+        },
+        {
+          "agrees": false,
+          "observed_fires": false,
+          "observed_move_logit": 0.028020549648073434,
+          "transition": "5 to 6",
+          "true_fires": true,
+          "true_move_logit": 0.1270136257342429
+        },
+        {
+          "agrees": true,
+          "observed_fires": false,
+          "observed_move_logit": -0.0023557559524229887,
+          "transition": "6 to 7",
+          "true_fires": false,
+          "true_move_logit": 0.09666535004805255
+        }
+      ]
+    },
+    {
+      "bias_versus_trigger_threshold": 0.14388737452099556,
+      "cohort_maturity": 0.92,
+      "comparison_cohort_maturity": 0.9333333333333333,
+      "decisions_agreeing_with_true_priors": 7,
+      "decisions_available": 7,
+      "differential_bias_logit": -0.014388737452099556,
+      "reporting_lag_periods": 6,
+      "transitions": [
+        {
+          "agrees": true,
+          "observed_fires": true,
+          "observed_move_logit": -0.20378564207209227,
+          "transition": "0 to 1",
+          "true_fires": true,
+          "true_move_logit": -0.18969792260257634
+        },
+        {
+          "agrees": true,
+          "observed_fires": false,
+          "observed_move_logit": -0.08577158813253583,
+          "transition": "1 to 2",
+          "true_fires": false,
+          "true_move_logit": -0.07141777650067826
+        },
+        {
+          "agrees": true,
+          "observed_fires": false,
+          "observed_move_logit": 0.038946567851668945,
+          "transition": "2 to 3",
+          "true_fires": false,
+          "true_move_logit": 0.05354069201023215
+        },
+        {
+          "agrees": true,
+          "observed_fires": true,
+          "observed_move_logit": 0.19664291614876284,
+          "transition": "3 to 4",
+          "true_fires": true,
+          "true_move_logit": 0.21161408275373628
+        },
+        {
+          "agrees": true,
+          "observed_fires": false,
+          "observed_move_logit": 0.02497531732937386,
+          "transition": "4 to 5",
+          "true_fires": false,
+          "true_move_logit": 0.039595108580286364
+        },
+        {
+          "agrees": true,
+          "observed_fires": true,
+          "observed_move_logit": 0.11213728859124217,
+          "transition": "5 to 6",
+          "true_fires": true,
+          "true_move_logit": 0.1270136257342429
+        },
+        {
+          "agrees": true,
+          "observed_fires": false,
+          "observed_move_logit": 0.08182338027370673,
+          "transition": "6 to 7",
+          "true_fires": false,
+          "true_move_logit": 0.09666535004805255
+        }
+      ]
+    }
+  ],
+  "code_sha": "66cbe208811db7e26c36cc4b8265c1d52e889ede",
+  "corrected_trigger": [
+    {
+      "decisions_agreeing_with_true_priors": 7,
+      "decisions_available": 7,
+      "reporting_lag_periods": 1,
+      "transitions": [
+        {
+          "agrees": true,
+          "corrected_move_logit": -0.18969792260257634,
+          "transition": "0 to 1",
+          "true_move_logit": -0.18969792260257634
+        },
+        {
+          "agrees": true,
+          "corrected_move_logit": -0.07141777650067915,
+          "transition": "1 to 2",
+          "true_move_logit": -0.07141777650067826
+        },
+        {
+          "agrees": true,
+          "corrected_move_logit": 0.05354069201023304,
+          "transition": "2 to 3",
+          "true_move_logit": 0.05354069201023215
+        },
+        {
+          "agrees": true,
+          "corrected_move_logit": 0.21161408275373628,
+          "transition": "3 to 4",
+          "true_move_logit": 0.21161408275373628
+        },
+        {
+          "agrees": true,
+          "corrected_move_logit": 0.039595108580286364,
+          "transition": "4 to 5",
+          "true_move_logit": 0.039595108580286364
+        },
+        {
+          "agrees": true,
+          "corrected_move_logit": 0.1270136257342429,
+          "transition": "5 to 6",
+          "true_move_logit": 0.1270136257342429
+        },
+        {
+          "agrees": true,
+          "corrected_move_logit": 0.09666535004805255,
+          "transition": "6 to 7",
+          "true_move_logit": 0.09666535004805255
+        }
+      ]
+    },
+    {
+      "decisions_agreeing_with_true_priors": 7,
+      "decisions_available": 7,
+      "reporting_lag_periods": 2,
+      "transitions": [
+        {
+          "agrees": true,
+          "corrected_move_logit": -0.18969792260257634,
+          "transition": "0 to 1",
+          "true_move_logit": -0.18969792260257634
+        },
+        {
+          "agrees": true,
+          "corrected_move_logit": -0.07141777650067915,
+          "transition": "1 to 2",
+          "true_move_logit": -0.07141777650067826
+        },
+        {
+          "agrees": true,
+          "corrected_move_logit": 0.05354069201023215,
+          "transition": "2 to 3",
+          "true_move_logit": 0.05354069201023215
+        },
+        {
+          "agrees": true,
+          "corrected_move_logit": 0.21161408275373628,
+          "transition": "3 to 4",
+          "true_move_logit": 0.21161408275373628
+        },
+        {
+          "agrees": true,
+          "corrected_move_logit": 0.039595108580286364,
+          "transition": "4 to 5",
+          "true_move_logit": 0.039595108580286364
+        },
+        {
+          "agrees": true,
+          "corrected_move_logit": 0.1270136257342429,
+          "transition": "5 to 6",
+          "true_move_logit": 0.1270136257342429
+        },
+        {
+          "agrees": true,
+          "corrected_move_logit": 0.09666535004805255,
+          "transition": "6 to 7",
+          "true_move_logit": 0.09666535004805255
+        }
+      ]
+    },
+    {
+      "decisions_agreeing_with_true_priors": 7,
+      "decisions_available": 7,
+      "reporting_lag_periods": 3,
+      "transitions": [
+        {
+          "agrees": true,
+          "corrected_move_logit": -0.18969792260257545,
+          "transition": "0 to 1",
+          "true_move_logit": -0.18969792260257634
+        },
+        {
+          "agrees": true,
+          "corrected_move_logit": -0.07141777650067826,
+          "transition": "1 to 2",
+          "true_move_logit": -0.07141777650067826
+        },
+        {
+          "agrees": true,
+          "corrected_move_logit": 0.05354069201023215,
+          "transition": "2 to 3",
+          "true_move_logit": 0.05354069201023215
+        },
+        {
+          "agrees": true,
+          "corrected_move_logit": 0.21161408275373628,
+          "transition": "3 to 4",
+          "true_move_logit": 0.21161408275373628
+        },
+        {
+          "agrees": true,
+          "corrected_move_logit": 0.039595108580286364,
+          "transition": "4 to 5",
+          "true_move_logit": 0.039595108580286364
+        },
+        {
+          "agrees": true,
+          "corrected_move_logit": 0.1270136257342429,
+          "transition": "5 to 6",
+          "true_move_logit": 0.1270136257342429
+        },
+        {
+          "agrees": true,
+          "corrected_move_logit": 0.09666535004805255,
+          "transition": "6 to 7",
+          "true_move_logit": 0.09666535004805255
+        }
+      ]
+    },
+    {
+      "decisions_agreeing_with_true_priors": 7,
+      "decisions_available": 7,
+      "reporting_lag_periods": 6,
+      "transitions": [
+        {
+          "agrees": true,
+          "corrected_move_logit": -0.18969792260257545,
+          "transition": "0 to 1",
+          "true_move_logit": -0.18969792260257634
+        },
+        {
+          "agrees": true,
+          "corrected_move_logit": -0.07141777650067826,
+          "transition": "1 to 2",
+          "true_move_logit": -0.07141777650067826
+        },
+        {
+          "agrees": true,
+          "corrected_move_logit": 0.05354069201023215,
+          "transition": "2 to 3",
+          "true_move_logit": 0.05354069201023215
+        },
+        {
+          "agrees": true,
+          "corrected_move_logit": 0.21161408275373628,
+          "transition": "3 to 4",
+          "true_move_logit": 0.21161408275373628
+        },
+        {
+          "agrees": true,
+          "corrected_move_logit": 0.039595108580286364,
+          "transition": "4 to 5",
+          "true_move_logit": 0.039595108580286364
+        },
+        {
+          "agrees": true,
+          "corrected_move_logit": 0.1270136257342429,
+          "transition": "5 to 6",
+          "true_move_logit": 0.1270136257342429
+        },
+        {
+          "agrees": true,
+          "corrected_move_logit": 0.09666535004805255,
+          "transition": "6 to 7",
+          "true_move_logit": 0.09666535004805255
+        }
+      ]
+    }
+  ],
+  "dataset_version": "baf-2026-08-05-fb8d6d8b96f9",
+  "elapsed_seconds": 0.00966787499783095,
+  "evidence_id": "m8-label-latency-v1",
+  "minimum_lag_where_bias_is_below_the_threshold": 3,
+  "observable_inside_the_latency_window": [
+    {
+      "latency": "immediate",
+      "signal": "Score distribution stability",
+      "why": "computed from scores alone and needs no label."
+    },
+    {
+      "latency": "immediate",
+      "signal": "Review rate and queue composition",
+      "why": "a property of the policy and the score, not of outcomes."
+    },
+    {
+      "latency": "days",
+      "signal": "Reviewer hit rate, confirmed fraud per case worked",
+      "why": "a review confirms fraud at review time. This is the leading indicator, and the monthly pack already reports it."
+    },
+    {
+      "latency": "30 to 90 days and longer",
+      "signal": "Catch rate",
+      "why": "its numerator is review-confirmed and fast, but its denominator is all fraud including what slipped through, which is exactly the slow part. Catch rate is a lagging indicator and the monthly pack should not be read as current."
+    },
+    {
+      "latency": "30 to 90 days and longer",
+      "signal": "Observed prior, and therefore the recalibration trigger",
+      "why": "it is the same denominator problem as catch rate."
+    }
+  ],
+  "observed_priors": [
+    0.011325883418906675,
+    0.009387243378780755,
+    0.008745866154666044,
+    0.009222451900143107,
+    0.011371200789405674,
+    0.01182504630289215,
+    0.013405073589231566,
+    0.014745515938167962
+  ],
+  "status": "stated model, not measured. BAF carries no label timestamps."
+}

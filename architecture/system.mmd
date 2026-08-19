@@ -1,0 +1,66 @@
+flowchart LR
+  A[BAF raw files + checksums] --> B[Validated ingestion + typed Parquet]
+  B --> C[PostgreSQL Fraud Schema]
+  B --> D[Temporal train + calibrate + evaluate]
+  E[Deterministic identity fixture] --> F[Block + match + connected components]
+  D --> G[Versioned model artifacts + manifest + behaviour fingerprint]
+  D --> H[Aggregate evidence JSON]
+  F --> H
+  F --> U[Daily suspect-application report]
+  H --> I[Precomputed policy grid]
+  I --> J[Static decision dashboard]
+  H --> K[Governed analytics extract]
+  K --> L[Power BI semantic model + measures]
+  M[Quality + drift + fairness + provenance] --> B
+  M --> D
+  M --> H
+
+  G --> V[Batch scoring + review queue]
+  B --> V
+  V --> C
+  C --> W[Monthly fraud KPI, aggregated in SQL]
+  W --> K
+  W --> X[Excel workbook + management readout]
+  W --> J
+
+  subgraph Built[Built and verified locally]
+    B
+    C
+    D
+    E
+    F
+    G
+    H
+    I
+    J
+    K
+    U
+    V
+    W
+    X
+  end
+
+  subgraph NotBuilt[Designed, not built]
+    N[HTTP scoring service]
+    O[Label ingestion + feedback loop]
+    P[Monitoring and alerting]
+  end
+
+  subgraph Azure[Terraform authored, never applied]
+    Q[ADLS Gen2 / Blob]
+    R[Azure PostgreSQL]
+    S[Container Apps + Jobs]
+    T[Entra + Key Vault + Monitor]
+  end
+
+  C -. dashboard reads the precomputed payload, never the database .-> J
+  L -. never opened in Power BI Desktop .-> L
+  U -. fixture only, no BAF row is linked .-> U
+  V -. batch only, no request handler and no automatic decline .-> V
+  B -. maps to .-> Q
+  C -. maps to .-> R
+  G -. container image, curate/train/link only .-> S
+  S -. governed by .-> T
+  V -. would become .-> N
+  C -. needs an append-only outcomes table .-> O
+  O -. would drive .-> P

@@ -1,0 +1,275 @@
+{
+  "architecture": [
+    "Checksum-validated ingestion to six typed Parquet artifacts, with raw and curated data excluded from the repository",
+    "Temporal train, calibrate and evaluate with rolling-origin selection and one untouched test period",
+    "PostgreSQL fraud schema holding 1,000,000 applications, 2,000,000 scores, the ranked review queue and an analytics grain",
+    "Monthly KPI and vendor performance aggregated in SQL from the schema, never recomputed in pandas",
+    "Precomputed policy grid of 1,152 combinations rendered by a static page with no server and no database",
+    "Governed analytics extract feeding a Power BI semantic model and measure library"
+  ],
+  "categories": [
+    "Analytics",
+    "AI/ML"
+  ],
+  "dataDisclosure": {
+    "classification": "public",
+    "deployedArtifactContents": [
+      "A 78 KB precomputed payload of policy counts across 1,152 model, capacity and rule combinations in the reviewed public release",
+      "Sixty synthetic demonstration rows in the review-queue exhibit, not real source records",
+      "Aggregate segment counts, with any group under 200 fraud cases withheld rather than shown",
+      "No raw or curated BAF record is deployed or committed"
+    ],
+    "excludedFields": [
+      "customer age, which is audit-only and never a model input",
+      "a constant device fraud count and a post-application timing field, both excluded by contract"
+    ],
+    "includedFields": [
+      "application velocity aggregates at six hours, twenty-four hours and four weeks",
+      "postal-area and bank-branch concentration counts",
+      "identity-signal concentration such as distinct emails per birth date and per device",
+      "income band, employment status, housing status and application channel",
+      "an incumbent credit-risk score used only as a proxy"
+    ],
+    "license": "CC BY-NC-SA 4.0 per the governing distribution. ShareAlike applies to published derivative material, so the repository carries the same licence (LICENSE).",
+    "permittedUse": "Non-commercial retrospective analysis, demonstration and public showcasing, with attribution",
+    "source": "Bank Account Fraud (BAF) suite, Feedzai, Jesus et al., NeurIPS 2022 Datasets and Benchmarks track, archive SHA-256 fb8d6d8b96f9a3c670a9ad0014da25ee8bee3fcb2be67bdcd115784bdb37cf8a"
+  },
+  "deployment": {
+    "evidenceRefs": [
+      "deployment.live",
+      "delivery.performance"
+    ],
+    "expiresAt": null,
+    "exposure": "anonymous",
+    "productionClaim": false,
+    "provider": "GitHub Pages",
+    "runtime": "The reviewed public release is a 171 KB static page with a 78 KB payload. It has no server, request handler, runtime database, or hosting cost.",
+    "status": "live",
+    "verifiedAt": "2026-08-18T00:00:00Z"
+  },
+  "disclaimer": "The source is the public Bank Account Fraud suite: privacy-preserving synthetic account-opening records, not observed lending performance and not data about any real person, institution or portfolio. No confidential, client or personal data is involved, and no raw or curated record is deployed or committed. Nothing here approves, denies, prices or underwrites anything, and no automatic decline exists in the code or the database schema: the product ranks, explains and recommends, and a person decides. The recorded outcome is a refusal to promote the model evaluated.",
+  "evaluation": [
+    "Eleven promotion gates fixed at contract time; 9 pass and the model is refused on the other two",
+    "Rolling-origin selection before any access to the final period, then one untouched test period",
+    "Five-fold walk-forward whose final fold reproduces the recorded protocol to within 1e-9, validating the harness",
+    "Paired fairness ablation with materiality fixed before the run",
+    "Economic sensitivity across 960 combinations, positive in every one, so the decision is robust while the headline is not"
+  ],
+  "evidence": [
+    {
+      "claim": "The dashboard is live on GitHub Pages and renders with no console error, page error or failed request.",
+      "id": "deployment.live",
+      "kind": "deployment",
+      "method": "Playwright navigation asserting verdict, exhibits, KPI rows and withheld cells",
+      "source": "Headless browser render of the deployed URL"
+    },
+    {
+      "claim": "9 of 11 pre-agreed promotion checks pass and the model is refused on the other two.",
+      "id": "evaluation.promotion-gates",
+      "kind": "evaluation",
+      "method": "Gates fixed at contract time, evaluated once on an untouched period",
+      "source": "evaluation/model_evaluation.json"
+    },
+    {
+      "claim": "Five out-of-sample periods give 52.5% mean catch and a 45.9% to 59.1% next-period interval.",
+      "id": "evaluation.walk-forward",
+      "kind": "evaluation",
+      "method": "Walk-forward whose final fold reproduces the recorded protocol to within 1e-9",
+      "source": "evaluation/walk_forward_backtest.json"
+    },
+    {
+      "claim": "Removing the highest-disparity feature costs 2.39 points of catch and still leaves two triggers firing.",
+      "id": "evaluation.fairness",
+      "kind": "review",
+      "method": "Paired refit with materiality fixed before the run",
+      "source": "evaluation/fairness_ablation.json"
+    },
+    {
+      "claim": "Single-record scoring 0.675 ms p95 and a one-million-row batch in 0.75 s.",
+      "id": "delivery.performance",
+      "kind": "benchmark",
+      "method": "Release harness on the recorded reference environment",
+      "source": "evaluation/release_quality.json"
+    },
+    {
+      "claim": "93 unit and contract tests pass, including regressions for every defect found.",
+      "id": "delivery.tests",
+      "kind": "test",
+      "method": "pytest",
+      "source": "tests/"
+    }
+  ],
+  "githubUrl": "https://github.com/vaibhavkhuranaaa/application-fraud-strategy-portfolio",
+  "industries": [
+    "Consumer Lending",
+    "Financial Crime"
+  ],
+  "liveUrl": "https://vaibhavkhuranaaa.github.io/application-fraud-strategy-portfolio/",
+  "metrics": [
+    "Proposed model catches 53.6% of fraud at 5% review capacity against 20.6% for the incumbent score proxy, at identical cost",
+    "Walk-forward across five out-of-sample periods: 52.5% mean catch, 45.9% to 59.1% honest next-period interval",
+    "9 of 11 pre-agreed promotion checks passed; the model is refused on the other two",
+    "Fraud pressure rose 69% across the period while application volume fell 29%",
+    "Removing the highest-disparity feature costs 2.39 points of catch and does not close the fairness gate"
+  ],
+  "operationalTradeoffs": [
+    "Precomputing 1,152 policy combinations removes the server, the database and the cost, and makes row-level filtering impossible, which is why the review queue lives in PostgreSQL instead",
+    "Review capacity is held fixed in every comparison so no option is bought with extra headcount",
+    "A score with ties cannot cut on an exact reviewer count, so the incumbent queue overruns staffing by 1.06% to 2.45% every period",
+    "Reviewer hit rate is available in days and catch rate lags by 30 to 90, so the two must not be read the same way",
+    "The container image stays curate, train and link only, keeping a shell-less distroless surface rather than absorbing the operational load"
+  ],
+  "outcome": "A fraud strategy analyst can compare screening approaches at a fixed review capacity, see what each buys and costs, and take a recommendation or a refusal to governance. On the pre-agreed checks the honest output is a refusal: the proposed model catches 472 more fraud attempts while holding up 472 fewer good customers at identical cost, and is still not promoted, because its calibration and population stability fail checks written before the result was known.",
+  "presentation": {
+    "answer": "No. At an identical 4,842 cases worked the proposed model catches 472 more fraud attempts and holds up 472 fewer good customers, and it is still refused, because two of eleven checks fixed before the result fail: its calibration intercept and its population stability. The interim position is a controlled temporary ranking baseline, seven role-assigned monitoring controls, and no automatic applicant decision.",
+    "decisionSupported": "Recommend or refuse one bounded application-fraud screening strategy for governance review.",
+    "evaluationMode": "One untouched test period plus a five-period walk-forward, against gates fixed at contract time.",
+    "question": "Should we adopt the proposed fraud screening, and what does each option cost at the review capacity we actually staff?"
+  },
+  "resume": {
+    "bulletCandidates": [
+      {
+        "bullet": "Refused to promote a fraud model that caught 472 more attempts while holding up 472 fewer good customers at identical review cost, because two of eleven checks fixed before the result failed, and documented the conditions that would withdraw the refusal.",
+        "evidenceRefs": [
+          "evaluation.promotion-gates"
+        ],
+        "role": "Fraud Strategy Analyst"
+      },
+      {
+        "bullet": "Found a linear comparator sitting at the base rate undetected for five milestones, which had flattered every challenger measured against it, and cut the recorded lift from 0.1725 to 0.0342 once corrected.",
+        "evidenceRefs": [
+          "evaluation.promotion-gates"
+        ],
+        "role": "Data Scientist"
+      },
+      {
+        "bullet": "Replaced a single-period headline with a five-period walk-forward, correcting an earlier estimate of mine and widening the honest next-period catch interval from 51.0-56.2% to 45.9-59.1%.",
+        "evidenceRefs": [
+          "evaluation.walk-forward"
+        ],
+        "role": "Data Scientist"
+      },
+      {
+        "bullet": "Quantified a fairness question rather than arguing it: removing the feature driving a 13.7x review-rate disparity costs 2.39 points of catch, still leaves two triggers firing, and closes the gap partly by catching less fraud overall.",
+        "evidenceRefs": [
+          "evaluation.fairness"
+        ],
+        "role": "Fraud Strategy Analyst"
+      },
+      {
+        "bullet": "Built monthly fraud KPI and vendor-performance reporting aggregated in SQL from a PostgreSQL fraud schema over 1,000,000 applications, and found the incumbent score's ties push the review queue 1.06-2.45% above staffed capacity every period.",
+        "evidenceRefs": [
+          "delivery.performance"
+        ],
+        "role": "Data Analyst"
+      }
+    ]
+  },
+  "slug": "application-fraud-strategy-portfolio",
+  "stack": [
+    "Python",
+    "SQL",
+    "PostgreSQL",
+    "CatBoost",
+    "scikit-learn",
+    "Power BI",
+    "SAS (translations)"
+  ],
+  "stages": [
+    "Validate and curate 6,000,000 checksummed rows to typed Parquet",
+    "Fix promotion gates before any result is seen, then select on rolling-origin folds",
+    "Evaluate once on an untouched period and record the refusal rather than tuning toward a pass",
+    "Wire the review queue to a PostgreSQL fraud schema and aggregate the KPI grain in SQL",
+    "Publish a monthly KPI pack, a daily suspect report, and a strategy document for governance"
+  ],
+  "story": {
+    "evidence": [
+      {
+        "context": "The model is refused on the other two, which were fixed before any result was seen",
+        "label": "Pre-agreed promotion checks passed",
+        "method": "Gates evaluated once on an untouched period",
+        "value": "9 of 11"
+      },
+      {
+        "context": "Proposed approach against the incumbent score proxy, at identical cost",
+        "label": "Catch rate at 5% review capacity",
+        "method": "Untouched month-7 evaluation, 96,843 applications and 1,428 fraud attempts",
+        "value": "53.6% vs 20.6%"
+      },
+      {
+        "context": "The fixed-capacity advantage remains positive under paired row resampling and in all five time-ordered folds",
+        "label": "Paired incremental fraud-catch interval",
+        "method": "Five thousand paired month-7 row resamples of frozen queues",
+        "value": "+425 to +519"
+      },
+      {
+        "context": "It still leaves two fairness triggers firing, so removal is a partial mitigation rather than a fix",
+        "label": "Catch cost of removing the highest-disparity feature",
+        "method": "Paired refit with materiality fixed before the run",
+        "value": "2.39 points"
+      },
+      {
+        "context": "Including a regression for every defect found, such as a comparator that sat at the base rate for five milestones",
+        "label": "Unit and contract tests",
+        "method": "pytest",
+        "value": "93"
+      }
+    ],
+    "example": {
+      "steps": [
+        "Open the decision exhibit and read the verdict first: not approved for rollout, 9 of 11 pre-agreed checks passed",
+        "See what the proposal would buy at the capacity actually staffed: 472 more fraud attempts caught and 472 fewer good customers held up, for the same 4,842 cases worked",
+        "Read the two checks that fail and what each means in plain language, without needing to know what a calibration intercept is",
+        "Set the three economic assumptions and watch every money figure move as a range, because a review does not stop every fraud it finds",
+        "Take the refusal, temporary baseline controls, monitoring triggers, and exit conditions into the governance forum"
+      ],
+      "title": "Deciding whether to promote the proposed screening"
+    },
+    "executiveSummary": "The proposed approach is better than the incumbent score proxy on both axes at identical cost, catching 472 more fraud attempts while holding up 472 fewer good customers. It is not recommended, because two of eleven checks written before the result was known fail. The interim baseline, monitoring controls, evidence gaps, and conditions for reopening the refusal are stated in advance.",
+    "intendedUser": "A fraud strategy analyst preparing a recommendation for a governance forum, and the non-technical fraud strategy owner who receives it.",
+    "limitations": [
+      "BAF is privacy-preserving synthetic account-opening data, not observed lending performance",
+      "Economic figures are declared sensitivity inputs rather than observed money, and neither factor could be sourced to this project's citation bar",
+      "Identity linking is validated on a separate deterministic fixture; no BAF row is linked or described as part of a ring",
+      "Labels are treated as complete at period close, which production labels are not, so recent periods understate fraud",
+      "The Power BI layer has never been opened in Desktop, which is Windows-only, and no .pbix exists"
+    ],
+    "recruiterSummary": "An application-fraud strategy desk over a million loan applications that ends in a documented refusal to promote its own model, with the operating changes worth doing anyway.",
+    "scalabilityRoadmap": [
+      "The precomputed policy grid is combinatorial at models times capacities times 2^rules, 1,152 rows today and 18,432 with four more rules, so beyond that the database path replaces it",
+      "An HTTP scoring service is designed and unbuilt; batch scoring against the schema already exists",
+      "Label ingestion needs an append-only outcomes table, specified and deliberately not created until a producer writes to it",
+      "Monitoring is tiered by observability rather than severity, because outcome signals lag 30 to 90 days"
+    ],
+    "technicalNarrative": "Rolling-origin selection before any access to the final period, one untouched test period, and eleven gates fixed at contract time. A five-fold walk-forward whose last fold reproduces the recorded protocol exactly, which validates the harness before its other numbers count. The review queue is wired to a PostgreSQL fraud schema and the monthly KPI grain is aggregated in SQL, so the reporting layer reads the system of record.",
+    "technologyDecisions": [
+      {
+        "alternative": "A web application querying a database on each interaction",
+        "rationale": "All 1,152 policy combinations and governed controls fit in a 78 KB payload, so the stakeholder surface needs no server, no database and no hosting cost",
+        "technology": "Static precomputed page",
+        "tradeoff": "No row-level filtering is possible on that surface, which is why the review queue lives in PostgreSQL instead"
+      },
+      {
+        "alternative": "Keeping every result in flat files",
+        "rationale": "Row-level work the static surface cannot do: the ranked queue, per-application scores, and a KPI grain aggregated in SQL rather than recomputed in pandas",
+        "technology": "PostgreSQL fraud schema",
+        "tradeoff": "Adds a local dependency that the deployed demo deliberately does not require"
+      },
+      {
+        "alternative": "Reporting only the challenger, as the project did before the comparator was found sitting at the base rate",
+        "rationale": "Gradient boosting handles the categorical inputs natively, and the linear comparator is what makes the simple-versus-complex gap measurable at 4.3 points of catch",
+        "technology": "CatBoost against a class-weighted logistic comparator",
+        "tradeoff": "A broken baseline flatters everything measured against it, so the comparator now has its own regression test"
+      },
+      {
+        "alternative": "A container on Azure, whose Terraform is authored here but never applied",
+        "rationale": "Zero cost for a static artifact, and a file stamped at deploy time is the static equivalent of a service health route",
+        "technology": "GitHub Pages with a stamped health endpoint",
+        "tradeoff": "Pages ignores the header file, so the policy is carried in the page and frame-ancestors is lost"
+      }
+    ]
+  },
+  "summary": "An application-fraud strategy desk over 1,000,000 loan applications: temporal model evaluation against promotion gates fixed before any result was seen, a capacity-bounded review queue wired to a PostgreSQL fraud schema, monthly KPI and vendor-performance reporting aggregated in SQL, and a daily suspect-application report from linking analysis.",
+  "title": "Application Fraud Strategy Portfolio",
+  "version": 2
+}

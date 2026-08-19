@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "status": "enabled",
+  "provider": "GitHub Pages",
+  "workflow": "pages.yml",
+  "deploymentTarget": "vaibhavkhuranaaa.github.io/application-fraud-strategy-portfolio",
+  "publicProject": true,
+  "verification": {
+    "url": "https://vaibhavkhuranaaa.github.io/application-fraud-strategy-portfolio/health.json",
+    "sourceShaField": "source_sha"
+  },
+  "paidResource": false,
+  "costApprovalRequired": false
+}

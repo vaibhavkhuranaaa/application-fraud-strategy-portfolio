@@ -1,0 +1,198 @@
+{
+  "code_sha": "b5c33377520844d4ee887039c544b7bf657377b5",
+  "contract": "M2-approved BAF Base modeling / Variants I-V stress-test contract",
+  "curated_storage_bytes": 489532712,
+  "dataset_version": "baf-2026-08-05-fb8d6d8b96f9",
+  "elapsed_seconds": 19.787,
+  "evidence_id": "EV-M3-DATA-20260805",
+  "files": [
+    {
+      "columns": 32,
+      "curated_columns": 41,
+      "curated_path": "data/curated/base.parquet",
+      "curated_sha256": "30a4a7156b021fe085b6a5fa99e778c7a6dfac90b23836310692528daadacf2c",
+      "elapsed_seconds": 4.259,
+      "evidence_source": "baf_base",
+      "file_name": "Base.csv",
+      "missing_indicators": [
+        "prev_address_months_count__missing",
+        "current_address_months_count__missing",
+        "bank_months_count__missing",
+        "session_length_in_minutes__missing",
+        "device_distinct_emails_8w__missing",
+        "intended_balcon_amount__missing"
+      ],
+      "months": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "positive_count": 11029,
+      "prevalence": 0.011029,
+      "rows": 1000000,
+      "sha256": "7bf10a37ce07e72e14c1b09e5efee3d27261baff4facc7da767b0474dcf9b809"
+    },
+    {
+      "columns": 32,
+      "curated_columns": 41,
+      "curated_path": "data/curated/variant_i.parquet",
+      "curated_sha256": "87fa6207313ed68ed29b245a755629317b8c8dcd9708ea3a3ad65c95c37d3846",
+      "elapsed_seconds": 3.038,
+      "evidence_source": "baf_variant_i",
+      "file_name": "Variant I.csv",
+      "missing_indicators": [
+        "prev_address_months_count__missing",
+        "current_address_months_count__missing",
+        "bank_months_count__missing",
+        "session_length_in_minutes__missing",
+        "device_distinct_emails_8w__missing",
+        "intended_balcon_amount__missing"
+      ],
+      "months": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "positive_count": 11029,
+      "prevalence": 0.011029,
+      "rows": 1000000,
+      "sha256": "48c637a255d1fa4515da4286ccb99251412a6d905937ec7c108838ddfc1674bd"
+    },
+    {
+      "columns": 32,
+      "curated_columns": 41,
+      "curated_path": "data/curated/variant_ii.parquet",
+      "curated_sha256": "4a27c47dd6dfd2aa41e27920df437a9018feb89a0d8aa448efc77427659de18f",
+      "elapsed_seconds": 2.996,
+      "evidence_source": "baf_variant_ii",
+      "file_name": "Variant II.csv",
+      "missing_indicators": [
+        "prev_address_months_count__missing",
+        "current_address_months_count__missing",
+        "bank_months_count__missing",
+        "session_length_in_minutes__missing",
+        "device_distinct_emails_8w__missing",
+        "intended_balcon_amount__missing"
+      ],
+      "months": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "positive_count": 11029,
+      "prevalence": 0.011029,
+      "rows": 1000000,
+      "sha256": "60bcd971cf28779abb183c3286990cff9a87275bd8b83d9f6054a396c95cc736"
+    },
+    {
+      "columns": 34,
+      "curated_columns": 43,
+      "curated_path": "data/curated/variant_iii.parquet",
+      "curated_sha256": "59eed820cde0be1fe40d1c7403696ec858d422984926f5c3d292a01bfb952383",
+      "elapsed_seconds": 3.307,
+      "evidence_source": "baf_variant_iii",
+      "file_name": "Variant III.csv",
+      "missing_indicators": [
+        "prev_address_months_count__missing",
+        "current_address_months_count__missing",
+        "bank_months_count__missing",
+        "session_length_in_minutes__missing",
+        "device_distinct_emails_8w__missing",
+        "intended_balcon_amount__missing"
+      ],
+      "months": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "positive_count": 11030,
+      "prevalence": 0.01103,
+      "rows": 1000000,
+      "sha256": "64693e549cff7ef802cf043fc7c937839e5929966e33a0852953b3f4c4321339"
+    },
+    {
+      "columns": 32,
+      "curated_columns": 41,
+      "curated_path": "data/curated/variant_iv.parquet",
+      "curated_sha256": "a099be1dfbe74c86e76ed8df725b1d2c5512fe39fe553d4db4432a86d9242c53",
+      "elapsed_seconds": 2.988,
+      "evidence_source": "baf_variant_iv",
+      "file_name": "Variant IV.csv",
+      "missing_indicators": [
+        "prev_address_months_count__missing",
+        "current_address_months_count__missing",
+        "bank_months_count__missing",
+        "session_length_in_minutes__missing",
+        "device_distinct_emails_8w__missing",
+        "intended_balcon_amount__missing"
+      ],
+      "months": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "positive_count": 11030,
+      "prevalence": 0.01103,
+      "rows": 1000000,
+      "sha256": "c6cddebbad34fa262a278deeb7985e7b669a64308d26e480d8eb85bfd08dac75"
+    },
+    {
+      "columns": 34,
+      "curated_columns": 43,
+      "curated_path": "data/curated/variant_v.parquet",
+      "curated_sha256": "a37d7cf0ad11ae51e321d06e5489d906e815d2aeb13e7fa470586720bbc816ac",
+      "elapsed_seconds": 3.196,
+      "evidence_source": "baf_variant_v",
+      "file_name": "Variant V.csv",
+      "missing_indicators": [
+        "prev_address_months_count__missing",
+        "current_address_months_count__missing",
+        "bank_months_count__missing",
+        "session_length_in_minutes__missing",
+        "device_distinct_emails_8w__missing",
+        "intended_balcon_amount__missing"
+      ],
+      "months": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "positive_count": 11030,
+      "prevalence": 0.01103,
+      "rows": 1000000,
+      "sha256": "470899bbef97c32a100528d63e863e1b1036df9501df6ef8140e7ec13b7365b4"
+    }
+  ],
+  "raw_storage_boundary": "Source CSVs remain git-ignored and are not redistributed.",
+  "total_rows": 6000000
+}

@@ -1,0 +1,24 @@
+{
+  "boundary": "Aggregate evidence only. No application-level record, no raw BAF data, and no fixture entity or ring truth is present in this extract.",
+  "dataset_version": "baf-2026-08-05-fb8d6d8b96f9",
+  "evidence_ids": [
+    "EV-M3-MODEL-20260805",
+    "EV-M3-LINKING-20260805",
+    "EV-M3-DATA-20260805"
+  ],
+  "evidence_revision": "81a4b0b644f0d68fe28d0c6e2433c08a88bbdeb8",
+  "row_counts": {
+    "dim_comparator": 5,
+    "dim_evidence_source": 7,
+    "fact_capacity": 20,
+    "fact_data_quality": 6,
+    "fact_drift": 238,
+    "fact_fairness_group": 27,
+    "fact_linking_run": 12,
+    "fact_model_metric": 45,
+    "fact_promotion_gate": 16,
+    "fact_run_context": 18,
+    "fact_strategy_policy": 8,
+    "fact_variant_stress": 45
+  }
+}

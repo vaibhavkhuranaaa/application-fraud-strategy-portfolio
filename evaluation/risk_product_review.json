@@ -1,0 +1,81 @@
+{
+  "evidence_id": "risk-product-review-2026-08-18",
+  "review_role": "Independent Director of Risk review",
+  "review_date": "2026-08-18",
+  "target": 9.0,
+  "minimum_dimension": 1.5,
+  "total_score": 9.25,
+  "production_readiness": "not established",
+  "dimensions": [
+    {
+      "name": "Decision integrity",
+      "score": 1.95,
+      "evidence": [
+        "evaluation/risk_governance.json",
+        "docs/risk-control-framework.md",
+        "tests/test_evidence_contract.py"
+      ],
+      "assessment": "The refusal is immutable, failed checks remain visible, and the incumbent is explicitly temporary rather than approved.",
+      "limitation": "The project designs the decision contract but does not show adoption by a real governance body."
+    },
+    {
+      "name": "Model evidence",
+      "score": 1.95,
+      "evidence": [
+        "evaluation/model_evaluation.json",
+        "evaluation/walk_forward_backtest.json",
+        "evaluation/risk_governance.json"
+      ],
+      "assessment": "Untouched temporal evaluation, corrected baselines, paired uncertainty, five positive folds, and explicit calibration and stability failures form a strong chain.",
+      "limitation": "The bootstrap is conditional on frozen rankings in one synthetic held-back period."
+    },
+    {
+      "name": "Risk disposition",
+      "score": 1.85,
+      "evidence": [
+        "evaluation/risk_governance.json",
+        "docs/risk-control-framework.md",
+        "docs/decisions/0005-define-monitoring-and-exit.md"
+      ],
+      "assessment": "Permitted and prohibited uses, role assignments, cadence, compensating controls, escalation, remediation, and exit criteria are explicit.",
+      "limitation": "Roles are proposed and three controls require production data."
+    },
+    {
+      "name": "Operational utility",
+      "score": 1.85,
+      "evidence": [
+        "dashboard/index.html",
+        "evaluation/risk_governance.json",
+        "evaluation/ux_evaluation.json"
+      ],
+      "assessment": "Same-capacity scenarios, rule incrementality, queue consequences, drill-down, and the seven-domain control map support a concrete risk decision.",
+      "limitation": "Staffing, investigator handling, and customer outcomes are simulated or unavailable."
+    },
+    {
+      "name": "Evidence honesty",
+      "score": 1.65,
+      "evidence": [
+        "README.md",
+        "docs/model-card.md",
+        "docs/release-readiness.md",
+        "portfolio/project.json"
+      ],
+      "assessment": "Synthetic-data, identity, economic, platform, infrastructure, and production boundaries are explicit.",
+      "limitation": "The independent review identified four copy and release-metadata inconsistencies. They were corrected after scoring, and the strict score was not increased."
+    }
+  ],
+  "findings_resolved_after_scoring": [
+    "Replaced claims about screening in place today with incumbent score proxy.",
+    "Relabelled case percentages as ranking scores, not estimated risk.",
+    "Relabelled owned controls as proposed role assignments.",
+    "Separated current local release evidence from carried-forward container, recovery, and deployed-version evidence."
+  ],
+  "verdict": "Meets the pre-registered portfolio risk-product threshold. Does not establish production readiness.",
+  "production_evidence_needed": [
+    "Observed outcomes and label timestamps",
+    "Realized exposure, loss, and recovery",
+    "Investigator handling and staffed capacity",
+    "Customer-friction outcomes",
+    "Accepted operating ownership and a live monitoring feed"
+  ]
+}

@@ -1,0 +1,52 @@
+# Publishes the static stakeholder dashboard to GitHub Pages.
+#
+# The site is `dashboard/`: one HTML file with its styles, script and above-the-fold
+# facts inlined at build time, plus a precomputed JSON payload. There is no server, no
+# request handler and no database, so this workflow only uploads files.
+#
+# It deliberately does not rebuild the payload. Regenerating it needs the curated
+# Parquet, which is git-ignored and stays off this runner, so the deployed page is
+# exactly the reviewed artifact in the commit rather than something rebuilt in CI from
+# data CI cannot see.
+name: Deploy dashboard to Pages
+
+# Every push to main, not only dashboard changes. The portfolio registry admits a
+# project when its live endpoint reports the repository's CURRENT default-branch SHA,
+# so a path filter would leave health.json behind HEAD after any records-only commit
+# and the project would silently drop out of the registry.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      # The static equivalent of a service /health endpoint. The registry needs an
+      # anonymous JSON endpoint reporting the deployed commit, and a static site has no
+      # process to ask, so the deploying commit is stamped into a file at deploy time.
+      - name: Stamp the deployed commit
+        run: |
+          printf '{\n  "source_sha": "%s",\n  "deployed_at": "%s",\n  "status": "ok",\n  "production_claim": false\n}\n' \
+            "${{ github.sha }}" "$(date -u +%Y-%m-%dT%H:%M:%SZ)" > dashboard/health.json
+          cat dashboard/health.json
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dashboard
+      - id: deployment
+        uses: actions/deploy-pages@v4

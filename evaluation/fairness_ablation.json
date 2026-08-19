@@ -1,0 +1,628 @@
+{
+  "ablated_feature": "housing_status",
+  "arms": {
+    "with_housing": {
+      "feature_count": 33,
+      "features": [
+        "income",
+        "name_email_similarity",
+        "prev_address_months_count",
+        "current_address_months_count",
+        "intended_balcon_amount",
+        "payment_type",
+        "zip_count_4w",
+        "velocity_6h",
+        "velocity_24h",
+        "velocity_4w",
+        "bank_branch_count_8w",
+        "date_of_birth_distinct_emails_4w",
+        "employment_status",
+        "email_is_free",
+        "housing_status",
+        "phone_home_valid",
+        "phone_mobile_valid",
+        "bank_months_count",
+        "has_other_cards",
+        "proposed_credit_limit",
+        "foreign_request",
+        "source",
+        "session_length_in_minutes",
+        "device_os",
+        "keep_alive_session",
+        "device_distinct_emails_8w",
+        "prev_address_months_count__missing",
+        "current_address_months_count__missing",
+        "bank_months_count__missing",
+        "session_length_in_minutes__missing",
+        "device_distinct_emails_8w__missing",
+        "intended_balcon_amount__missing",
+        "credit_risk_score"
+      ],
+      "governance_reasons": [
+        "customer_age max_min_tpr_gap exceeds 0.10",
+        "customer_age review-rate ratio is outside 0.80-1.25",
+        "housing_status max_min_tpr_gap exceeds 0.10",
+        "housing_status max_min_fpr_gap exceeds 0.10",
+        "housing_status review-rate ratio is outside 0.80-1.25"
+      ],
+      "governance_review": true,
+      "month_7": {
+        "calibrator": "sigmoid",
+        "capacity": {
+          "0.01": {
+            "catch_rate": 0.219187675070028,
+            "catch_rate_ci95": [
+              0.19849980198638373,
+              0.24138231969729046
+            ],
+            "fraud_caught": 313,
+            "precision": 0.32334710743801653,
+            "review_rate": 0.009995559823632065
+          },
+          "0.03": {
+            "catch_rate": 0.4166666666666667,
+            "catch_rate_ci95": [
+              0.39135323008887574,
+              0.44242724991201515
+            ],
+            "fraud_caught": 595,
+            "precision": 0.20481927710843373,
+            "review_rate": 0.02999700546244953
+          },
+          "0.05": {
+            "catch_rate": 0.5364145658263305,
+            "catch_rate_ci95": [
+              0.5104871972182482,
+              0.5621465426132953
+            ],
+            "fraud_caught": 766,
+            "precision": 0.15819909128459314,
+            "review_rate": 0.049998451101267
+          },
+          "0.10": {
+            "catch_rate": 0.6778711484593838,
+            "catch_rate_ci95": [
+              0.6531851336111857,
+              0.701602749412123
+            ],
+            "fraud_caught": 968,
+            "precision": 0.09995869475423379,
+            "review_rate": 0.099996902202534
+          }
+        },
+        "metrics": {
+          "auroc": 0.8946506790107962,
+          "brier_score": 0.012878029278690278,
+          "brier_skill": 0.1135770020571335,
+          "calibration_intercept": 0.30143324811996364,
+          "calibration_slope": 1.04107599622306,
+          "ece": 0.002255037080896719,
+          "log_loss": 0.05584366974808832,
+          "pr_auc": 0.21286747067376688,
+          "prevalence": 0.014745515938167962
+        }
+      },
+      "rolling": {
+        "folds": [
+          {
+            "auroc": 0.9121061359867331,
+            "catch_rate": {
+              "0.01": 0.22701149425287356,
+              "0.03": 0.4382183908045977,
+              "0.05": 0.540948275862069,
+              "0.10": 0.7054597701149425
+            },
+            "fold": 1,
+            "positives": 1392,
+            "pr_auc": 0.1524288753569294,
+            "test_months": [
+              3
+            ],
+            "test_rows": 150936,
+            "train_months": [
+              0,
+              1,
+              2
+            ],
+            "train_rows": 350000
+          },
+          {
+            "auroc": 0.9081455794735583,
+            "catch_rate": {
+              "0.01": 0.21212121212121213,
+              "0.03": 0.418732782369146,
+              "0.05": 0.5330578512396694,
+              "0.10": 0.6990358126721763
+            },
+            "fold": 2,
+            "positives": 1452,
+            "pr_auc": 0.17707081583800696,
+            "test_months": [
+              4
+            ],
+            "test_rows": 127691,
+            "train_months": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "train_rows": 350000
+          },
+          {
+            "auroc": 0.8935406981549838,
+            "catch_rate": {
+              "0.01": 0.23458540042523032,
+              "0.03": 0.41743444365698085,
+              "0.05": 0.5194897236002834,
+              "0.10": 0.6626506024096386
+            },
+            "fold": 3,
+            "positives": 1411,
+            "pr_auc": 0.1886668318281408,
+            "test_months": [
+              5
+            ],
+            "test_rows": 119323,
+            "train_months": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "train_rows": 350000
+          }
+        ],
+        "mean_catch_rate": {
+          "0.01": 0.22457270226643866,
+          "0.03": 0.42479520561024153,
+          "0.05": 0.5311652835673405,
+          "0.10": 0.6890487283989192
+        },
+        "mean_pr_auc": 0.17272217434102574,
+        "worst_pr_auc": 0.1524288753569294
+      },
+      "segments": {
+        "customer_age": {
+          "group_rows": [
+            {
+              "fpr": 0.03435759434257463,
+              "group": "30",
+              "positive_labels": 405,
+              "prevalence": 0.012514291011340111,
+              "review_rate": 0.039551339492630476,
+              "tpr": 0.44938271604938274
+            },
+            {
+              "fpr": 0.05411318553092182,
+              "group": "40",
+              "positive_labels": 436,
+              "prevalence": 0.01564967695620962,
+              "review_rate": 0.0624551328068916,
+              "tpr": 0.5871559633027523
+            },
+            {
+              "fpr": 0.08374696377653396,
+              "group": "50",
+              "positive_labels": 256,
+              "prevalence": 0.026323907455012854,
+              "review_rate": 0.09953727506426735,
+              "tpr": 0.68359375
+            }
+          ],
+          "max_min_fpr_gap": 0.04938936943395933,
+          "max_min_tpr_gap": 0.23421103395061726,
+          "published_groups": [
+            "30",
+            "40",
+            "50"
+          ],
+          "review_rate_ratio": 0.3973520419068506
+        },
+        "housing_status": {
+          "group_rows": [
+            {
+              "fpr": 0.1675873762511623,
+              "group": "BA",
+              "positive_labels": 899,
+              "prevalence": 0.04686685434261287,
+              "review_rate": 0.19132520070899803,
+              "tpr": 0.6740823136818688
+            },
+            {
+              "fpr": 0.011977656031797186,
+              "group": "BC",
+              "positive_labels": 266,
+              "prevalence": 0.007092955042397739,
+              "review_rate": 0.013999253373153431,
+              "tpr": 0.29699248120300753
+            }
+          ],
+          "max_min_fpr_gap": 0.15560972021936512,
+          "max_min_tpr_gap": 0.37708983247886124,
+          "published_groups": [
+            "BA",
+            "BC"
+          ],
+          "review_rate_ratio": 0.07316993956507606
+        },
+        "income": {
+          "group_rows": [
+            {
+              "fpr": 0.0897735275584714,
+              "group": "0.9",
+              "positive_labels": 738,
+              "prevalence": 0.02662625825305769,
+              "review_rate": 0.10459284915394884,
+              "tpr": 0.6463414634146342
+            }
+          ],
+          "max_min_fpr_gap": null,
+          "max_min_tpr_gap": null,
+          "published_groups": [
+            "0.9"
+          ],
+          "review_rate_ratio": null
+        },
+        "source": {
+          "group_rows": [
+            {
+              "fpr": 0.0427033908112487,
+              "group": "INTERNET",
+              "positive_labels": 1414,
+              "prevalence": 0.014658166174260094,
+              "review_rate": 0.04993520966153527,
+              "tpr": 0.536067892503536
+            }
+          ],
+          "max_min_fpr_gap": null,
+          "max_min_tpr_gap": null,
+          "published_groups": [
+            "INTERNET"
+          ],
+          "review_rate_ratio": null
+        }
+      }
+    },
+    "without_housing": {
+      "feature_count": 32,
+      "features": [
+        "income",
+        "name_email_similarity",
+        "prev_address_months_count",
+        "current_address_months_count",
+        "intended_balcon_amount",
+        "payment_type",
+        "zip_count_4w",
+        "velocity_6h",
+        "velocity_24h",
+        "velocity_4w",
+        "bank_branch_count_8w",
+        "date_of_birth_distinct_emails_4w",
+        "employment_status",
+        "email_is_free",
+        "phone_home_valid",
+        "phone_mobile_valid",
+        "bank_months_count",
+        "has_other_cards",
+        "proposed_credit_limit",
+        "foreign_request",
+        "source",
+        "session_length_in_minutes",
+        "device_os",
+        "keep_alive_session",
+        "device_distinct_emails_8w",
+        "prev_address_months_count__missing",
+        "current_address_months_count__missing",
+        "bank_months_count__missing",
+        "session_length_in_minutes__missing",
+        "device_distinct_emails_8w__missing",
+        "intended_balcon_amount__missing",
+        "credit_risk_score"
+      ],
+      "governance_reasons": [
+        "customer_age max_min_tpr_gap exceeds 0.10",
+        "customer_age review-rate ratio is outside 0.80-1.25",
+        "housing_status max_min_tpr_gap exceeds 0.10",
+        "housing_status review-rate ratio is outside 0.80-1.25"
+      ],
+      "governance_review": true,
+      "month_7": {
+        "calibrator": "sigmoid",
+        "capacity": {
+          "0.01": {
+            "catch_rate": 0.22549019607843138,
+            "catch_rate_ci95": [
+              0.20456813467432852,
+              0.24788521121095894
+            ],
+            "fraud_caught": 322,
+            "precision": 0.33264462809917356,
+            "review_rate": 0.009995559823632065
+          },
+          "0.03": {
+            "catch_rate": 0.38935574229691877,
+            "catch_rate_ci95": [
+              0.3643946404130232,
+              0.41491053471420997
+            ],
+            "fraud_caught": 556,
+            "precision": 0.19139414802065405,
+            "review_rate": 0.02999700546244953
+          },
+          "0.05": {
+            "catch_rate": 0.49229691876750703,
+            "catch_rate_ci95": [
+              0.4664223881042556,
+              0.5182127823159949
+            ],
+            "fraud_caught": 703,
+            "precision": 0.14518793886823628,
+            "review_rate": 0.049998451101267
+          },
+          "0.10": {
+            "catch_rate": 0.6386554621848739,
+            "catch_rate_ci95": [
+              0.6133981470600014,
+              0.6631687853754911
+            ],
+            "fraud_caught": 912,
+            "precision": 0.09417596034696406,
+            "review_rate": 0.099996902202534
+          }
+        },
+        "metrics": {
+          "auroc": 0.8837194543488412,
+          "brier_score": 0.013053183246480353,
+          "brier_skill": 0.1015207703255454,
+          "calibration_intercept": 0.3314046285823428,
+          "calibration_slope": 1.030629172862435,
+          "ece": 0.0028746440226114136,
+          "log_loss": 0.05761634773780739,
+          "pr_auc": 0.1967833160449721,
+          "prevalence": 0.014745515938167962
+        }
+      },
+      "rolling": {
+        "folds": [
+          {
+            "auroc": 0.9052023323316676,
+            "catch_rate": {
+              "0.01": 0.22629310344827586,
+              "0.03": 0.42169540229885055,
+              "0.05": 0.5294540229885057,
+              "0.10": 0.6896551724137931
+            },
+            "fold": 1,
+            "positives": 1392,
+            "pr_auc": 0.1472341032742354,
+            "test_months": [
+              3
+            ],
+            "test_rows": 150936,
+            "train_months": [
+              0,
+              1,
+              2
+            ],
+            "train_rows": 350000
+          },
+          {
+            "auroc": 0.8994894451922572,
+            "catch_rate": {
+              "0.01": 0.20110192837465565,
+              "0.03": 0.3925619834710744,
+              "0.05": 0.5082644628099173,
+              "0.10": 0.6873278236914601
+            },
+            "fold": 2,
+            "positives": 1452,
+            "pr_auc": 0.16591676645459627,
+            "test_months": [
+              4
+            ],
+            "test_rows": 127691,
+            "train_months": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "train_rows": 350000
+          },
+          {
+            "auroc": 0.8803115744788519,
+            "catch_rate": {
+              "0.01": 0.2083628632175762,
+              "0.03": 0.3905031892274982,
+              "0.05": 0.48405386250885896,
+              "0.10": 0.6491849751948973
+            },
+            "fold": 3,
+            "positives": 1411,
+            "pr_auc": 0.1691335870792556,
+            "test_months": [
+              5
+            ],
+            "test_rows": 119323,
+            "train_months": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "train_rows": 350000
+          }
+        ],
+        "mean_catch_rate": {
+          "0.01": 0.21191929834683587,
+          "0.03": 0.4015868583324744,
+          "0.05": 0.5072574494357607,
+          "0.10": 0.6753893237667169
+        },
+        "mean_pr_auc": 0.16076148560269576,
+        "worst_pr_auc": 0.1472341032742354
+      },
+      "segments": {
+        "customer_age": {
+          "group_rows": [
+            {
+              "fpr": 0.03426372113398836,
+              "group": "30",
+              "positive_labels": 405,
+              "prevalence": 0.012514291011340111,
+              "review_rate": 0.038747952909186416,
+              "tpr": 0.3925925925925926
+            },
+            {
+              "fpr": 0.052727537922987164,
+              "group": "40",
+              "positive_labels": 436,
+              "prevalence": 0.01564967695620962,
+              "review_rate": 0.06026561378320172,
+              "tpr": 0.5344036697247706
+            },
+            {
+              "fpr": 0.08353574823106981,
+              "group": "50",
+              "positive_labels": 256,
+              "prevalence": 0.026323907455012854,
+              "review_rate": 0.09809768637532133,
+              "tpr": 0.63671875
+            }
+          ],
+          "max_min_fpr_gap": 0.04927202709708145,
+          "max_min_tpr_gap": 0.2441261574074074,
+          "published_groups": [
+            "30",
+            "40",
+            "50"
+          ],
+          "review_rate_ratio": 0.3949935451172305
+        },
+        "housing_status": {
+          "group_rows": [
+            {
+              "fpr": 0.11699392878630421,
+              "group": "BA",
+              "positive_labels": 899,
+              "prevalence": 0.04686685434261287,
+              "review_rate": 0.13804608487123346,
+              "tpr": 0.5661846496106785
+            },
+            {
+              "fpr": 0.02086690299709958,
+              "group": "BC",
+              "positive_labels": 266,
+              "prevalence": 0.007092955042397739,
+              "review_rate": 0.023385419444296306,
+              "tpr": 0.37593984962406013
+            }
+          ],
+          "max_min_fpr_gap": 0.09612702578920464,
+          "max_min_tpr_gap": 0.19024479998661836,
+          "published_groups": [
+            "BA",
+            "BC"
+          ],
+          "review_rate_ratio": 0.16940298934308598
+        },
+        "income": {
+          "group_rows": [
+            {
+              "fpr": 0.09062604247748249,
+              "group": "0.9",
+              "positive_labels": 738,
+              "prevalence": 0.02662625825305769,
+              "review_rate": 0.10423205974672584,
+              "tpr": 0.6016260162601627
+            }
+          ],
+          "max_min_fpr_gap": null,
+          "max_min_tpr_gap": null,
+          "published_groups": [
+            "0.9"
+          ],
+          "review_rate_ratio": null
+        },
+        "source": {
+          "group_rows": [
+            {
+              "fpr": 0.04339775488948038,
+              "group": "INTERNET",
+              "positive_labels": 1414,
+              "prevalence": 0.014658166174260094,
+              "review_rate": 0.049987041932307054,
+              "tpr": 0.4929278642149929
+            }
+          ],
+          "max_min_fpr_gap": null,
+          "max_min_tpr_gap": null,
+          "published_groups": [
+            "INTERNET"
+          ],
+          "review_rate_ratio": null
+        }
+      }
+    }
+  },
+  "code_sha": "66cbe208811db7e26c36cc4b8265c1d52e889ede",
+  "cost": {
+    "catch_rate_cost_at_5_percent": 0.02390783413157982,
+    "material": true,
+    "month_7_catch_delta_ci95_at_5_percent": [
+      0.03463388560468214,
+      0.056047563811956
+    ],
+    "month_7_catch_rate_delta": {
+      "0.01": -0.006302521008403367,
+      "0.03": 0.027310924369747913,
+      "0.05": 0.044117647058823484,
+      "0.10": 0.03921568627450989
+    },
+    "month_7_fraud_cases_at_5_percent": 63,
+    "month_7_positive_labels": 1428,
+    "rolling_mean_catch_rate_delta": {
+      "0.01": 0.01265340391960279,
+      "0.03": 0.02320834727776716,
+      "0.05": 0.02390783413157982,
+      "0.10": 0.013659404632202277
+    },
+    "rolling_mean_pr_auc_delta": 0.011960688738329978
+  },
+  "dataset_version": "baf-2026-08-05-fb8d6d8b96f9",
+  "elapsed_seconds": 460.4052848749998,
+  "evidence_id": "m7-fairness-ablation-v1",
+  "pre_registered_materiality": {
+    "catch_rate_at_5_percent_capacity": 0.01,
+    "fixed_before_execution": true,
+    "mean_rolling_pr_auc": 0.005,
+    "rationale": "One point of catch at 5% capacity is about 14 month-7 fraud cases against a recorded catch interval half-width of 2.6 points, so a smaller loss is not separable from sampling noise. 0.005 PR-AUC is under 3% of the hybrid's rolling mean and smaller than its own across-fold spread."
+  },
+  "protocol": {
+    "confirmatory_only": "month 7",
+    "decision_basis": "rolling-origin folds only",
+    "paired": "identical months, rows, seeds, and tuned parameters across both arms",
+    "tuning_reused": "the M6 selection checkpoint; no retuning against any period"
+  },
+  "proxy_recoverability": {
+    "groups": {
+      "BA": {
+        "auroc": 0.7990031642097025,
+        "base_rate": 0.19807316997614696,
+        "pr_auc": 0.5203727244722074
+      },
+      "BC": {
+        "auroc": 0.7700440840242081,
+        "base_rate": 0.3872453352333158,
+        "pr_auc": 0.652341412911088
+      }
+    },
+    "predictors": "the 32 remaining hybrid inputs",
+    "target": "housing_status membership",
+    "test_month": 7,
+    "train_rows": 200000
+  }
+}

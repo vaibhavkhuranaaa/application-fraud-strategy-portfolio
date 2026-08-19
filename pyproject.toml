@@ -1,0 +1,47 @@
+[project]
+name = "application-fraud-strategy-portfolio"
+version = "0.1.0"
+description = "Governed application-fraud strategy analytics with capacity-aware decisions and calibrated model evidence"
+requires-python = ">=3.11"
+dependencies = [
+    "catboost>=1.2.8",
+    "joblib>=1.4",
+    "numpy>=2.0",
+    "openpyxl>=3.1.5",
+    "optuna>=4.0",
+    "pandas>=2.2",
+    "psycopg[binary]>=3.2",
+    "pyarrow>=18",
+    "pydantic>=2.10",
+    "scikit-learn>=1.6",
+    "scipy>=1.14",
+    "typer>=0.15",
+]
+
+[tool.uv]
+package = false
+
+[dependency-groups]
+dev = [
+    "detect-secrets>=1.5.0",
+    "pip-audit>=2.10.1",
+    "playwright>=1.62.0",
+    "pytest>=8.3",
+    "ruff>=0.12",
+]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"src/fraud_strategy/cli.py" = ["B008"]

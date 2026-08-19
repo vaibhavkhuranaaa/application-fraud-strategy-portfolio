@@ -1,0 +1,4043 @@
+{
+  "approval_state": "rejected",
+  "artifacts": {
+    "calibrator": "artifacts/models/catboost_hybrid-calibrator.joblib",
+    "candidate_artifact_hash": "dc63cebf198d2fffff6bac7fc4fa64d35233583bef1a8b00d1a76f8e35bbea9c",
+    "candidate_manifest": "artifacts/models/candidate_model_manifest.json",
+    "champion_artifact_hash": "e060b438ca62e132611c69bb35b6a076a2529762fa84a07911f84ec5bfd9ba7c",
+    "champion_manifest": "artifacts/models/model_manifest.json",
+    "incumbent_calibrator": "artifacts/models/incumbent-proxy-calibrator.joblib",
+    "local_explanations": "artifacts/predictions/month_7_local_explanations.json",
+    "predictions": "artifacts/predictions/month_7_scores.parquet",
+    "selected_model": "artifacts/models/catboost_hybrid.cbm"
+  },
+  "best_baseline": "regularized_logistic",
+  "calibration": {
+    "catboost_hybrid": {
+      "candidates": {
+        "isotonic": {
+          "brier_score": 0.011919610295190775,
+          "ece": 5.267934762488552e-19
+        },
+        "sigmoid": {
+          "brier_score": 0.011996724669135803,
+          "ece": 0.000639477215040789
+        }
+      },
+      "month_6_metrics": {
+        "auroc": 0.8874811927794231,
+        "brier_score": 0.011996724669135803,
+        "brier_skill": 0.09290116018852956,
+        "calibration_intercept": -0.0030195527210283846,
+        "calibration_slope": 0.9990808142296426,
+        "ece": 0.000639477215040789,
+        "log_loss": 0.05327118499182039,
+        "pr_auc": 0.17442962976956075,
+        "prevalence": 0.013405073589231566
+      },
+      "selected": "sigmoid",
+      "selection_rule": "minimum Brier/ECE; sigmoid preferred within 1% Brier tolerance"
+    },
+    "catboost_internal": {
+      "candidates": {
+        "isotonic": {
+          "brier_score": 0.011980718611606394,
+          "ece": 3.002183961086997e-19
+        },
+        "sigmoid": {
+          "brier_score": 0.012058236405420421,
+          "ece": 0.0006482834464356831
+        }
+      },
+      "month_6_metrics": {
+        "auroc": 0.8877435858992859,
+        "brier_score": 0.012058236405420421,
+        "brier_skill": 0.08825012199623727,
+        "calibration_intercept": -0.0025532295867522203,
+        "calibration_slope": 0.9994971500316272,
+        "ece": 0.0006482834464356831,
+        "log_loss": 0.05345110890121197,
+        "pr_auc": 0.16805103495071946,
+        "prevalence": 0.013405073589231566
+      },
+      "selected": "sigmoid",
+      "selection_rule": "minimum Brier/ECE; sigmoid preferred within 1% Brier tolerance"
+    },
+    "incumbent_proxy": {
+      "candidates": {
+        "isotonic": {
+          "brier_score": 0.01310208532257792,
+          "ece": 0.0
+        },
+        "sigmoid": {
+          "brier_score": 0.013119019715329652,
+          "ece": 7.869539975830062e-05
+        }
+      },
+      "month_6_metrics": {
+        "auroc": 0.6680598722640592,
+        "brier_score": 0.013119019715329652,
+        "brier_skill": 0.008041953829671322,
+        "calibration_intercept": -0.2098151955837528,
+        "calibration_slope": 0.9501750395444095,
+        "ece": 7.869539975830062e-05,
+        "log_loss": 0.0684001238170408,
+        "pr_auc": 0.0337615953799689,
+        "prevalence": 0.013405073589231566
+      },
+      "score_reference": {
+        "reference_median": 139.0,
+        "reference_scale": 62.3379355638868
+      },
+      "selected": "sigmoid",
+      "selection_rule": "minimum Brier/ECE; sigmoid preferred within 1% Brier tolerance"
+    },
+    "regularized_logistic": {
+      "candidates": {
+        "isotonic": {
+          "brier_score": 0.0121412289177788,
+          "ece": 8.472830290178858e-19
+        },
+        "sigmoid": {
+          "brier_score": 0.01219389071466397,
+          "ece": 0.0006432851616234987
+        }
+      },
+      "month_6_metrics": {
+        "auroc": 0.8794087349773266,
+        "brier_score": 0.01219389071466397,
+        "brier_skill": 0.07799300016307331,
+        "calibration_intercept": 0.003402039489074431,
+        "calibration_slope": 1.0014897753818957,
+        "ece": 0.0006432851616234987,
+        "log_loss": 0.0546705801997072,
+        "pr_auc": 0.1491576355776319,
+        "prevalence": 0.013405073589231566
+      },
+      "selected": "sigmoid",
+      "selection_rule": "minimum Brier/ECE; sigmoid preferred within 1% Brier tolerance"
+    }
+  },
+  "calibration_intercept_decomposition": {
+    "mean_predicted_logit": -5.66103385436072,
+    "note": "The reported intercept is the recalibration line at probability 0.5. The slope term is how much of it comes from the slope being multiplied by the distance from the operating point to that reading position. The remainder is the level error where the scores actually sit, and the prior move is how far the fraud rate travelled in the one period between calibration and scoring.",
+    "offset_at_operating_point": 0.06890064289962783,
+    "one_period_prior_move_logit": 0.09666535004805255,
+    "reported_intercept": 0.30143324811996364,
+    "slope_term": 0.2325326052203358
+  },
+  "calibration_schedule": {
+    "applied": {
+      "applied_logit_shift": 0.0,
+      "calibration_prior": 0.013405073589231566,
+      "forecast_prior": 0.013405073589231566,
+      "rule": "carry_forward"
+    },
+    "backtest_periods": [
+      3,
+      4,
+      5,
+      6
+    ],
+    "basis": "The calibrator is fitted on the last closed period before scoring, then its level is corrected to a forecast of the scoring period's prior. The forecast rule is chosen by backtest on earlier periods only.",
+    "fitted_on": [
+      6
+    ],
+    "forecast_prior": 0.013405073589231566,
+    "median_absolute_prior_move_logit": 0.09921570111746059,
+    "observed_prior_moves_logit": [
+      0.18969792260257634,
+      0.07141777650067826,
+      0.05354069201023215,
+      0.21161408275373628,
+      0.039595108580286364,
+      0.1270136257342429
+    ],
+    "operating_control": "Recalibrate at every period close, and raise a recalibration review when the observed prior moves more than 0.1 in logit from the calibration prior. This is an operating control, not a promotion gate.",
+    "recalibration_trigger_hits": 3,
+    "recalibration_trigger_logit": 0.1,
+    "rules": {
+      "carry_forward": {
+        "logit_errors": [
+          -0.05354069201023215,
+          -0.21161408275373628,
+          -0.039595108580286364,
+          -0.1270136257342429
+        ],
+        "mean_absolute_logit_error": 0.10794087726962442
+      },
+      "damped_trend_3_period": {
+        "logit_errors": [
+          -0.11881961678604558,
+          -0.21608335387634714,
+          0.02669358511070552,
+          -0.06421132790073703
+        ],
+        "mean_absolute_logit_error": 0.10645197091845882
+      },
+      "trend_3_period": {
+        "logit_errors": [
+          -0.184098541561859,
+          -0.2205526249989589,
+          0.0929822788016974,
+          -0.0014090300672311429
+        ],
+        "mean_absolute_logit_error": 0.12476061885743661
+      }
+    },
+    "selected": "carry_forward",
+    "selection_rule": "lowest mean absolute one-period-ahead logit error on observed periods; a rule must beat carrying the last prior forward by more than 0.02 to be adopted, otherwise the simpler rule stands"
+  },
+  "capacity_catch_rate_differences_vs_incumbent": {
+    "0.01": 0.15896358543417366,
+    "0.03": 0.2675070028011205,
+    "0.05": 0.33053221288515405,
+    "0.10": 0.3697478991596639
+  },
+  "champion": "incumbent_proxy",
+  "champion_approval_state": "retained_baseline",
+  "dataset_version": "baf-2026-08-05-fb8d6d8b96f9",
+  "drift": {
+    "blocks": 16,
+    "blocks_after_training_window": 9,
+    "reference_basis": "pooled training window",
+    "reference_window": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "rows": [
+      {
+        "feature": "income",
+        "in_training_window": true,
+        "month": 1,
+        "psi": 0.008648682407427055,
+        "status": "pass"
+      },
+      {
+        "feature": "name_email_similarity",
+        "in_training_window": true,
+        "month": 1,
+        "psi": 0.03162143577902846,
+        "status": "pass"
+      },
+      {
+        "feature": "prev_address_months_count",
+        "in_training_window": true,
+        "month": 1,
+        "psi": 0.015635086181254206,
+        "status": "pass"
+      },
+      {
+        "feature": "current_address_months_count",
+        "in_training_window": true,
+        "month": 1,
+        "psi": 0.02366369304602698,
+        "status": "pass"
+      },
+      {
+        "feature": "intended_balcon_amount",
+        "in_training_window": true,
+        "month": 1,
+        "psi": 0.00366958053104378,
+        "status": "pass"
+      },
+      {
+        "feature": "payment_type",
+        "in_training_window": true,
+        "month": 1,
+        "psi": 0.006475671359620379,
+        "status": "pass"
+      },
+      {
+        "feature": "zip_count_4w",
+        "in_training_window": true,
+        "month": 1,
+        "psi": 0.003650106893022705,
+        "status": "pass"
+      },
+      {
+        "feature": "velocity_6h",
+        "in_training_window": true,
+        "month": 1,
+        "psi": 0.054676699964465336,
+        "status": "pass"
+      },
+      {
+        "feature": "velocity_24h",
+        "in_training_window": true,
+        "month": 1,
+        "psi": 0.13851507877066413,
+        "status": "warn"
+      },
+      {
+        "feature": "velocity_4w",
+        "in_training_window": true,
+        "month": 1,
+        "psi": 1.5593750815900513,
+        "status": "block"
+      },
+      {
+        "feature": "bank_branch_count_8w",
+        "in_training_window": true,
+        "month": 1,
+        "psi": 0.005599002069004493,
+        "status": "pass"
+      },
+      {
+        "feature": "date_of_birth_distinct_emails_4w",
+        "in_training_window": true,
+        "month": 1,
+        "psi": 0.05317023594941245,
+        "status": "pass"
+      },
+      {
+        "feature": "employment_status",
+        "in_training_window": true,
+        "month": 1,
+        "psi": 0.007853004053518166,
+        "status": "pass"
+      },
+      {
+        "feature": "email_is_free",
+        "in_training_window": true,
+        "month": 1,
+        "psi": 0.008586411417712738,
+        "status": "pass"
+      },
+      {
+        "feature": "housing_status",
+        "in_training_window": true,
+        "month": 1,
+        "psi": 0.028757553456961207,
+        "status": "pass"
+      },
+      {
+        "feature": "phone_home_valid",
+        "in_training_window": true,
+        "month": 1,
+        "psi": 0.0013691179451457182,
+        "status": "pass"
+      },
+      {
+        "feature": "phone_mobile_valid",
+        "in_training_window": true,
+        "month": 1,
+        "psi": 0.005714090797520471,
+        "status": "pass"
+      },
+      {
+        "feature": "bank_months_count",
+        "in_training_window": true,
+        "month": 1,
+        "psi": 0.01668372022351597,
+        "status": "pass"
+      },
+      {
+        "feature": "has_other_cards",
+        "in_training_window": true,
+        "month": 1,
+        "psi": 0.0014098898189124653,
+        "status": "pass"
+      },
+      {
+        "feature": "proposed_credit_limit",
+        "in_training_window": true,
+        "month": 1,
+        "psi": 0.09578376177052066,
+        "status": "pass"
+      },
+      {
+        "feature": "foreign_request",
+        "in_training_window": true,
+        "month": 1,
+        "psi": 0.0012052266452941462,
+        "status": "pass"
+      },
+      {
+        "feature": "source",
+        "in_training_window": true,
+        "month": 1,
+        "psi": 0.00016748692969627534,
+        "status": "pass"
+      },
+      {
+        "feature": "session_length_in_minutes",
+        "in_training_window": true,
+        "month": 1,
+        "psi": 0.015058938493598857,
+        "status": "pass"
+      },
+      {
+        "feature": "device_os",
+        "in_training_window": true,
+        "month": 1,
+        "psi": 0.011267230299209076,
+        "status": "pass"
+      },
+      {
+        "feature": "keep_alive_session",
+        "in_training_window": true,
+        "month": 1,
+        "psi": 0.0019078122391819668,
+        "status": "pass"
+      },
+      {
+        "feature": "device_distinct_emails_8w",
+        "in_training_window": true,
+        "month": 1,
+        "psi": 0.010338665455311216,
+        "status": "pass"
+      },
+      {
+        "feature": "prev_address_months_count__missing",
+        "in_training_window": true,
+        "month": 1,
+        "psi": 0.009228978610315632,
+        "status": "pass"
+      },
+      {
+        "feature": "current_address_months_count__missing",
+        "in_training_window": true,
+        "month": 1,
+        "psi": 0.0003912373585048765,
+        "status": "pass"
+      },
+      {
+        "feature": "bank_months_count__missing",
+        "in_training_window": true,
+        "month": 1,
+        "psi": 0.00536469591075861,
+        "status": "pass"
+      },
+      {
+        "feature": "session_length_in_minutes__missing",
+        "in_training_window": true,
+        "month": 1,
+        "psi": 8.847215771246078e-05,
+        "status": "pass"
+      },
+      {
+        "feature": "device_distinct_emails_8w__missing",
+        "in_training_window": true,
+        "month": 1,
+        "psi": 0.00023083473889103442,
+        "status": "pass"
+      },
+      {
+        "feature": "intended_balcon_amount__missing",
+        "in_training_window": true,
+        "month": 1,
+        "psi": 0.00012008645722360666,
+        "status": "pass"
+      },
+      {
+        "feature": "credit_risk_score",
+        "in_training_window": true,
+        "month": 1,
+        "psi": 0.10797051922145984,
+        "status": "warn"
+      },
+      {
+        "feature": "model_score",
+        "in_training_window": true,
+        "month": 1,
+        "psi": 0.005347448545224847,
+        "status": "pass"
+      },
+      {
+        "feature": "income",
+        "in_training_window": true,
+        "month": 2,
+        "psi": 0.03091577257611642,
+        "status": "pass"
+      },
+      {
+        "feature": "name_email_similarity",
+        "in_training_window": true,
+        "month": 2,
+        "psi": 0.03476852381766815,
+        "status": "pass"
+      },
+      {
+        "feature": "prev_address_months_count",
+        "in_training_window": true,
+        "month": 2,
+        "psi": 0.014724201562170948,
+        "status": "pass"
+      },
+      {
+        "feature": "current_address_months_count",
+        "in_training_window": true,
+        "month": 2,
+        "psi": 0.021664870001966742,
+        "status": "pass"
+      },
+      {
+        "feature": "intended_balcon_amount",
+        "in_training_window": true,
+        "month": 2,
+        "psi": 0.002431303866450289,
+        "status": "pass"
+      },
+      {
+        "feature": "payment_type",
+        "in_training_window": true,
+        "month": 2,
+        "psi": 0.02811618272887342,
+        "status": "pass"
+      },
+      {
+        "feature": "zip_count_4w",
+        "in_training_window": true,
+        "month": 2,
+        "psi": 0.009577649389538163,
+        "status": "pass"
+      },
+      {
+        "feature": "velocity_6h",
+        "in_training_window": true,
+        "month": 2,
+        "psi": 0.025271763128820155,
+        "status": "pass"
+      },
+      {
+        "feature": "velocity_24h",
+        "in_training_window": true,
+        "month": 2,
+        "psi": 0.0963712160342104,
+        "status": "pass"
+      },
+      {
+        "feature": "velocity_4w",
+        "in_training_window": true,
+        "month": 2,
+        "psi": 1.3063308612708127,
+        "status": "block"
+      },
+      {
+        "feature": "bank_branch_count_8w",
+        "in_training_window": true,
+        "month": 2,
+        "psi": 0.015938722198268983,
+        "status": "pass"
+      },
+      {
+        "feature": "date_of_birth_distinct_emails_4w",
+        "in_training_window": true,
+        "month": 2,
+        "psi": 0.05614472544293127,
+        "status": "pass"
+      },
+      {
+        "feature": "employment_status",
+        "in_training_window": true,
+        "month": 2,
+        "psi": 0.002653115338724464,
+        "status": "pass"
+      },
+      {
+        "feature": "email_is_free",
+        "in_training_window": true,
+        "month": 2,
+        "psi": 0.0006954197771593629,
+        "status": "pass"
+      },
+      {
+        "feature": "housing_status",
+        "in_training_window": true,
+        "month": 2,
+        "psi": 0.03746612184564009,
+        "status": "pass"
+      },
+      {
+        "feature": "phone_home_valid",
+        "in_training_window": true,
+        "month": 2,
+        "psi": 0.00835045450879446,
+        "status": "pass"
+      },
+      {
+        "feature": "phone_mobile_valid",
+        "in_training_window": true,
+        "month": 2,
+        "psi": 0.001597876151385694,
+        "status": "pass"
+      },
+      {
+        "feature": "bank_months_count",
+        "in_training_window": true,
+        "month": 2,
+        "psi": 0.03819243128140456,
+        "status": "pass"
+      },
+      {
+        "feature": "has_other_cards",
+        "in_training_window": true,
+        "month": 2,
+        "psi": 0.015110912901522165,
+        "status": "pass"
+      },
+      {
+        "feature": "proposed_credit_limit",
+        "in_training_window": true,
+        "month": 2,
+        "psi": 0.039794353967292986,
+        "status": "pass"
+      },
+      {
+        "feature": "foreign_request",
+        "in_training_window": true,
+        "month": 2,
+        "psi": 0.0005857187434290795,
+        "status": "pass"
+      },
+      {
+        "feature": "source",
+        "in_training_window": true,
+        "month": 2,
+        "psi": 0.0007201424750110538,
+        "status": "pass"
+      },
+      {
+        "feature": "session_length_in_minutes",
+        "in_training_window": true,
+        "month": 2,
+        "psi": 0.05782216047883192,
+        "status": "pass"
+      },
+      {
+        "feature": "device_os",
+        "in_training_window": true,
+        "month": 2,
+        "psi": 0.020050709952072775,
+        "status": "pass"
+      },
+      {
+        "feature": "keep_alive_session",
+        "in_training_window": true,
+        "month": 2,
+        "psi": 0.00034581449730818585,
+        "status": "pass"
+      },
+      {
+        "feature": "device_distinct_emails_8w",
+        "in_training_window": true,
+        "month": 2,
+        "psi": 0.00491307061293719,
+        "status": "pass"
+      },
+      {
+        "feature": "prev_address_months_count__missing",
+        "in_training_window": true,
+        "month": 2,
+        "psi": 0.012952693838830048,
+        "status": "pass"
+      },
+      {
+        "feature": "current_address_months_count__missing",
+        "in_training_window": true,
+        "month": 2,
+        "psi": 0.00018340748278812137,
+        "status": "pass"
+      },
+      {
+        "feature": "bank_months_count__missing",
+        "in_training_window": true,
+        "month": 2,
+        "psi": 0.023313735075531253,
+        "status": "pass"
+      },
+      {
+        "feature": "session_length_in_minutes__missing",
+        "in_training_window": true,
+        "month": 2,
+        "psi": 3.6216229344153654e-05,
+        "status": "pass"
+      },
+      {
+        "feature": "device_distinct_emails_8w__missing",
+        "in_training_window": true,
+        "month": 2,
+        "psi": 2.1341838183376793e-07,
+        "status": "pass"
+      },
+      {
+        "feature": "intended_balcon_amount__missing",
+        "in_training_window": true,
+        "month": 2,
+        "psi": 0.0007156506971646897,
+        "status": "pass"
+      },
+      {
+        "feature": "credit_risk_score",
+        "in_training_window": true,
+        "month": 2,
+        "psi": 0.06107445618741629,
+        "status": "pass"
+      },
+      {
+        "feature": "model_score",
+        "in_training_window": true,
+        "month": 2,
+        "psi": 0.010508758403865864,
+        "status": "pass"
+      },
+      {
+        "feature": "income",
+        "in_training_window": true,
+        "month": 3,
+        "psi": 0.003396466435317134,
+        "status": "pass"
+      },
+      {
+        "feature": "name_email_similarity",
+        "in_training_window": true,
+        "month": 3,
+        "psi": 0.020787468623648064,
+        "status": "pass"
+      },
+      {
+        "feature": "prev_address_months_count",
+        "in_training_window": true,
+        "month": 3,
+        "psi": 0.024538166673932688,
+        "status": "pass"
+      },
+      {
+        "feature": "current_address_months_count",
+        "in_training_window": true,
+        "month": 3,
+        "psi": 0.021400358388986154,
+        "status": "pass"
+      },
+      {
+        "feature": "intended_balcon_amount",
+        "in_training_window": true,
+        "month": 3,
+        "psi": 0.00467277590594098,
+        "status": "pass"
+      },
+      {
+        "feature": "payment_type",
+        "in_training_window": true,
+        "month": 3,
+        "psi": 0.009419993284176182,
+        "status": "pass"
+      },
+      {
+        "feature": "zip_count_4w",
+        "in_training_window": true,
+        "month": 3,
+        "psi": 0.04169260221083115,
+        "status": "pass"
+      },
+      {
+        "feature": "velocity_6h",
+        "in_training_window": true,
+        "month": 3,
+        "psi": 0.031016253826605066,
+        "status": "pass"
+      },
+      {
+        "feature": "velocity_24h",
+        "in_training_window": true,
+        "month": 3,
+        "psi": 0.10464131625716638,
+        "status": "warn"
+      },
+      {
+        "feature": "velocity_4w",
+        "in_training_window": true,
+        "month": 3,
+        "psi": 1.4958342982674055,
+        "status": "block"
+      },
+      {
+        "feature": "bank_branch_count_8w",
+        "in_training_window": true,
+        "month": 3,
+        "psi": 0.002361635435855905,
+        "status": "pass"
+      },
+      {
+        "feature": "date_of_birth_distinct_emails_4w",
+        "in_training_window": true,
+        "month": 3,
+        "psi": 0.015410316234246357,
+        "status": "pass"
+      },
+      {
+        "feature": "employment_status",
+        "in_training_window": true,
+        "month": 3,
+        "psi": 0.008504535072884317,
+        "status": "pass"
+      },
+      {
+        "feature": "email_is_free",
+        "in_training_window": true,
+        "month": 3,
+        "psi": 0.0004341712733389117,
+        "status": "pass"
+      },
+      {
+        "feature": "housing_status",
+        "in_training_window": true,
+        "month": 3,
+        "psi": 0.04566084969403883,
+        "status": "pass"
+      },
+      {
+        "feature": "phone_home_valid",
+        "in_training_window": true,
+        "month": 3,
+        "psi": 0.014550137278621644,
+        "status": "pass"
+      },
+      {
+        "feature": "phone_mobile_valid",
+        "in_training_window": true,
+        "month": 3,
+        "psi": 0.00023230440335999064,
+        "status": "pass"
+      },
+      {
+        "feature": "bank_months_count",
+        "in_training_window": true,
+        "month": 3,
+        "psi": 0.012008558704879782,
+        "status": "pass"
+      },
+      {
+        "feature": "has_other_cards",
+        "in_training_window": true,
+        "month": 3,
+        "psi": 0.012417525759771631,
+        "status": "pass"
+      },
+      {
+        "feature": "proposed_credit_limit",
+        "in_training_window": true,
+        "month": 3,
+        "psi": 0.05877363219543784,
+        "status": "pass"
+      },
+      {
+        "feature": "foreign_request",
+        "in_training_window": true,
+        "month": 3,
+        "psi": 0.0004610707403565366,
+        "status": "pass"
+      },
+      {
+        "feature": "source",
+        "in_training_window": true,
+        "month": 3,
+        "psi": 0.00016606305895788768,
+        "status": "pass"
+      },
+      {
+        "feature": "session_length_in_minutes",
+        "in_training_window": true,
+        "month": 3,
+        "psi": 0.00398610516636336,
+        "status": "pass"
+      },
+      {
+        "feature": "device_os",
+        "in_training_window": true,
+        "month": 3,
+        "psi": 0.001229806822034637,
+        "status": "pass"
+      },
+      {
+        "feature": "keep_alive_session",
+        "in_training_window": true,
+        "month": 3,
+        "psi": 0.009540456694347652,
+        "status": "pass"
+      },
+      {
+        "feature": "device_distinct_emails_8w",
+        "in_training_window": true,
+        "month": 3,
+        "psi": 0.006767335429506453,
+        "status": "pass"
+      },
+      {
+        "feature": "prev_address_months_count__missing",
+        "in_training_window": true,
+        "month": 3,
+        "psi": 0.022241507406150236,
+        "status": "pass"
+      },
+      {
+        "feature": "current_address_months_count__missing",
+        "in_training_window": true,
+        "month": 3,
+        "psi": 0.00020109933193261298,
+        "status": "pass"
+      },
+      {
+        "feature": "bank_months_count__missing",
+        "in_training_window": true,
+        "month": 3,
+        "psi": 0.0003853038285156472,
+        "status": "pass"
+      },
+      {
+        "feature": "session_length_in_minutes__missing",
+        "in_training_window": true,
+        "month": 3,
+        "psi": 6.410965769890607e-05,
+        "status": "pass"
+      },
+      {
+        "feature": "device_distinct_emails_8w__missing",
+        "in_training_window": true,
+        "month": 3,
+        "psi": 3.6802426302738516e-05,
+        "status": "pass"
+      },
+      {
+        "feature": "intended_balcon_amount__missing",
+        "in_training_window": true,
+        "month": 3,
+        "psi": 0.003631845795729083,
+        "status": "pass"
+      },
+      {
+        "feature": "credit_risk_score",
+        "in_training_window": true,
+        "month": 3,
+        "psi": 0.08867706810518751,
+        "status": "pass"
+      },
+      {
+        "feature": "model_score",
+        "in_training_window": true,
+        "month": 3,
+        "psi": 0.012431891961921269,
+        "status": "pass"
+      },
+      {
+        "feature": "income",
+        "in_training_window": true,
+        "month": 4,
+        "psi": 0.014025143840763924,
+        "status": "pass"
+      },
+      {
+        "feature": "name_email_similarity",
+        "in_training_window": true,
+        "month": 4,
+        "psi": 0.01020467344642363,
+        "status": "pass"
+      },
+      {
+        "feature": "prev_address_months_count",
+        "in_training_window": true,
+        "month": 4,
+        "psi": 0.003822668574467585,
+        "status": "pass"
+      },
+      {
+        "feature": "current_address_months_count",
+        "in_training_window": true,
+        "month": 4,
+        "psi": 0.0020277198524350478,
+        "status": "pass"
+      },
+      {
+        "feature": "intended_balcon_amount",
+        "in_training_window": true,
+        "month": 4,
+        "psi": 0.015866205190070114,
+        "status": "pass"
+      },
+      {
+        "feature": "payment_type",
+        "in_training_window": true,
+        "month": 4,
+        "psi": 0.018065214044369518,
+        "status": "pass"
+      },
+      {
+        "feature": "zip_count_4w",
+        "in_training_window": true,
+        "month": 4,
+        "psi": 0.020965701618539036,
+        "status": "pass"
+      },
+      {
+        "feature": "velocity_6h",
+        "in_training_window": true,
+        "month": 4,
+        "psi": 0.12578973908411795,
+        "status": "warn"
+      },
+      {
+        "feature": "velocity_24h",
+        "in_training_window": true,
+        "month": 4,
+        "psi": 0.22910690299393272,
+        "status": "warn"
+      },
+      {
+        "feature": "velocity_4w",
+        "in_training_window": true,
+        "month": 4,
+        "psi": 1.29879240059187,
+        "status": "block"
+      },
+      {
+        "feature": "bank_branch_count_8w",
+        "in_training_window": true,
+        "month": 4,
+        "psi": 0.008620694163204202,
+        "status": "pass"
+      },
+      {
+        "feature": "date_of_birth_distinct_emails_4w",
+        "in_training_window": true,
+        "month": 4,
+        "psi": 0.054606724295279754,
+        "status": "pass"
+      },
+      {
+        "feature": "employment_status",
+        "in_training_window": true,
+        "month": 4,
+        "psi": 0.01201698039981131,
+        "status": "pass"
+      },
+      {
+        "feature": "email_is_free",
+        "in_training_window": true,
+        "month": 4,
+        "psi": 0.010755425652289853,
+        "status": "pass"
+      },
+      {
+        "feature": "housing_status",
+        "in_training_window": true,
+        "month": 4,
+        "psi": 0.011814321927800806,
+        "status": "pass"
+      },
+      {
+        "feature": "phone_home_valid",
+        "in_training_window": true,
+        "month": 4,
+        "psi": 9.367089088301536e-05,
+        "status": "pass"
+      },
+      {
+        "feature": "phone_mobile_valid",
+        "in_training_window": true,
+        "month": 4,
+        "psi": 0.00020803840879865589,
+        "status": "pass"
+      },
+      {
+        "feature": "bank_months_count",
+        "in_training_window": true,
+        "month": 4,
+        "psi": 0.005122400461043326,
+        "status": "pass"
+      },
+      {
+        "feature": "has_other_cards",
+        "in_training_window": true,
+        "month": 4,
+        "psi": 0.002244814840560048,
+        "status": "pass"
+      },
+      {
+        "feature": "proposed_credit_limit",
+        "in_training_window": true,
+        "month": 4,
+        "psi": 0.03020755132807769,
+        "status": "pass"
+      },
+      {
+        "feature": "foreign_request",
+        "in_training_window": true,
+        "month": 4,
+        "psi": 1.246630520992303e-05,
+        "status": "pass"
+      },
+      {
+        "feature": "source",
+        "in_training_window": true,
+        "month": 4,
+        "psi": 0.0009645152234584878,
+        "status": "pass"
+      },
+      {
+        "feature": "session_length_in_minutes",
+        "in_training_window": true,
+        "month": 4,
+        "psi": 0.014337042079919319,
+        "status": "pass"
+      },
+      {
+        "feature": "device_os",
+        "in_training_window": true,
+        "month": 4,
+        "psi": 0.014980588609225826,
+        "status": "pass"
+      },
+      {
+        "feature": "keep_alive_session",
+        "in_training_window": true,
+        "month": 4,
+        "psi": 0.03154355028205008,
+        "status": "pass"
+      },
+      {
+        "feature": "device_distinct_emails_8w",
+        "in_training_window": true,
+        "month": 4,
+        "psi": 0.004003650887699742,
+        "status": "pass"
+      },
+      {
+        "feature": "prev_address_months_count__missing",
+        "in_training_window": true,
+        "month": 4,
+        "psi": 0.0003347736583729611,
+        "status": "pass"
+      },
+      {
+        "feature": "current_address_months_count__missing",
+        "in_training_window": true,
+        "month": 4,
+        "psi": 1.583995493640786e-05,
+        "status": "pass"
+      },
+      {
+        "feature": "bank_months_count__missing",
+        "in_training_window": true,
+        "month": 4,
+        "psi": 0.0035257242105505475,
+        "status": "pass"
+      },
+      {
+        "feature": "session_length_in_minutes__missing",
+        "in_training_window": true,
+        "month": 4,
+        "psi": 4.776650935523493e-05,
+        "status": "pass"
+      },
+      {
+        "feature": "device_distinct_emails_8w__missing",
+        "in_training_window": true,
+        "month": 4,
+        "psi": 2.129812756924353e-08,
+        "status": "pass"
+      },
+      {
+        "feature": "intended_balcon_amount__missing",
+        "in_training_window": true,
+        "month": 4,
+        "psi": 0.013996765515776135,
+        "status": "pass"
+      },
+      {
+        "feature": "credit_risk_score",
+        "in_training_window": true,
+        "month": 4,
+        "psi": 0.05863455413740088,
+        "status": "pass"
+      },
+      {
+        "feature": "model_score",
+        "in_training_window": true,
+        "month": 4,
+        "psi": 0.006959867380169905,
+        "status": "pass"
+      },
+      {
+        "feature": "income",
+        "in_training_window": true,
+        "month": 5,
+        "psi": 0.012881830049236988,
+        "status": "pass"
+      },
+      {
+        "feature": "name_email_similarity",
+        "in_training_window": true,
+        "month": 5,
+        "psi": 0.1176903841583553,
+        "status": "warn"
+      },
+      {
+        "feature": "prev_address_months_count",
+        "in_training_window": true,
+        "month": 5,
+        "psi": 0.08489656220615135,
+        "status": "pass"
+      },
+      {
+        "feature": "current_address_months_count",
+        "in_training_window": true,
+        "month": 5,
+        "psi": 0.06820409543422792,
+        "status": "pass"
+      },
+      {
+        "feature": "intended_balcon_amount",
+        "in_training_window": true,
+        "month": 5,
+        "psi": 0.013826687500239972,
+        "status": "pass"
+      },
+      {
+        "feature": "payment_type",
+        "in_training_window": true,
+        "month": 5,
+        "psi": 0.028017272501648406,
+        "status": "pass"
+      },
+      {
+        "feature": "zip_count_4w",
+        "in_training_window": true,
+        "month": 5,
+        "psi": 0.14125803948057986,
+        "status": "warn"
+      },
+      {
+        "feature": "velocity_6h",
+        "in_training_window": true,
+        "month": 5,
+        "psi": 0.28858790187505257,
+        "status": "block"
+      },
+      {
+        "feature": "velocity_24h",
+        "in_training_window": true,
+        "month": 5,
+        "psi": 0.5688352527161761,
+        "status": "block"
+      },
+      {
+        "feature": "velocity_4w",
+        "in_training_window": true,
+        "month": 5,
+        "psi": 2.597513412738489,
+        "status": "block"
+      },
+      {
+        "feature": "bank_branch_count_8w",
+        "in_training_window": true,
+        "month": 5,
+        "psi": 0.006943171782142395,
+        "status": "pass"
+      },
+      {
+        "feature": "date_of_birth_distinct_emails_4w",
+        "in_training_window": true,
+        "month": 5,
+        "psi": 0.1602195599692728,
+        "status": "warn"
+      },
+      {
+        "feature": "employment_status",
+        "in_training_window": true,
+        "month": 5,
+        "psi": 0.019004847774372665,
+        "status": "pass"
+      },
+      {
+        "feature": "email_is_free",
+        "in_training_window": true,
+        "month": 5,
+        "psi": 0.002420690248383235,
+        "status": "pass"
+      },
+      {
+        "feature": "housing_status",
+        "in_training_window": true,
+        "month": 5,
+        "psi": 0.016729989971846854,
+        "status": "pass"
+      },
+      {
+        "feature": "phone_home_valid",
+        "in_training_window": true,
+        "month": 5,
+        "psi": 0.041866502531240746,
+        "status": "pass"
+      },
+      {
+        "feature": "phone_mobile_valid",
+        "in_training_window": true,
+        "month": 5,
+        "psi": 0.008487197117680242,
+        "status": "pass"
+      },
+      {
+        "feature": "bank_months_count",
+        "in_training_window": true,
+        "month": 5,
+        "psi": 0.011079613442702845,
+        "status": "pass"
+      },
+      {
+        "feature": "has_other_cards",
+        "in_training_window": true,
+        "month": 5,
+        "psi": 0.01334798963415254,
+        "status": "pass"
+      },
+      {
+        "feature": "proposed_credit_limit",
+        "in_training_window": true,
+        "month": 5,
+        "psi": 0.03141678481784924,
+        "status": "pass"
+      },
+      {
+        "feature": "foreign_request",
+        "in_training_window": true,
+        "month": 5,
+        "psi": 0.00013075959329476847,
+        "status": "pass"
+      },
+      {
+        "feature": "source",
+        "in_training_window": true,
+        "month": 5,
+        "psi": 0.0004180385920681591,
+        "status": "pass"
+      },
+      {
+        "feature": "session_length_in_minutes",
+        "in_training_window": true,
+        "month": 5,
+        "psi": 0.067347036832512,
+        "status": "pass"
+      },
+      {
+        "feature": "device_os",
+        "in_training_window": true,
+        "month": 5,
+        "psi": 0.01203872354924025,
+        "status": "pass"
+      },
+      {
+        "feature": "keep_alive_session",
+        "in_training_window": true,
+        "month": 5,
+        "psi": 0.002248862857951303,
+        "status": "pass"
+      },
+      {
+        "feature": "device_distinct_emails_8w",
+        "in_training_window": true,
+        "month": 5,
+        "psi": 0.0106038646969689,
+        "status": "pass"
+      },
+      {
+        "feature": "prev_address_months_count__missing",
+        "in_training_window": true,
+        "month": 5,
+        "psi": 0.07025270197650907,
+        "status": "pass"
+      },
+      {
+        "feature": "current_address_months_count__missing",
+        "in_training_window": true,
+        "month": 5,
+        "psi": 0.0017527546463427521,
+        "status": "pass"
+      },
+      {
+        "feature": "bank_months_count__missing",
+        "in_training_window": true,
+        "month": 5,
+        "psi": 0.002788097675666747,
+        "status": "pass"
+      },
+      {
+        "feature": "session_length_in_minutes__missing",
+        "in_training_window": true,
+        "month": 5,
+        "psi": 2.2717627778537664e-06,
+        "status": "pass"
+      },
+      {
+        "feature": "device_distinct_emails_8w__missing",
+        "in_training_window": true,
+        "month": 5,
+        "psi": 3.805633727357194e-05,
+        "status": "pass"
+      },
+      {
+        "feature": "intended_balcon_amount__missing",
+        "in_training_window": true,
+        "month": 5,
+        "psi": 0.00675122194184319,
+        "status": "pass"
+      },
+      {
+        "feature": "credit_risk_score",
+        "in_training_window": true,
+        "month": 5,
+        "psi": 0.11619786115774398,
+        "status": "warn"
+      },
+      {
+        "feature": "model_score",
+        "in_training_window": true,
+        "month": 5,
+        "psi": 0.001115119692697697,
+        "status": "pass"
+      },
+      {
+        "feature": "income",
+        "in_training_window": false,
+        "month": 6,
+        "psi": 0.07939126751978534,
+        "status": "pass"
+      },
+      {
+        "feature": "name_email_similarity",
+        "in_training_window": false,
+        "month": 6,
+        "psi": 0.09188637028296087,
+        "status": "pass"
+      },
+      {
+        "feature": "prev_address_months_count",
+        "in_training_window": false,
+        "month": 6,
+        "psi": 0.034347185067087525,
+        "status": "pass"
+      },
+      {
+        "feature": "current_address_months_count",
+        "in_training_window": false,
+        "month": 6,
+        "psi": 0.02068887608137144,
+        "status": "pass"
+      },
+      {
+        "feature": "intended_balcon_amount",
+        "in_training_window": false,
+        "month": 6,
+        "psi": 0.00720505911306493,
+        "status": "pass"
+      },
+      {
+        "feature": "payment_type",
+        "in_training_window": false,
+        "month": 6,
+        "psi": 0.019580753621638577,
+        "status": "pass"
+      },
+      {
+        "feature": "zip_count_4w",
+        "in_training_window": false,
+        "month": 6,
+        "psi": 0.2308692906765182,
+        "status": "warn"
+      },
+      {
+        "feature": "velocity_6h",
+        "in_training_window": false,
+        "month": 6,
+        "psi": 0.7433851344700926,
+        "status": "block"
+      },
+      {
+        "feature": "velocity_24h",
+        "in_training_window": false,
+        "month": 6,
+        "psi": 1.2824073568103158,
+        "status": "block"
+      },
+      {
+        "feature": "velocity_4w",
+        "in_training_window": false,
+        "month": 6,
+        "psi": 2.6959582758252867,
+        "status": "block"
+      },
+      {
+        "feature": "bank_branch_count_8w",
+        "in_training_window": false,
+        "month": 6,
+        "psi": 0.015952606766439212,
+        "status": "pass"
+      },
+      {
+        "feature": "date_of_birth_distinct_emails_4w",
+        "in_training_window": false,
+        "month": 6,
+        "psi": 0.2996266037447044,
+        "status": "block"
+      },
+      {
+        "feature": "employment_status",
+        "in_training_window": false,
+        "month": 6,
+        "psi": 0.020867090058815853,
+        "status": "pass"
+      },
+      {
+        "feature": "email_is_free",
+        "in_training_window": false,
+        "month": 6,
+        "psi": 0.020478925232548906,
+        "status": "pass"
+      },
+      {
+        "feature": "housing_status",
+        "in_training_window": false,
+        "month": 6,
+        "psi": 0.03645703352731078,
+        "status": "pass"
+      },
+      {
+        "feature": "phone_home_valid",
+        "in_training_window": false,
+        "month": 6,
+        "psi": 0.007431199826951251,
+        "status": "pass"
+      },
+      {
+        "feature": "phone_mobile_valid",
+        "in_training_window": false,
+        "month": 6,
+        "psi": 0.009157977437551914,
+        "status": "pass"
+      },
+      {
+        "feature": "bank_months_count",
+        "in_training_window": false,
+        "month": 6,
+        "psi": 0.008589270985701971,
+        "status": "pass"
+      },
+      {
+        "feature": "has_other_cards",
+        "in_training_window": false,
+        "month": 6,
+        "psi": 0.0014311173736055636,
+        "status": "pass"
+      },
+      {
+        "feature": "proposed_credit_limit",
+        "in_training_window": false,
+        "month": 6,
+        "psi": 0.08377844484166015,
+        "status": "pass"
+      },
+      {
+        "feature": "foreign_request",
+        "in_training_window": false,
+        "month": 6,
+        "psi": 0.00037942682213542114,
+        "status": "pass"
+      },
+      {
+        "feature": "source",
+        "in_training_window": false,
+        "month": 6,
+        "psi": 0.00025327664706229657,
+        "status": "pass"
+      },
+      {
+        "feature": "session_length_in_minutes",
+        "in_training_window": false,
+        "month": 6,
+        "psi": 0.015477634677335752,
+        "status": "pass"
+      },
+      {
+        "feature": "device_os",
+        "in_training_window": false,
+        "month": 6,
+        "psi": 0.027524817061899288,
+        "status": "pass"
+      },
+      {
+        "feature": "keep_alive_session",
+        "in_training_window": false,
+        "month": 6,
+        "psi": 1.4086001191995958e-05,
+        "status": "pass"
+      },
+      {
+        "feature": "device_distinct_emails_8w",
+        "in_training_window": false,
+        "month": 6,
+        "psi": 0.009843854277328047,
+        "status": "pass"
+      },
+      {
+        "feature": "prev_address_months_count__missing",
+        "in_training_window": false,
+        "month": 6,
+        "psi": 0.00683354446920735,
+        "status": "pass"
+      },
+      {
+        "feature": "current_address_months_count__missing",
+        "in_training_window": false,
+        "month": 6,
+        "psi": 9.105787583389846e-06,
+        "status": "pass"
+      },
+      {
+        "feature": "bank_months_count__missing",
+        "in_training_window": false,
+        "month": 6,
+        "psi": 0.0002247621426466466,
+        "status": "pass"
+      },
+      {
+        "feature": "session_length_in_minutes__missing",
+        "in_training_window": false,
+        "month": 6,
+        "psi": 0.0003477678069056622,
+        "status": "pass"
+      },
+      {
+        "feature": "device_distinct_emails_8w__missing",
+        "in_training_window": false,
+        "month": 6,
+        "psi": 8.648791975565282e-06,
+        "status": "pass"
+      },
+      {
+        "feature": "intended_balcon_amount__missing",
+        "in_training_window": false,
+        "month": 6,
+        "psi": 0.0018510925308740781,
+        "status": "pass"
+      },
+      {
+        "feature": "credit_risk_score",
+        "in_training_window": false,
+        "month": 6,
+        "psi": 0.20464581032372364,
+        "status": "warn"
+      },
+      {
+        "feature": "model_score",
+        "in_training_window": false,
+        "month": 6,
+        "psi": 0.013841137259213637,
+        "status": "pass"
+      },
+      {
+        "feature": "income",
+        "in_training_window": false,
+        "month": 7,
+        "psi": 0.06283242671892755,
+        "status": "pass"
+      },
+      {
+        "feature": "name_email_similarity",
+        "in_training_window": false,
+        "month": 7,
+        "psi": 0.04131402719953828,
+        "status": "pass"
+      },
+      {
+        "feature": "prev_address_months_count",
+        "in_training_window": false,
+        "month": 7,
+        "psi": 0.05313847282023956,
+        "status": "pass"
+      },
+      {
+        "feature": "current_address_months_count",
+        "in_training_window": false,
+        "month": 7,
+        "psi": 0.0921642435770016,
+        "status": "pass"
+      },
+      {
+        "feature": "intended_balcon_amount",
+        "in_training_window": false,
+        "month": 7,
+        "psi": 0.03936816336817549,
+        "status": "pass"
+      },
+      {
+        "feature": "payment_type",
+        "in_training_window": false,
+        "month": 7,
+        "psi": 0.039628140464487725,
+        "status": "pass"
+      },
+      {
+        "feature": "zip_count_4w",
+        "in_training_window": false,
+        "month": 7,
+        "psi": 0.7872032877163347,
+        "status": "block"
+      },
+      {
+        "feature": "velocity_6h",
+        "in_training_window": false,
+        "month": 7,
+        "psi": 1.224631150635405,
+        "status": "block"
+      },
+      {
+        "feature": "velocity_24h",
+        "in_training_window": false,
+        "month": 7,
+        "psi": 2.323337974881891,
+        "status": "block"
+      },
+      {
+        "feature": "velocity_4w",
+        "in_training_window": false,
+        "month": 7,
+        "psi": 3.697664697548788,
+        "status": "block"
+      },
+      {
+        "feature": "bank_branch_count_8w",
+        "in_training_window": false,
+        "month": 7,
+        "psi": 0.09334615865050067,
+        "status": "pass"
+      },
+      {
+        "feature": "date_of_birth_distinct_emails_4w",
+        "in_training_window": false,
+        "month": 7,
+        "psi": 0.48914049891911343,
+        "status": "block"
+      },
+      {
+        "feature": "employment_status",
+        "in_training_window": false,
+        "month": 7,
+        "psi": 0.020344947556713868,
+        "status": "pass"
+      },
+      {
+        "feature": "email_is_free",
+        "in_training_window": false,
+        "month": 7,
+        "psi": 0.008013809873293141,
+        "status": "pass"
+      },
+      {
+        "feature": "housing_status",
+        "in_training_window": false,
+        "month": 7,
+        "psi": 0.04072536304150806,
+        "status": "pass"
+      },
+      {
+        "feature": "phone_home_valid",
+        "in_training_window": false,
+        "month": 7,
+        "psi": 0.02520047085741564,
+        "status": "pass"
+      },
+      {
+        "feature": "phone_mobile_valid",
+        "in_training_window": false,
+        "month": 7,
+        "psi": 0.00231293746434944,
+        "status": "pass"
+      },
+      {
+        "feature": "bank_months_count",
+        "in_training_window": false,
+        "month": 7,
+        "psi": 0.025827928491264716,
+        "status": "pass"
+      },
+      {
+        "feature": "has_other_cards",
+        "in_training_window": false,
+        "month": 7,
+        "psi": 0.005730668188329536,
+        "status": "pass"
+      },
+      {
+        "feature": "proposed_credit_limit",
+        "in_training_window": false,
+        "month": 7,
+        "psi": 0.050440114380579645,
+        "status": "pass"
+      },
+      {
+        "feature": "foreign_request",
+        "in_training_window": false,
+        "month": 7,
+        "psi": 0.0008276233899028701,
+        "status": "pass"
+      },
+      {
+        "feature": "source",
+        "in_training_window": false,
+        "month": 7,
+        "psi": 0.002046827269330006,
+        "status": "pass"
+      },
+      {
+        "feature": "session_length_in_minutes",
+        "in_training_window": false,
+        "month": 7,
+        "psi": 0.08839060334843254,
+        "status": "pass"
+      },
+      {
+        "feature": "device_os",
+        "in_training_window": false,
+        "month": 7,
+        "psi": 0.0024464079780271266,
+        "status": "pass"
+      },
+      {
+        "feature": "keep_alive_session",
+        "in_training_window": false,
+        "month": 7,
+        "psi": 0.026326751962352637,
+        "status": "pass"
+      },
+      {
+        "feature": "device_distinct_emails_8w",
+        "in_training_window": false,
+        "month": 7,
+        "psi": 0.01871232726654125,
+        "status": "pass"
+      },
+      {
+        "feature": "prev_address_months_count__missing",
+        "in_training_window": false,
+        "month": 7,
+        "psi": 0.018032212150113098,
+        "status": "pass"
+      },
+      {
+        "feature": "current_address_months_count__missing",
+        "in_training_window": false,
+        "month": 7,
+        "psi": 0.003957794763393193,
+        "status": "pass"
+      },
+      {
+        "feature": "bank_months_count__missing",
+        "in_training_window": false,
+        "month": 7,
+        "psi": 0.006018404217782894,
+        "status": "pass"
+      },
+      {
+        "feature": "session_length_in_minutes__missing",
+        "in_training_window": false,
+        "month": 7,
+        "psi": 1.1651498081841968e-05,
+        "status": "pass"
+      },
+      {
+        "feature": "device_distinct_emails_8w__missing",
+        "in_training_window": false,
+        "month": 7,
+        "psi": 0.00024045084988216073,
+        "status": "pass"
+      },
+      {
+        "feature": "intended_balcon_amount__missing",
+        "in_training_window": false,
+        "month": 7,
+        "psi": 0.03568714216221225,
+        "status": "pass"
+      },
+      {
+        "feature": "credit_risk_score",
+        "in_training_window": false,
+        "month": 7,
+        "psi": 0.24438600169319571,
+        "status": "warn"
+      },
+      {
+        "feature": "model_score",
+        "in_training_window": false,
+        "month": 7,
+        "psi": 0.0042701988494761554,
+        "status": "pass"
+      }
+    ],
+    "warnings": 12
+  },
+  "economic_grid_at_5_percent_capacity": {
+    "grid_points": 60,
+    "incremental_utility_max": 9581600.0,
+    "incremental_utility_median": 5947200.0,
+    "incremental_utility_min": 2360000.0,
+    "positive_points": 60,
+    "positive_share": 1.0
+  },
+  "economic_sensitivity_at_5_percent_capacity": {
+    "basis": "the approved 60-point grid, swept across both factors",
+    "cells": [
+      {
+        "grid_points": 60,
+        "incremental_utility_max": 2407200.0,
+        "incremental_utility_median": 1463200.0,
+        "incremental_utility_min": 566400.0,
+        "loss_given_fraud": 0.4,
+        "positive_points": 60,
+        "positive_share": 1.0,
+        "review_effectiveness": 0.6
+      },
+      {
+        "grid_points": 60,
+        "incremental_utility_max": 3540000.0,
+        "incremental_utility_median": 2171200.0,
+        "incremental_utility_min": 849600.0,
+        "loss_given_fraud": 0.6,
+        "positive_points": 60,
+        "positive_share": 1.0,
+        "review_effectiveness": 0.6
+      },
+      {
+        "grid_points": 60,
+        "incremental_utility_max": 4672800.0,
+        "incremental_utility_median": 2879200.0,
+        "incremental_utility_min": 1132800.0,
+        "loss_given_fraud": 0.8,
+        "positive_points": 60,
+        "positive_share": 1.0,
+        "review_effectiveness": 0.6
+      },
+      {
+        "grid_points": 60,
+        "incremental_utility_max": 5805600.0,
+        "incremental_utility_median": 3587200.0,
+        "incremental_utility_min": 1416000.0,
+        "loss_given_fraud": 1.0,
+        "positive_points": 60,
+        "positive_share": 1.0,
+        "review_effectiveness": 0.6
+      },
+      {
+        "grid_points": 60,
+        "incremental_utility_max": 2973600.0,
+        "incremental_utility_median": 1817200.0,
+        "incremental_utility_min": 708000.0,
+        "loss_given_fraud": 0.4,
+        "positive_points": 60,
+        "positive_share": 1.0,
+        "review_effectiveness": 0.75
+      },
+      {
+        "grid_points": 60,
+        "incremental_utility_max": 4389600.0,
+        "incremental_utility_median": 2702200.0,
+        "incremental_utility_min": 1062000.0,
+        "loss_given_fraud": 0.6,
+        "positive_points": 60,
+        "positive_share": 1.0,
+        "review_effectiveness": 0.75
+      },
+      {
+        "grid_points": 60,
+        "incremental_utility_max": 5805600.0,
+        "incremental_utility_median": 3587200.0,
+        "incremental_utility_min": 1416000.0,
+        "loss_given_fraud": 0.8,
+        "positive_points": 60,
+        "positive_share": 1.0,
+        "review_effectiveness": 0.75
+      },
+      {
+        "grid_points": 60,
+        "incremental_utility_max": 7221600.0,
+        "incremental_utility_median": 4472200.0,
+        "incremental_utility_min": 1770000.0,
+        "loss_given_fraud": 1.0,
+        "positive_points": 60,
+        "positive_share": 1.0,
+        "review_effectiveness": 0.75
+      },
+      {
+        "grid_points": 60,
+        "incremental_utility_max": 3539999.9999999995,
+        "incremental_utility_median": 2171200.0,
+        "incremental_utility_min": 849599.9999999999,
+        "loss_given_fraud": 0.4,
+        "positive_points": 60,
+        "positive_share": 1.0,
+        "review_effectiveness": 0.9
+      },
+      {
+        "grid_points": 60,
+        "incremental_utility_max": 5239200.0,
+        "incremental_utility_median": 3233200.0,
+        "incremental_utility_min": 1274400.0,
+        "loss_given_fraud": 0.6,
+        "positive_points": 60,
+        "positive_share": 1.0,
+        "review_effectiveness": 0.9
+      },
+      {
+        "grid_points": 60,
+        "incremental_utility_max": 6938399.999999999,
+        "incremental_utility_median": 4295200.0,
+        "incremental_utility_min": 1699199.9999999998,
+        "loss_given_fraud": 0.8,
+        "positive_points": 60,
+        "positive_share": 1.0,
+        "review_effectiveness": 0.9
+      },
+      {
+        "grid_points": 60,
+        "incremental_utility_max": 8637600.0,
+        "incremental_utility_median": 5357200.0,
+        "incremental_utility_min": 2124000.0,
+        "loss_given_fraud": 1.0,
+        "positive_points": 60,
+        "positive_share": 1.0,
+        "review_effectiveness": 0.9
+      },
+      {
+        "grid_points": 60,
+        "incremental_utility_max": 3917600.000000001,
+        "incremental_utility_median": 2407200.0000000005,
+        "incremental_utility_min": 944000.0000000002,
+        "loss_given_fraud": 0.4,
+        "positive_points": 60,
+        "positive_share": 1.0,
+        "review_effectiveness": 1.0
+      },
+      {
+        "grid_points": 60,
+        "incremental_utility_max": 5805600.0,
+        "incremental_utility_median": 3587200.0,
+        "incremental_utility_min": 1416000.0,
+        "loss_given_fraud": 0.6,
+        "positive_points": 60,
+        "positive_share": 1.0,
+        "review_effectiveness": 1.0
+      },
+      {
+        "grid_points": 60,
+        "incremental_utility_max": 7693600.000000002,
+        "incremental_utility_median": 4767200.000000001,
+        "incremental_utility_min": 1888000.0000000005,
+        "loss_given_fraud": 0.8,
+        "positive_points": 60,
+        "positive_share": 1.0,
+        "review_effectiveness": 1.0
+      },
+      {
+        "grid_points": 60,
+        "incremental_utility_max": 9581600.0,
+        "incremental_utility_median": 5947200.0,
+        "incremental_utility_min": 2360000.0,
+        "loss_given_fraud": 1.0,
+        "positive_points": 60,
+        "positive_share": 1.0,
+        "review_effectiveness": 1.0
+      }
+    ],
+    "inflation_factor_at_worst_case": 4.064516129032258,
+    "loss_given_fraud_range": [
+      0.4,
+      0.6,
+      0.8,
+      1.0
+    ],
+    "reported_band": {
+      "max": 9581600.0,
+      "min": 566400.0
+    },
+    "review_effectiveness_range": [
+      0.6,
+      0.75,
+      0.9,
+      1.0
+    ],
+    "sign_holds_everywhere": true,
+    "sourcing": "Neither factor has a source meeting this project's citation bar. Both are declared sensitivity inputs, as customer-friction cost already is, and no figure derived from them may be presented as an observed result.",
+    "status": "sensitivity evidence, not a promotion gate"
+  },
+  "elapsed_seconds": 62.826,
+  "error_cohorts": {
+    "capacity": 0.05,
+    "false_negatives": {
+      "channel_distribution": {
+        "INTERNET": 0.9909365558912386,
+        "TELEAPP": 0.00906344410876133
+      },
+      "housing_distribution": {
+        "BA": 0.4425981873111782,
+        "BB": 0.1646525679758308,
+        "BC": 0.2824773413897281,
+        "BD": 0.0377643504531722,
+        "BE": 0.07099697885196375,
+        "BF": 0.0015105740181268882
+      },
+      "income_distribution": {
+        "0.1": 0.08308157099697885,
+        "0.2": 0.028700906344410877,
+        "0.3": 0.027190332326283987,
+        "0.4": 0.05740181268882175,
+        "0.5": 0.04682779456193353,
+        "0.6000000000000001": 0.1042296072507553,
+        "0.7000000000000001": 0.1027190332326284,
+        "0.8": 0.1555891238670695,
+        "0.9": 0.3942598187311178
+      },
+      "median_name_email_similarity": 0.40410588818001036,
+      "rows": 662
+    },
+    "false_positives": {
+      "channel_distribution": {
+        "INTERNET": 0.9955849889624724,
+        "TELEAPP": 0.004415011037527594
+      },
+      "housing_distribution": {
+        "BA": 0.751532989943586,
+        "BB": 0.0875643855776306,
+        "BC": 0.10939416237429482,
+        "BD": 0.02918812852587687,
+        "BE": 0.02207505518763797,
+        "BF": 0.0002452783909737552
+      },
+      "income_distribution": {
+        "0.1": 0.039735099337748346,
+        "0.2": 0.01888643610497915,
+        "0.3": 0.01790532254108413,
+        "0.4": 0.037037037037037035,
+        "0.5": 0.026980623007113073,
+        "0.6000000000000001": 0.060093205788570025,
+        "0.7000000000000001": 0.06965906303654648,
+        "0.8": 0.13563895020848662,
+        "0.9": 0.5940642629384352
+      },
+      "median_name_email_similarity": 0.2578237272908028,
+      "rows": 4077
+    },
+    "threshold": 0.05222254637963366
+  },
+  "evaluation_source_sha": "81a4b0b644f0d68fe28d0c6e2433c08a88bbdeb8",
+  "evidence_id": "EV-M3-MODEL-20260805",
+  "execution": {
+    "checkpoint_protocol": "m6-temporal-model-selection-v1",
+    "fitted_candidate_checkpoint_reused": true,
+    "selection_checkpoint_reused": true
+  },
+  "explanations": {
+    "global": [
+      {
+        "feature": "device_os",
+        "mean_absolute_shap": 0.5119853761819144,
+        "plain_language": "Device Os influenced the score"
+      },
+      {
+        "feature": "phone_home_valid",
+        "mean_absolute_shap": 0.40805497193860185,
+        "plain_language": "Home-phone validation evidence increased risk"
+      },
+      {
+        "feature": "has_other_cards",
+        "mean_absolute_shap": 0.321576361465764,
+        "plain_language": "Has Other Cards influenced the score"
+      },
+      {
+        "feature": "current_address_months_count",
+        "mean_absolute_shap": 0.3169260616522718,
+        "plain_language": "Current Address Months Count influenced the score"
+      },
+      {
+        "feature": "name_email_similarity",
+        "mean_absolute_shap": 0.3064223555525679,
+        "plain_language": "Name and email similarity differed from lower-risk applications"
+      },
+      {
+        "feature": "keep_alive_session",
+        "mean_absolute_shap": 0.29160630284154204,
+        "plain_language": "Keep Alive Session influenced the score"
+      },
+      {
+        "feature": "email_is_free",
+        "mean_absolute_shap": 0.27983082799216363,
+        "plain_language": "Email Is Free influenced the score"
+      },
+      {
+        "feature": "income",
+        "mean_absolute_shap": 0.2658811042682439,
+        "plain_language": "Income influenced the score"
+      },
+      {
+        "feature": "housing_status",
+        "mean_absolute_shap": 0.2654226657045219,
+        "plain_language": "Housing Status influenced the score"
+      },
+      {
+        "feature": "prev_address_months_count",
+        "mean_absolute_shap": 0.24924546224558855,
+        "plain_language": "Prev Address Months Count influenced the score"
+      },
+      {
+        "feature": "velocity_4w",
+        "mean_absolute_shap": 0.21849889747939624,
+        "plain_language": "Four-week application velocity was elevated"
+      },
+      {
+        "feature": "bank_branch_count_8w",
+        "mean_absolute_shap": 0.2174348304837013,
+        "plain_language": "Recent selected-branch application concentration was elevated"
+      },
+      {
+        "feature": "date_of_birth_distinct_emails_4w",
+        "mean_absolute_shap": 0.14386646088720628,
+        "plain_language": "Multiple recent emails were associated with the birth-date signal"
+      },
+      {
+        "feature": "employment_status",
+        "mean_absolute_shap": 0.1424616285981719,
+        "plain_language": "Employment Status influenced the score"
+      },
+      {
+        "feature": "credit_risk_score",
+        "mean_absolute_shap": 0.13298804179633428,
+        "plain_language": "The incumbent score proxy increased estimated risk"
+      }
+    ],
+    "local_example_count": 25,
+    "local_reason_code_counts": {
+      "Current Address Months Count increased risk": 1,
+      "Device Os increased risk": 17,
+      "Housing Status increased risk": 17,
+      "Income increased risk": 6,
+      "Multiple recent emails were associated with the birth-date signal": 8,
+      "Multiple recent emails were associated with the device signal": 1,
+      "Name and email similarity differed from lower-risk applications": 5,
+      "Proposed Credit Limit increased risk": 12,
+      "The incumbent score proxy increased estimated risk": 8
+    },
+    "method": "CatBoost SHAP",
+    "sample_rows": 2000
+  },
+  "fairness": {
+    "accepted_reasons": [
+      "customer_age max_min_tpr_gap exceeds 0.10",
+      "customer_age review-rate ratio is outside 0.80-1.25",
+      "housing_status max_min_tpr_gap exceeds 0.10",
+      "housing_status max_min_fpr_gap exceeds 0.10",
+      "housing_status review-rate ratio is outside 0.80-1.25"
+    ],
+    "governance_acceptance": {
+      "accepted_reasons": [
+        "customer_age max_min_tpr_gap exceeds 0.10",
+        "customer_age review-rate ratio is outside 0.80-1.25",
+        "housing_status max_min_tpr_gap exceeds 0.10",
+        "housing_status max_min_fpr_gap exceeds 0.10",
+        "housing_status review-rate ratio is outside 0.80-1.25"
+      ],
+      "accountable": "vaibhavkhuranaaa@gmail.com",
+      "basis": "docs/fairness-review.md, sections 2 to 5; evaluation/fairness_ablation.json",
+      "date": "2026-08-10",
+      "decision": "accepted",
+      "decision_id": "GOV-FAIRNESS-20260810",
+      "evaluation_period": "month 7, 5% review capacity",
+      "feature_decision": "housing_status is retained in the feature contract. Removing it was measured and costs 2.39 percentage points of catch at 5% capacity and 63 month-7 fraud cases, is a partial mitigation only, and closes the gap partly by levelling down.",
+      "limits": [
+        "This acceptance is granted against the values in granted_against and lapses if any accepted metric worsens past the recorded tolerance.",
+        "It is matched reason by reason. A segment that begins failing later is not covered.",
+        "It resolves gate 5 only. The calibration intercept and the stability blocks fail independently and the challenger remains rejected.",
+        "It authorises no group-specific threshold and no automatic decline. Neither exists in the code or the schema.",
+        "BAF is synthetic account-opening data. Neither the disparity nor this acceptance transfers to a real portfolio, and a production version would need the same measurement on observed data plus legal review of the attribute."
+      ],
+      "reasoning": {
+        "customer_age": "Accepted as a prevalence artifact. The feature is audit-only and never trained on, and its review-rate ratio moves from 0.397 to 0.836, inside the 0.80 to 1.25 band, once each band's own fraud rate is accounted for.",
+        "housing_status": "Accepted on the business-justification record. The disparity is real and survives the prevalence adjustment at 0.484. Removal was measured rather than assumed: it costs 2.39 points of catch, brings the prevalence-adjusted ratio to 1.119 and the FPR gap under its trigger, and still leaves the raw ratio at 0.169 and the TPR gap at 0.190, so it does not close the check either. Group membership stays recoverable from the 32 remaining inputs at AUROC 0.799 and 0.770, so removal would remove the audit handle rather than the behaviour."
+      },
+      "scope": [
+        "customer_age",
+        "housing_status"
+      ],
+      "tolerance": {
+        "gap": 0.05,
+        "ratio": 0.05
+      }
+    },
+    "governance_review": false,
+    "lapsed_reasons": [],
+    "outstanding_reasons": [],
+    "reasons": [
+      "customer_age max_min_tpr_gap exceeds 0.10",
+      "customer_age review-rate ratio is outside 0.80-1.25",
+      "housing_status max_min_tpr_gap exceeds 0.10",
+      "housing_status max_min_fpr_gap exceeds 0.10",
+      "housing_status review-rate ratio is outside 0.80-1.25"
+    ],
+    "segments": [
+      {
+        "groups": [
+          {
+            "calibration_error": null,
+            "fpr": null,
+            "fpr_ci95": null,
+            "group": "10",
+            "positive_labels": 13,
+            "precision": null,
+            "publishable": false,
+            "review_rate": null,
+            "rows": 2930,
+            "tpr": null,
+            "tpr_ci95": null
+          },
+          {
+            "calibration_error": null,
+            "fpr": null,
+            "fpr_ci95": null,
+            "group": "20",
+            "positive_labels": 156,
+            "precision": null,
+            "publishable": false,
+            "review_rate": null,
+            "rows": 21023,
+            "tpr": null,
+            "tpr_ci95": null
+          },
+          {
+            "calibration_error": 0.0019587802353521703,
+            "fpr": 0.03435759434257463,
+            "fpr_ci95": [
+              0.03241589638003184,
+              0.03641122240957066
+            ],
+            "group": "30",
+            "positive_labels": 405,
+            "precision": 0.1421875,
+            "publishable": true,
+            "review_rate": 0.039551339492630476,
+            "rows": 32363,
+            "tpr": 0.44938271604938274,
+            "tpr_ci95": [
+              0.4016385752596224,
+              0.4980780529946041
+            ]
+          },
+          {
+            "calibration_error": 0.0005692738520054422,
+            "fpr": 0.05411318553092182,
+            "fpr_ci95": [
+              0.051497444277528386,
+              0.0568538258463902
+            ],
+            "group": "40",
+            "positive_labels": 436,
+            "precision": 0.1471264367816092,
+            "publishable": true,
+            "review_rate": 0.0624551328068916,
+            "rows": 27860,
+            "tpr": 0.5871559633027523,
+            "tpr_ci95": [
+              0.5403766138225596,
+              0.6324129185779825
+            ]
+          },
+          {
+            "calibration_error": 0.004414809040712751,
+            "fpr": 0.08374696377653396,
+            "fpr_ci95": [
+              0.07833493207174971,
+              0.08949659616947336
+            ],
+            "group": "50",
+            "positive_labels": 256,
+            "precision": 0.18078512396694216,
+            "publishable": true,
+            "review_rate": 0.09953727506426735,
+            "rows": 9725,
+            "tpr": 0.68359375,
+            "tpr_ci95": [
+              0.6242666601546496,
+              0.7374923925639758
+            ]
+          },
+          {
+            "calibration_error": null,
+            "fpr": null,
+            "fpr_ci95": null,
+            "group": "60",
+            "positive_labels": 131,
+            "precision": null,
+            "publishable": false,
+            "review_rate": null,
+            "rows": 2501,
+            "tpr": null,
+            "tpr_ci95": null
+          },
+          {
+            "calibration_error": null,
+            "fpr": null,
+            "fpr_ci95": null,
+            "group": "70",
+            "positive_labels": 25,
+            "precision": null,
+            "publishable": false,
+            "review_rate": null,
+            "rows": 364,
+            "tpr": null,
+            "tpr_ci95": null
+          },
+          {
+            "calibration_error": null,
+            "fpr": null,
+            "fpr_ci95": null,
+            "group": "80",
+            "positive_labels": 6,
+            "precision": null,
+            "publishable": false,
+            "review_rate": null,
+            "rows": 74,
+            "tpr": null,
+            "tpr_ci95": null
+          },
+          {
+            "calibration_error": null,
+            "fpr": null,
+            "fpr_ci95": null,
+            "group": "90",
+            "positive_labels": 0,
+            "precision": null,
+            "publishable": false,
+            "review_rate": null,
+            "rows": 3,
+            "tpr": null,
+            "tpr_ci95": null
+          }
+        ],
+        "max_min_fpr_gap": 0.04938936943395933,
+        "max_min_tpr_gap": 0.23421103395061726,
+        "minimum_positive_gate": 200,
+        "review_rate_ratio": 0.3973520419068506,
+        "segment": "customer_age"
+      },
+      {
+        "groups": [
+          {
+            "calibration_error": null,
+            "fpr": null,
+            "fpr_ci95": null,
+            "group": "0.1",
+            "positive_labels": 81,
+            "precision": null,
+            "publishable": false,
+            "review_rate": null,
+            "rows": 11163,
+            "tpr": null,
+            "tpr_ci95": null
+          },
+          {
+            "calibration_error": null,
+            "fpr": null,
+            "fpr_ci95": null,
+            "group": "0.2",
+            "positive_labels": 34,
+            "precision": null,
+            "publishable": false,
+            "review_rate": null,
+            "rows": 5416,
+            "tpr": null,
+            "tpr_ci95": null
+          },
+          {
+            "calibration_error": null,
+            "fpr": null,
+            "fpr_ci95": null,
+            "group": "0.3",
+            "positive_labels": 34,
+            "precision": null,
+            "publishable": false,
+            "review_rate": null,
+            "rows": 4066,
+            "tpr": null,
+            "tpr_ci95": null
+          },
+          {
+            "calibration_error": null,
+            "fpr": null,
+            "fpr_ci95": null,
+            "group": "0.4",
+            "positive_labels": 72,
+            "precision": null,
+            "publishable": false,
+            "review_rate": null,
+            "rows": 6972,
+            "tpr": null,
+            "tpr_ci95": null
+          },
+          {
+            "calibration_error": null,
+            "fpr": null,
+            "fpr_ci95": null,
+            "group": "0.5",
+            "positive_labels": 49,
+            "precision": null,
+            "publishable": false,
+            "review_rate": null,
+            "rows": 4812,
+            "tpr": null,
+            "tpr_ci95": null
+          },
+          {
+            "calibration_error": null,
+            "fpr": null,
+            "fpr_ci95": null,
+            "group": "0.6000000000000001",
+            "positive_labels": 117,
+            "precision": null,
+            "publishable": false,
+            "review_rate": null,
+            "rows": 10411,
+            "tpr": null,
+            "tpr_ci95": null
+          },
+          {
+            "calibration_error": null,
+            "fpr": null,
+            "fpr_ci95": null,
+            "group": "0.7000000000000001",
+            "positive_labels": 106,
+            "precision": null,
+            "publishable": false,
+            "review_rate": null,
+            "rows": 10383,
+            "tpr": null,
+            "tpr_ci95": null
+          },
+          {
+            "calibration_error": null,
+            "fpr": null,
+            "fpr_ci95": null,
+            "group": "0.8",
+            "positive_labels": 197,
+            "precision": null,
+            "publishable": false,
+            "review_rate": null,
+            "rows": 15903,
+            "tpr": null,
+            "tpr_ci95": null
+          },
+          {
+            "calibration_error": 0.0036954005717729117,
+            "fpr": 0.0897735275584714,
+            "fpr_ci95": [
+              0.0864206547462606,
+              0.09324320557101276
+            ],
+            "group": "0.9",
+            "positive_labels": 738,
+            "precision": 0.1645394963780614,
+            "publishable": true,
+            "review_rate": 0.10459284915394884,
+            "rows": 27717,
+            "tpr": 0.6463414634146342,
+            "tpr_ci95": [
+              0.6111707930844933,
+              0.6799965411642225
+            ]
+          }
+        ],
+        "max_min_fpr_gap": null,
+        "max_min_tpr_gap": null,
+        "minimum_positive_gate": 200,
+        "review_rate_ratio": null,
+        "segment": "income"
+      },
+      {
+        "groups": [
+          {
+            "calibration_error": 0.001977075432867164,
+            "fpr": 0.0427033908112487,
+            "fpr_ci95": [
+              0.04143640645295609,
+              0.04400733669756201
+            ],
+            "group": "INTERNET",
+            "positive_labels": 1414,
+            "precision": 0.1573593522939589,
+            "publishable": true,
+            "review_rate": 0.04993520966153527,
+            "rows": 96465,
+            "tpr": 0.536067892503536,
+            "tpr_ci95": [
+              0.5100119788682337,
+              0.5619283635201456
+            ]
+          },
+          {
+            "calibration_error": null,
+            "fpr": null,
+            "fpr_ci95": null,
+            "group": "TELEAPP",
+            "positive_labels": 14,
+            "precision": null,
+            "publishable": false,
+            "review_rate": null,
+            "rows": 378,
+            "tpr": null,
+            "tpr_ci95": null
+          }
+        ],
+        "max_min_fpr_gap": null,
+        "max_min_tpr_gap": null,
+        "minimum_positive_gate": 200,
+        "review_rate_ratio": null,
+        "segment": "source"
+      },
+      {
+        "groups": [
+          {
+            "calibration_error": 0.008661194053445516,
+            "fpr": 0.1675873762511623,
+            "fpr_ci95": [
+              0.1622433721863234,
+              0.1730710380484189
+            ],
+            "group": "BA",
+            "positive_labels": 899,
+            "precision": 0.1651226158038147,
+            "publishable": true,
+            "review_rate": 0.19132520070899803,
+            "rows": 19182,
+            "tpr": 0.6740823136818688,
+            "tpr_ci95": [
+              0.642758611845683,
+              0.7039246257726313
+            ]
+          },
+          {
+            "calibration_error": null,
+            "fpr": null,
+            "fpr_ci95": null,
+            "group": "BB",
+            "positive_labels": 166,
+            "precision": null,
+            "publishable": false,
+            "review_rate": null,
+            "rows": 23213,
+            "tpr": null,
+            "tpr_ci95": null
+          },
+          {
+            "calibration_error": 0.0011160452888225366,
+            "fpr": 0.011977656031797186,
+            "fpr_ci95": [
+              0.01092197563238716,
+              0.013134019874771575
+            ],
+            "group": "BC",
+            "positive_labels": 266,
+            "precision": 0.15047619047619049,
+            "publishable": true,
+            "review_rate": 0.013999253373153431,
+            "rows": 37502,
+            "tpr": 0.29699248120300753,
+            "tpr_ci95": [
+              0.24528712564130656,
+              0.3544778605398404
+            ]
+          },
+          {
+            "calibration_error": null,
+            "fpr": null,
+            "fpr_ci95": null,
+            "group": "BD",
+            "positive_labels": 42,
+            "precision": null,
+            "publishable": false,
+            "review_rate": null,
+            "rows": 4478,
+            "tpr": null,
+            "tpr_ci95": null
+          },
+          {
+            "calibration_error": null,
+            "fpr": null,
+            "fpr_ci95": null,
+            "group": "BE",
+            "positive_labels": 54,
+            "precision": null,
+            "publishable": false,
+            "review_rate": null,
+            "rows": 12327,
+            "tpr": null,
+            "tpr_ci95": null
+          },
+          {
+            "calibration_error": null,
+            "fpr": null,
+            "fpr_ci95": null,
+            "group": "BF",
+            "positive_labels": 1,
+            "precision": null,
+            "publishable": false,
+            "review_rate": null,
+            "rows": 135,
+            "tpr": null,
+            "tpr_ci95": null
+          },
+          {
+            "calibration_error": null,
+            "fpr": null,
+            "fpr_ci95": null,
+            "group": "BG",
+            "positive_labels": 0,
+            "precision": null,
+            "publishable": false,
+            "review_rate": null,
+            "rows": 6,
+            "tpr": null,
+            "tpr_ci95": null
+          }
+        ],
+        "max_min_fpr_gap": 0.15560972021936512,
+        "max_min_tpr_gap": 0.37708983247886124,
+        "minimum_positive_gate": 200,
+        "review_rate_ratio": 0.07316993956507606,
+        "segment": "housing_status"
+      }
+    ]
+  },
+  "fold_selection": {
+    "catboost_hybrid": {
+      "folds": [
+        {
+          "fold": 1,
+          "pr_auc": 0.1524288753569294,
+          "test_months": [
+            3
+          ],
+          "test_rows": 150936,
+          "train_months": [
+            0,
+            1,
+            2
+          ],
+          "train_rows_available": 397039,
+          "train_rows_used": 350000
+        },
+        {
+          "fold": 2,
+          "pr_auc": 0.17707081583800696,
+          "test_months": [
+            4
+          ],
+          "test_rows": 127691,
+          "train_months": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "train_rows_available": 547975,
+          "train_rows_used": 350000
+        },
+        {
+          "fold": 3,
+          "pr_auc": 0.1886668318281408,
+          "test_months": [
+            5
+          ],
+          "test_rows": 119323,
+          "train_months": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "train_rows_available": 675666,
+          "train_rows_used": 350000
+        }
+      ],
+      "mean_pr_auc": 0.17272217434102574,
+      "worst_pr_auc": 0.1524288753569294
+    },
+    "catboost_internal": {
+      "folds": [
+        {
+          "fold": 1,
+          "pr_auc": 0.15189287908037463,
+          "test_months": [
+            3
+          ],
+          "test_rows": 150936,
+          "train_months": [
+            0,
+            1,
+            2
+          ],
+          "train_rows_available": 397039,
+          "train_rows_used": 350000
+        },
+        {
+          "fold": 2,
+          "pr_auc": 0.16797681693590294,
+          "test_months": [
+            4
+          ],
+          "test_rows": 127691,
+          "train_months": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "train_rows_available": 547975,
+          "train_rows_used": 350000
+        },
+        {
+          "fold": 3,
+          "pr_auc": 0.18492577045732117,
+          "test_months": [
+            5
+          ],
+          "test_rows": 119323,
+          "train_months": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "train_rows_available": 675666,
+          "train_rows_used": 350000
+        }
+      ],
+      "mean_pr_auc": 0.16826515549119958,
+      "worst_pr_auc": 0.15189287908037463
+    },
+    "regularized_logistic": {
+      "folds": [
+        {
+          "converged": true,
+          "fold": 1,
+          "iterations": 34,
+          "pr_auc": 0.13003092158385168,
+          "test_months": [
+            3
+          ],
+          "test_rows": 150936,
+          "train_months": [
+            0,
+            1,
+            2
+          ],
+          "train_rows": 397039
+        },
+        {
+          "converged": true,
+          "fold": 2,
+          "iterations": 33,
+          "pr_auc": 0.14185230039090246,
+          "test_months": [
+            4
+          ],
+          "test_rows": 127691,
+          "train_months": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "train_rows": 547975
+        },
+        {
+          "converged": true,
+          "fold": 3,
+          "iterations": 33,
+          "pr_auc": 0.1529108184478494,
+          "test_months": [
+            5
+          ],
+          "test_rows": 119323,
+          "train_months": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "train_rows": 675666
+        }
+      ],
+      "mean_pr_auc": 0.14159801347420117,
+      "worst_pr_auc": 0.13003092158385168
+    }
+  },
+  "limitations": [
+    "BAF is synthetic account-opening data and not observed loan-origination performance.",
+    "Economic values are assumptions rather than observed profit and loss.",
+    "The incumbent credit-risk score is a proxy and not a verified vendor product.",
+    "BAF has no cross-row identity or ring truth."
+  ],
+  "month_7_capacity": {
+    "catboost_hybrid": {
+      "0.01": {
+        "capacity": 0.01,
+        "capacity_count": 968,
+        "catch_rate": 0.219187675070028,
+        "catch_rate_ci95": [
+          0.19849980198638373,
+          0.24138231969729046
+        ],
+        "false_positive_count": 655,
+        "false_positive_rate": 0.006864748729235445,
+        "false_positive_rate_ci95": [
+          0.006360326820234814,
+          0.007408876816425356
+        ],
+        "fraud_caught": 313,
+        "governance_referrals": 0,
+        "overflow": 0,
+        "precision": 0.32334710743801653,
+        "precision_ci95": [
+          0.2946289265322808,
+          0.3534618223281264
+        ],
+        "queue_size": 968,
+        "review_rate": 0.009995559823632065
+      },
+      "0.03": {
+        "capacity": 0.03,
+        "capacity_count": 2905,
+        "catch_rate": 0.4166666666666667,
+        "catch_rate_ci95": [
+          0.39135323008887574,
+          0.44242724991201515
+        ],
+        "false_positive_count": 2310,
+        "false_positive_rate": 0.024210029869517372,
+        "false_positive_rate_ci95": [
+          0.023253766996813613,
+          0.02520460231608751
+        ],
+        "fraud_caught": 595,
+        "governance_referrals": 0,
+        "overflow": 0,
+        "precision": 0.20481927710843373,
+        "precision_ci95": [
+          0.19053809556615844,
+          0.2198800986604539
+        ],
+        "queue_size": 2905,
+        "review_rate": 0.02999700546244953
+      },
+      "0.05": {
+        "capacity": 0.05,
+        "capacity_count": 4842,
+        "catch_rate": 0.5364145658263305,
+        "catch_rate_ci95": [
+          0.5104871972182482,
+          0.5621465426132953
+        ],
+        "false_positive_count": 4076,
+        "false_positive_rate": 0.042718650107425454,
+        "false_positive_rate_ci95": [
+          0.04145383042570017,
+          0.04402028908915956
+        ],
+        "fraud_caught": 766,
+        "governance_referrals": 0,
+        "overflow": 0,
+        "precision": 0.15819909128459314,
+        "precision_ci95": [
+          0.14819175175212926,
+          0.16874834459069735
+        ],
+        "queue_size": 4842,
+        "review_rate": 0.049998451101267
+      },
+      "0.10": {
+        "capacity": 0.1,
+        "capacity_count": 9684,
+        "catch_rate": 0.6778711484593838,
+        "catch_rate_ci95": [
+          0.6531851336111857,
+          0.701602749412123
+        ],
+        "false_positive_count": 8716,
+        "false_positive_rate": 0.09134832049468113,
+        "false_positive_rate_ci95": [
+          0.08953668221397681,
+          0.09319286252007206
+        ],
+        "fraud_caught": 968,
+        "governance_referrals": 0,
+        "overflow": 0,
+        "precision": 0.09995869475423379,
+        "precision_ci95": [
+          0.0941424404978246,
+          0.10609220073430307
+        ],
+        "queue_size": 9684,
+        "review_rate": 0.099996902202534
+      }
+    },
+    "catboost_internal": {
+      "0.01": {
+        "capacity": 0.01,
+        "capacity_count": 968,
+        "catch_rate": 0.21358543417366946,
+        "catch_rate_ci95": [
+          0.19311179381573854,
+          0.23559590635539043
+        ],
+        "false_positive_count": 663,
+        "false_positive_rate": 0.006948592988523817,
+        "false_positive_rate_ci95": [
+          0.006441002666024942,
+          0.00749588273825452
+        ],
+        "fraud_caught": 305,
+        "governance_referrals": 0,
+        "overflow": 0,
+        "precision": 0.31508264462809915,
+        "precision_ci95": [
+          0.28659778689486953,
+          0.34502937126894845
+        ],
+        "queue_size": 968,
+        "review_rate": 0.009995559823632065
+      },
+      "0.03": {
+        "capacity": 0.03,
+        "capacity_count": 2905,
+        "catch_rate": 0.41246498599439774,
+        "catch_rate_ci95": [
+          0.3872004611291318,
+          0.4381992027373501
+        ],
+        "false_positive_count": 2316,
+        "false_positive_rate": 0.024272913063983652,
+        "false_positive_rate_ci95": [
+          0.023315413701308386,
+          0.025268716937307208
+        ],
+        "fraud_caught": 589,
+        "governance_referrals": 0,
+        "overflow": 0,
+        "precision": 0.2027538726333907,
+        "precision_ci95": [
+          0.18853052085737593,
+          0.21776231962621567
+        ],
+        "queue_size": 2905,
+        "review_rate": 0.02999700546244953
+      },
+      "0.05": {
+        "capacity": 0.05,
+        "capacity_count": 4842,
+        "catch_rate": 0.5217086834733894,
+        "catch_rate_ci95": [
+          0.49577653511820746,
+          0.5475243482429051
+        ],
+        "false_positive_count": 4097,
+        "false_positive_rate": 0.042938741288057435,
+        "false_positive_rate_ci95": [
+          0.04167076000171947,
+          0.04424352415314091
+        ],
+        "fraud_caught": 745,
+        "governance_referrals": 0,
+        "overflow": 0,
+        "precision": 0.15386204047914084,
+        "precision_ci95": [
+          0.1439737570343621,
+          0.1642991139448387
+        ],
+        "queue_size": 4842,
+        "review_rate": 0.049998451101267
+      },
+      "0.10": {
+        "capacity": 0.1,
+        "capacity_count": 9684,
+        "catch_rate": 0.6715686274509803,
+        "catch_rate_ci95": [
+          0.6467781183008292,
+          0.6954385405208661
+        ],
+        "false_positive_count": 8725,
+        "false_positive_rate": 0.09144264528638055,
+        "false_positive_rate_ci95": [
+          0.08963015466266333,
+          0.09328803205995725
+        ],
+        "fraud_caught": 959,
+        "governance_referrals": 0,
+        "overflow": 0,
+        "precision": 0.09902932672449401,
+        "precision_ci95": [
+          0.09323818468595443,
+          0.10513845751960874
+        ],
+        "queue_size": 9684,
+        "review_rate": 0.099996902202534
+      }
+    },
+    "incumbent_proxy": {
+      "0.01": {
+        "capacity": 0.01,
+        "capacity_count": 968,
+        "catch_rate": 0.06022408963585434,
+        "catch_rate_ci95": [
+          0.049025125224247304,
+          0.07378278604095816
+        ],
+        "false_positive_count": 882,
+        "false_positive_rate": 0.009243829586542997,
+        "false_positive_rate_ci95": [
+          0.00865605350496806,
+          0.009871120287889511
+        ],
+        "fraud_caught": 86,
+        "governance_referrals": 0,
+        "overflow": 0,
+        "precision": 0.08884297520661157,
+        "precision_ci95": [
+          0.07250663758568765,
+          0.10842972525900252
+        ],
+        "queue_size": 968,
+        "review_rate": 0.009995559823632065
+      },
+      "0.03": {
+        "capacity": 0.03,
+        "capacity_count": 2905,
+        "catch_rate": 0.14915966386554622,
+        "catch_rate_ci95": [
+          0.13162464114074063,
+          0.1685772116361191
+        ],
+        "false_positive_count": 2692,
+        "false_positive_rate": 0.028213593250537128,
+        "false_positive_rate_ci95": [
+          0.027181795262324143,
+          0.029283378454398157
+        ],
+        "fraud_caught": 213,
+        "governance_referrals": 0,
+        "overflow": 0,
+        "precision": 0.07332185886402753,
+        "precision_ci95": [
+          0.06439599057886286,
+          0.08337468200875933
+        ],
+        "queue_size": 2905,
+        "review_rate": 0.02999700546244953
+      },
+      "0.05": {
+        "capacity": 0.05,
+        "capacity_count": 4842,
+        "catch_rate": 0.20588235294117646,
+        "catch_rate_ci95": [
+          0.1857129141920099,
+          0.22762995639936953
+        ],
+        "false_positive_count": 4548,
+        "false_positive_rate": 0.0476654614054394,
+        "false_positive_rate_ci95": [
+          0.04633170179138385,
+          0.049035642013014094
+        ],
+        "fraud_caught": 294,
+        "governance_referrals": 0,
+        "overflow": 0,
+        "precision": 0.06071871127633209,
+        "precision_ci95": [
+          0.0543340116682096,
+          0.06779987650169503
+        ],
+        "queue_size": 4842,
+        "review_rate": 0.049998451101267
+      },
+      "0.10": {
+        "capacity": 0.1,
+        "capacity_count": 9684,
+        "catch_rate": 0.3081232492997199,
+        "catch_rate_ci95": [
+          0.28471711507042907,
+          0.3325589481248994
+        ],
+        "false_positive_count": 9244,
+        "false_positive_rate": 0.09688204160771367,
+        "false_positive_rate_ci95": [
+          0.09502137068450138,
+          0.09877517071242074
+        ],
+        "fraud_caught": 440,
+        "governance_referrals": 0,
+        "overflow": 0,
+        "precision": 0.04543577034283354,
+        "precision_ci95": [
+          0.04146508083590119,
+          0.04976695083777614
+        ],
+        "queue_size": 9684,
+        "review_rate": 0.099996902202534
+      }
+    },
+    "prevalence": {
+      "0.01": {
+        "capacity": 0.01,
+        "capacity_count": 968,
+        "catch_rate": 0.012605042016806723,
+        "catch_rate_ci95": [
+          0.007988019405044025,
+          0.01983730900352762
+        ],
+        "false_positive_count": 950,
+        "false_positive_rate": 0.009956505790494157,
+        "false_positive_rate_ci95": [
+          0.009345967504834919,
+          0.010606501312786629
+        ],
+        "fraud_caught": 18,
+        "governance_referrals": 0,
+        "overflow": 0,
+        "precision": 0.01859504132231405,
+        "precision_ci95": [
+          0.011794130363684745,
+          0.02920171155999771
+        ],
+        "queue_size": 968,
+        "review_rate": 0.009995559823632065
+      },
+      "0.03": {
+        "capacity": 0.03,
+        "capacity_count": 2905,
+        "catch_rate": 0.03571428571428571,
+        "catch_rate_ci95": [
+          0.027267299093831462,
+          0.04665251805398894
+        ],
+        "false_positive_count": 2854,
+        "false_positive_rate": 0.029911439501126656,
+        "false_positive_rate_ci95": [
+          0.028849374105946277,
+          0.031011355405066672
+        ],
+        "fraud_caught": 51,
+        "governance_referrals": 0,
+        "overflow": 0,
+        "precision": 0.01755593803786575,
+        "precision_ci95": [
+          0.013378133196999074,
+          0.02300798832906185
+        ],
+        "queue_size": 2905,
+        "review_rate": 0.02999700546244953
+      },
+      "0.05": {
+        "capacity": 0.05,
+        "capacity_count": 4842,
+        "catch_rate": 0.06092436974789916,
+        "catch_rate_ci95": [
+          0.049657190439799194,
+          0.07454752351447441
+        ],
+        "false_positive_count": 4755,
+        "false_positive_rate": 0.04983493161452602,
+        "false_positive_rate_ci95": [
+          0.04847224168243617,
+          0.051233867859110944
+        ],
+        "fraud_caught": 87,
+        "governance_referrals": 0,
+        "overflow": 0,
+        "precision": 0.017967781908302356,
+        "precision_ci95": [
+          0.014590417315972498,
+          0.02210939226962101
+        ],
+        "queue_size": 4842,
+        "review_rate": 0.049998451101267
+      },
+      "0.10": {
+        "capacity": 0.1,
+        "capacity_count": 9684,
+        "catch_rate": 0.10504201680672269,
+        "catch_rate_ci95": [
+          0.09018512503422332,
+          0.12201815833134336
+        ],
+        "false_positive_count": 9534,
+        "false_positive_rate": 0.09992139600691716,
+        "false_positive_rate_ci95": [
+          0.09803460239137386,
+          0.10184040308174759
+        ],
+        "fraud_caught": 150,
+        "governance_referrals": 0,
+        "overflow": 0,
+        "precision": 0.015489467162329617,
+        "precision_ci95": [
+          0.013215068146528914,
+          0.018148106004514723
+        ],
+        "queue_size": 9684,
+        "review_rate": 0.099996902202534
+      }
+    },
+    "regularized_logistic": {
+      "0.01": {
+        "capacity": 0.01,
+        "capacity_count": 968,
+        "catch_rate": 0.1869747899159664,
+        "catch_rate_ci95": [
+          0.1676021308666601,
+          0.20802706711987945
+        ],
+        "false_positive_count": 701,
+        "false_positive_rate": 0.0073468532201435835,
+        "false_positive_rate_ci95": [
+          0.00682447229972973,
+          0.007908901500741366
+        ],
+        "fraud_caught": 267,
+        "governance_referrals": 0,
+        "overflow": 0,
+        "precision": 0.27582644628099173,
+        "precision_ci95": [
+          0.24859966067588057,
+          0.30482544167913905
+        ],
+        "queue_size": 968,
+        "review_rate": 0.009995559823632065
+      },
+      "0.03": {
+        "capacity": 0.03,
+        "capacity_count": 2905,
+        "catch_rate": 0.3739495798319328,
+        "catch_rate_ci95": [
+          0.34922370269235975,
+          0.39935181327537433
+        ],
+        "false_positive_count": 2371,
+        "false_positive_rate": 0.024849342346591207,
+        "false_positive_rate_ci95": [
+          0.023880587819714624,
+          0.0258563549712836
+        ],
+        "fraud_caught": 534,
+        "governance_referrals": 0,
+        "overflow": 0,
+        "precision": 0.1838209982788296,
+        "precision_ci95": [
+          0.17015638710541311,
+          0.19832071073382126
+        ],
+        "queue_size": 2905,
+        "review_rate": 0.02999700546244953
+      },
+      "0.05": {
+        "capacity": 0.05,
+        "capacity_count": 4842,
+        "catch_rate": 0.49369747899159666,
+        "catch_rate_ci95": [
+          0.4678181773945257,
+          0.519610598403861
+        ],
+        "false_positive_count": 4137,
+        "false_positive_rate": 0.04335796258449929,
+        "false_positive_rate_ci95": [
+          0.042083984645420486,
+          0.04466870834753635
+        ],
+        "fraud_caught": 705,
+        "governance_referrals": 0,
+        "overflow": 0,
+        "precision": 0.14560099132589838,
+        "precision_ci95": [
+          0.13594734965431546,
+          0.15581652063226484
+        ],
+        "queue_size": 4842,
+        "review_rate": 0.049998451101267
+      },
+      "0.10": {
+        "capacity": 0.1,
+        "capacity_count": 9684,
+        "catch_rate": 0.6477591036414566,
+        "catch_rate_ci95": [
+          0.6226179368924795,
+          0.672107430500899
+        ],
+        "false_positive_count": 8759,
+        "false_positive_rate": 0.09179898338835613,
+        "false_positive_rate_ci95": [
+          0.08998327811312777,
+          0.0936475561218748
+        ],
+        "fraud_caught": 925,
+        "governance_referrals": 0,
+        "overflow": 0,
+        "precision": 0.09551838083436597,
+        "precision_ci95": [
+          0.08982357833268091,
+          0.10153395643919418
+        ],
+        "queue_size": 9684,
+        "review_rate": 0.099996902202534
+      }
+    }
+  },
+  "month_7_metrics": {
+    "catboost_hybrid": {
+      "auroc": 0.8946506790107962,
+      "brier_score": 0.012878029278690278,
+      "brier_skill": 0.1135770020571335,
+      "calibration_intercept": 0.30143324811996364,
+      "calibration_slope": 1.04107599622306,
+      "ece": 0.002255037080896719,
+      "log_loss": 0.05584366974808832,
+      "pr_auc": 0.21286747067376688,
+      "prevalence": 0.014745515938167962
+    },
+    "catboost_internal": {
+      "auroc": 0.8926138447833148,
+      "brier_score": 0.012945298859494388,
+      "brier_skill": 0.10894668928207174,
+      "calibration_intercept": 0.32499727351947405,
+      "calibration_slope": 1.0426931786852212,
+      "ece": 0.002490802753333739,
+      "log_loss": 0.056312495515844316,
+      "pr_auc": 0.20566136322734105,
+      "prevalence": 0.014745515938167962
+    },
+    "incumbent_proxy": {
+      "auroc": 0.6762020135832983,
+      "brier_score": 0.014380065010087551,
+      "brier_skill": 0.010188588563955991,
+      "calibration_intercept": 0.2987248720043238,
+      "calibration_slope": 1.0369379647766197,
+      "ece": 0.001966122036258639,
+      "log_loss": 0.07337803063918233,
+      "pr_auc": 0.040326172405370064,
+      "prevalence": 0.014745515938167962
+    },
+    "prevalence": {
+      "auroc": 0.5,
+      "brier_score": 0.014548268648439052,
+      "brier_skill": -0.001389236749669731,
+      "calibration_intercept": -0.1920193321638693,
+      "calibration_slope": 0.8775056440990705,
+      "ece": 0.004492543884466588,
+      "log_loss": 0.07769116020699504,
+      "pr_auc": 0.014745515938167962,
+      "prevalence": 0.014745515938167962
+    },
+    "regularized_logistic": {
+      "auroc": 0.88479922074159,
+      "brier_score": 0.013261010197735483,
+      "brier_skill": 0.0872155854872303,
+      "calibration_intercept": 0.4802421135530283,
+      "calibration_slope": 1.0369476653686205,
+      "ece": 0.00404583509323263,
+      "log_loss": 0.058357204501134796,
+      "pr_auc": 0.1786720756638162,
+      "prevalence": 0.014745515938167962
+    }
+  },
+  "partial_dependence": [
+    {
+      "curve": [
+        {
+          "mean_probability": 0.008162840321460337,
+          "value": 4.0
+        },
+        {
+          "mean_probability": 0.008204735454862869,
+          "value": 15.0
+        },
+        {
+          "mean_probability": 0.009424164555864908,
+          "value": 38.0
+        },
+        {
+          "mean_probability": 0.01659251047968322,
+          "value": 90.5
+        },
+        {
+          "mean_probability": 0.0108476500016583,
+          "value": 189.0
+        }
+      ],
+      "feature": "current_address_months_count"
+    },
+    {
+      "curve": [
+        {
+          "mean_probability": 0.019300770039280973,
+          "value": 0.0957981736084478
+        },
+        {
+          "mean_probability": 0.010408414497347465,
+          "value": 0.3086990455653375
+        },
+        {
+          "mean_probability": 0.009148322076344258,
+          "value": 0.4845260212639996
+        },
+        {
+          "mean_probability": 0.009144110081187899,
+          "value": 0.6382649885035654
+        },
+        {
+          "mean_probability": 0.008136003847577497,
+          "value": 0.8737175084322631
+        }
+      ],
+      "feature": "name_email_similarity"
+    },
+    {
+      "curve": [
+        {
+          "mean_probability": 0.007539893562596251,
+          "value": 0.1
+        },
+        {
+          "mean_probability": 0.00891624716514904,
+          "value": 0.5
+        },
+        {
+          "mean_probability": 0.009353225453805146,
+          "value": 0.7000000000000001
+        },
+        {
+          "mean_probability": 0.010806682738909607,
+          "value": 0.8
+        },
+        {
+          "mean_probability": 0.016045876364646647,
+          "value": 0.9
+        }
+      ],
+      "feature": "income"
+    },
+    {
+      "curve": [
+        {
+          "mean_probability": 0.007551349348824756,
+          "value": 12.0
+        },
+        {
+          "mean_probability": 0.007551349348824756,
+          "value": 29.0
+        },
+        {
+          "mean_probability": 0.007551349348824756,
+          "value": 48.0
+        },
+        {
+          "mean_probability": 0.007207348413891356,
+          "value": 59.0
+        },
+        {
+          "mean_probability": 0.007288575343856096,
+          "value": 110.0
+        }
+      ],
+      "feature": "prev_address_months_count"
+    },
+    {
+      "curve": [
+        {
+          "mean_probability": 0.011878237007581196,
+          "value": 3061.4966700490054
+        },
+        {
+          "mean_probability": 0.011878237007581196,
+          "value": 3096.7592053285957
+        },
+        {
+          "mean_probability": 0.011878237007581196,
+          "value": 3122.517330230876
+        },
+        {
+          "mean_probability": 0.011878237007581196,
+          "value": 3154.4643860149617
+        },
+        {
+          "mean_probability": 0.012502926733965624,
+          "value": 4160.31650649676
+        }
+      ],
+      "feature": "velocity_4w"
+    }
+  ],
+  "permutation_checks": [
+    {
+      "feature": "housing_status",
+      "pr_auc_loss": 0.040158395107130124
+    },
+    {
+      "feature": "device_os",
+      "pr_auc_loss": 0.03608963044658728
+    },
+    {
+      "feature": "phone_home_valid",
+      "pr_auc_loss": 0.028378553607093265
+    },
+    {
+      "feature": "name_email_similarity",
+      "pr_auc_loss": 0.02600123364059781
+    },
+    {
+      "feature": "income",
+      "pr_auc_loss": 0.024917708935527805
+    },
+    {
+      "feature": "has_other_cards",
+      "pr_auc_loss": 0.021178013356782127
+    },
+    {
+      "feature": "email_is_free",
+      "pr_auc_loss": 0.01831506183002299
+    },
+    {
+      "feature": "keep_alive_session",
+      "pr_auc_loss": 0.016942437563189916
+    },
+    {
+      "feature": "current_address_months_count",
+      "pr_auc_loss": 0.00610029111320734
+    },
+    {
+      "feature": "prev_address_months_count",
+      "pr_auc_loss": 0.0012061563172535428
+    }
+  ],
+  "pr_auc_lift_bootstrap": {
+    "lower_95": 0.02192035765574901,
+    "observed": 0.03419539500995067,
+    "resamples": 1000,
+    "seed": 20260805,
+    "upper_95": 0.046411665409631084
+  },
+  "promotion_gates": {
+    "calibration_intercept_abs_at_most_0_10": false,
+    "calibration_slope_0_8_to_1_2": true,
+    "catch_rate_improves_at_three_capacities": true,
+    "ece_at_most_0_02": true,
+    "economic_grid_positive_at_least_80_percent": true,
+    "fairness_governance_review_resolved": true,
+    "no_automatic_promotion_psi_blocks": false,
+    "no_capacity_regression_over_two_points": true,
+    "positive_brier_skill": true,
+    "pr_auc_lift_ci_lower_above_zero": true,
+    "warnings_visible": true
+  },
+  "rows": {
+    "calibration": 108168,
+    "fit": 794989,
+    "test": 96843
+  },
+  "selected_challenger": "catboost_hybrid",
+  "selection_basis": "mean rolling PR-AUC, then worst-fold PR-AUC, then simplicity; selected before month-7 access",
+  "simple_versus_complex": {
+    "catch_rate_by_capacity": {
+      "0.01": {
+        "catboost_hybrid": 0.219187675070028,
+        "regularized_logistic": 0.1869747899159664
+      },
+      "0.03": {
+        "catboost_hybrid": 0.4166666666666667,
+        "regularized_logistic": 0.3739495798319328
+      },
+      "0.05": {
+        "catboost_hybrid": 0.5364145658263305,
+        "regularized_logistic": 0.49369747899159666
+      },
+      "0.10": {
+        "catboost_hybrid": 0.6778711484593838,
+        "regularized_logistic": 0.6477591036414566
+      }
+    },
+    "catch_rate_gap_points": {
+      "0.01": 3.221288515406162,
+      "0.03": 4.271708683473391,
+      "0.05": 4.271708683473385,
+      "0.10": 3.0112044817927175
+    },
+    "complex": "catboost_hybrid",
+    "linear_share_of_complex_catch_at_5_percent": 0.9203655352480419,
+    "month_7_auroc": {
+      "catboost_hybrid": 0.8946506790107962,
+      "regularized_logistic": 0.88479922074159
+    },
+    "month_7_pr_auc": {
+      "catboost_hybrid": 0.21286747067376688,
+      "regularized_logistic": 0.1786720756638162
+    },
+    "note": "Model-risk context, not a promotion. A linear model with stable coefficients and direct adverse-action reasoning is cheaper to govern than gradient boosting, so the size of this gap is the term of the trade. Neither model is promoted here.",
+    "rolling_mean_pr_auc": {
+      "catboost_hybrid": 0.17272217434102574,
+      "regularized_logistic": 0.14159801347420117
+    },
+    "simple": "regularized_logistic"
+  },
+  "strategy_frontier": {
+    "assumption_notice": "Economic values are scenario assumptions, not observed profit or loss.",
+    "candidate_frontier_recommendation": "capacity-0.10-rules-false",
+    "frontier_policy_ids": [
+      "capacity-0.01-rules-false",
+      "capacity-0.03-rules-false",
+      "capacity-0.05-rules-false",
+      "capacity-0.10-rules-false"
+    ],
+    "policies": [
+      {
+        "capacity": 0.01,
+        "capacity_count": 968,
+        "catch_rate": 0.219187675070028,
+        "economic_grid": {
+          "grid_points": 60,
+          "incremental_utility_max": 4608100.0,
+          "incremental_utility_median": 2860200.0,
+          "incremental_utility_min": 1135000.0,
+          "positive_points": 60,
+          "positive_share": 1.0
+        },
+        "false_positive_count": 655,
+        "false_positive_rate": 0.006864748729235445,
+        "fraud_caught": 313,
+        "frontier": true,
+        "governance_referrals": 0,
+        "overflow": 0,
+        "policy_id": "capacity-0.01-rules-false",
+        "precision": 0.32334710743801653,
+        "queue_size": 968,
+        "review_rate": 0.009995559823632065,
+        "rules_enabled": false,
+        "utility": 3797794.0
+      },
+      {
+        "capacity": 0.01,
+        "capacity_count": 968,
+        "catch_rate": 0.3956582633053221,
+        "economic_grid": {
+          "grid_points": 60,
+          "incremental_utility_max": 9580000.0,
+          "incremental_utility_median": 1911400.0,
+          "incremental_utility_min": -10408100.0,
+          "positive_points": 36,
+          "positive_share": 0.6
+        },
+        "false_positive_count": 43559,
+        "false_positive_rate": 0.4565215112927737,
+        "fraud_caught": 565,
+        "frontier": false,
+        "governance_referrals": 43156,
+        "overflow": 43156,
+        "policy_id": "capacity-0.01-rules-true",
+        "precision": 0.012804822772187472,
+        "queue_size": 968,
+        "review_rate": 0.45562405129952604,
+        "rules_enabled": true,
+        "utility": 512194.0
+      },
+      {
+        "capacity": 0.03,
+        "capacity_count": 2905,
+        "catch_rate": 0.4166666666666667,
+        "economic_grid": {
+          "grid_points": 60,
+          "incremental_utility_max": 7754600.0,
+          "incremental_utility_median": 4813200.0,
+          "incremental_utility_min": 1910000.0,
+          "positive_points": 60,
+          "positive_share": 1.0
+        },
+        "false_positive_count": 2310,
+        "false_positive_rate": 0.024210029869517372,
+        "fraud_caught": 595,
+        "frontier": true,
+        "governance_referrals": 0,
+        "overflow": 0,
+        "policy_id": "capacity-0.03-rules-false",
+        "precision": 0.20481927710843373,
+        "queue_size": 2905,
+        "review_rate": 0.02999700546244953,
+        "rules_enabled": false,
+        "utility": 7041615.0
+      },
+      {
+        "capacity": 0.03,
+        "capacity_count": 2905,
+        "catch_rate": 0.3956582633053221,
+        "economic_grid": {
+          "grid_points": 60,
+          "incremental_utility_max": 7040000.0,
+          "incremental_utility_median": 364350.0,
+          "incremental_utility_min": -10500100.0,
+          "positive_points": 30,
+          "positive_share": 0.5
+        },
+        "false_positive_count": 43559,
+        "false_positive_rate": 0.4565215112927737,
+        "fraud_caught": 565,
+        "frontier": false,
+        "governance_referrals": 41219,
+        "overflow": 41219,
+        "policy_id": "capacity-0.03-rules-true",
+        "precision": 0.012804822772187472,
+        "queue_size": 2905,
+        "review_rate": 0.45562405129952604,
+        "rules_enabled": true,
+        "utility": 479265.0
+      },
+      {
+        "capacity": 0.05,
+        "capacity_count": 4842,
+        "catch_rate": 0.5364145658263305,
+        "economic_grid": {
+          "grid_points": 60,
+          "incremental_utility_max": 9581600.0,
+          "incremental_utility_median": 5947200.0,
+          "incremental_utility_min": 2360000.0,
+          "positive_points": 60,
+          "positive_share": 1.0
+        },
+        "false_positive_count": 4076,
+        "false_positive_rate": 0.042718650107425454,
+        "fraud_caught": 766,
+        "frontier": true,
+        "governance_referrals": 0,
+        "overflow": 0,
+        "policy_id": "capacity-0.05-rules-false",
+        "precision": 0.15819909128459314,
+        "queue_size": 4842,
+        "review_rate": 0.049998451101267,
+        "rules_enabled": false,
+        "utility": 8881286.0
+      },
+      {
+        "capacity": 0.05,
+        "capacity_count": 4842,
+        "catch_rate": 0.3956582633053221,
+        "economic_grid": {
+          "grid_points": 60,
+          "incremental_utility_max": 5420000.0,
+          "incremental_utility_median": -513600.0,
+          "incremental_utility_min": -10348300.0,
+          "positive_points": 27,
+          "positive_share": 0.45
+        },
+        "false_positive_count": 43559,
+        "false_positive_rate": 0.4565215112927737,
+        "fraud_caught": 565,
+        "frontier": false,
+        "governance_referrals": 39282,
+        "overflow": 39282,
+        "policy_id": "capacity-0.05-rules-true",
+        "precision": 0.012804822772187472,
+        "queue_size": 4842,
+        "review_rate": 0.45562405129952604,
+        "rules_enabled": true,
+        "utility": 446336.0
+      },
+      {
+        "capacity": 0.1,
+        "capacity_count": 9684,
+        "catch_rate": 0.6778711484593838,
+        "economic_grid": {
+          "grid_points": 60,
+          "incremental_utility_max": 10718400.0,
+          "incremental_utility_median": 6652800.0,
+          "incremental_utility_min": 2640000.0,
+          "positive_points": 60,
+          "positive_share": 1.0
+        },
+        "false_positive_count": 8716,
+        "false_positive_rate": 0.09134832049468113,
+        "fraud_caught": 968,
+        "frontier": true,
+        "governance_referrals": 0,
+        "overflow": 0,
+        "policy_id": "capacity-0.10-rules-false",
+        "precision": 0.09995869475423379,
+        "queue_size": 9684,
+        "review_rate": 0.099996902202534,
+        "rules_enabled": false,
+        "utility": 10627972.0
+      },
+      {
+        "capacity": 0.1,
+        "capacity_count": 9684,
+        "catch_rate": 0.3956582633053221,
+        "economic_grid": {
+          "grid_points": 60,
+          "incremental_utility_max": 2500000.0,
+          "incremental_utility_median": -1869000.0,
+          "incremental_utility_min": -9669500.0,
+          "positive_points": 21,
+          "positive_share": 0.35
+        },
+        "false_positive_count": 43559,
+        "false_positive_rate": 0.4565215112927737,
+        "fraud_caught": 565,
+        "frontier": false,
+        "governance_referrals": 34440,
+        "overflow": 34440,
+        "policy_id": "capacity-0.10-rules-true",
+        "precision": 0.012804822772187472,
+        "queue_size": 9684,
+        "review_rate": 0.45562405129952604,
+        "rules_enabled": true,
+        "utility": 364022.0
+      }
+    ],
+    "recommendation": "no robust recommendation",
+    "refusal_reasons": [
+      "Model promotion gates failed: calibration_intercept_abs_at_most_0_10, no_automatic_promotion_psi_blocks.",
+      "16 PSI results meet the automatic-promotion block threshold."
+    ]
+  },
+  "training_source_sha": "2fab5ade164be5b10b5579814c1292ad6e87ce0f",
+  "tuning": {
+    "best_fold_pr_auc": [
+      0.14967086972402047,
+      0.17363592545718518,
+      0.17117131202366298
+    ],
+    "best_objective": 0.17979312270735825,
+    "search_space": {
+      "auto_class_weights": [
+        null,
+        "Balanced"
+      ],
+      "bagging_temperature": [
+        0.0,
+        2.0
+      ],
+      "depth": [
+        5,
+        8
+      ],
+      "iterations": [
+        250,
+        350,
+        450
+      ],
+      "l2_leaf_reg": [
+        2.0,
+        12.0
+      ],
+      "learning_rate": [
+        0.035,
+        0.12
+      ],
+      "random_strength": [
+        0.1,
+        2.0
+      ]
+    },
+    "test_sample_cap": 100000,
+    "training_sample_cap": 250000,
+    "trials_completed": 5,
+    "trials_pruned": 1,
+    "trials_requested": 6
+  },
+  "variant_stress_tests": [
+    {
+      "evidence_source": "baf_variant_i",
+      "metrics": {
+        "auroc": 0.8822268633747364,
+        "brier_score": 0.010036320107206701,
+        "brier_skill": 0.07985809208073935,
+        "calibration_intercept": 0.026874542008167874,
+        "calibration_slope": 0.9942133462075098,
+        "ece": 0.0007862761349084917,
+        "log_loss": 0.04631856821390599,
+        "pr_auc": 0.15289366022925507,
+        "prevalence": 0.011029
+      },
+      "notice": "Frozen Base-trained model; variant was not used for training or tuning.",
+      "rows": 1000000
+    },
+    {
+      "evidence_source": "baf_variant_ii",
+      "metrics": {
+        "auroc": 0.895336410671794,
+        "brier_score": 0.009980032467227102,
+        "brier_skill": 0.08501861066622274,
+        "calibration_intercept": -0.19565930167187326,
+        "calibration_slope": 1.0405649975406444,
+        "ece": 0.0036825446878093497,
+        "log_loss": 0.04551373531985708,
+        "pr_auc": 0.17161266129756111,
+        "prevalence": 0.011029
+      },
+      "notice": "Frozen Base-trained model; variant was not used for training or tuning.",
+      "rows": 1000000
+    },
+    {
+      "evidence_source": "baf_variant_iii",
+      "metrics": {
+        "auroc": 0.8783185780317372,
+        "brier_score": 0.010246478171461623,
+        "brier_skill": 0.06067476656811832,
+        "calibration_intercept": -0.45711116728606294,
+        "calibration_slope": 0.9533260798581136,
+        "ece": 0.0035965447784872145,
+        "log_loss": 0.047479511513199915,
+        "pr_auc": 0.140161952322267,
+        "prevalence": 0.01103
+      },
+      "notice": "Frozen Base-trained model; variant was not used for training or tuning.",
+      "rows": 1000000
+    },
+    {
+      "evidence_source": "baf_variant_iv",
+      "metrics": {
+        "auroc": 0.8945365960432967,
+        "brier_score": 0.010023255053259938,
+        "brier_skill": 0.08113829599778966,
+        "calibration_intercept": -0.26341651072483147,
+        "calibration_slope": 1.0213527909120794,
+        "ece": 0.003710181860707881,
+        "log_loss": 0.04568458192289264,
+        "pr_auc": 0.16590258025032298,
+        "prevalence": 0.01103
+      },
+      "notice": "Frozen Base-trained model; variant was not used for training or tuning.",
+      "rows": 1000000
+    },
+    {
+      "evidence_source": "baf_variant_v",
+      "metrics": {
+        "auroc": 0.8796593630830563,
+        "brier_score": 0.01024733997474428,
+        "brier_skill": 0.0605957624892427,
+        "calibration_intercept": -0.459645623327179,
+        "calibration_slope": 0.953589483060836,
+        "ece": 0.003637153560423317,
+        "log_loss": 0.0473873350535118,
+        "pr_auc": 0.13989524685123647,
+        "prevalence": 0.01103
+      },
+      "notice": "Frozen Base-trained model; variant was not used for training or tuning.",
+      "rows": 1000000
+    }
+  ]
+}

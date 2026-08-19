@@ -1,0 +1,58 @@
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
+(CC BY-NC-SA 4.0)
+
+Full licence text: https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+Human-readable summary: https://creativecommons.org/licenses/by-nc-sa/4.0/
+
+-------------------------------------------------------------------------------
+WHY THIS LICENCE, AND WHAT IT COVERS
+-------------------------------------------------------------------------------
+
+This repository contains material derived from the Bank Account Fraud (BAF)
+dataset suite, whose governing distribution is licensed CC BY-NC-SA 4.0. The
+ShareAlike term means published derivative material must carry the same licence,
+so this repository carries it.
+
+Covered by CC BY-NC-SA 4.0 without qualification, because each of these is
+derived from or embeds BAF-derived results:
+
+  evaluation/*.json          aggregate model, strategy, fairness and linking evidence
+  dashboard/data/*.json      the precomputed policy grid and figures
+  docs/samples/*.xlsx        the monthly fraud KPI workbook
+  docs/*.md                  documents quoting those results
+  docs/screenshots/*.png     renderings of those results
+
+The independently written source code in src/, scripts/, tests/, db/, sas/ and
+infra/ is authored by this project and does not embed the dataset. As recorded in
+the data and attribution record in README.md, it could be separately licensed. It is published under
+CC BY-NC-SA 4.0 here as well, so that the whole repository carries one licence
+and the NonCommercial term applies uniformly. That is a deliberate simplification
+and not a claim that the code inherits ShareAlike on its own.
+
+Raw and curated BAF data are NOT contained in this repository. They are excluded
+by .gitignore and must be obtained from the source below under its own terms.
+
+-------------------------------------------------------------------------------
+REQUIRED ATTRIBUTION
+-------------------------------------------------------------------------------
+
+Bank Account Fraud (BAF) dataset suite, by Sergio Jesus, Jose Pombal, Duarte
+Alves, Andre F. Cruz, Pedro Saleiro, Rita P. Ribeiro, Joao Gama and Pedro
+Bizarro, on behalf of Feedzai. Presented at NeurIPS 2022, Datasets and Benchmarks
+track. Licensed CC BY-NC-SA 4.0.
+
+-------------------------------------------------------------------------------
+NONCOMMERCIAL
+-------------------------------------------------------------------------------
+
+This is a non-commercial portfolio and skill-demonstration artifact. It is not
+sold, not placed behind payment, and carries no advertising.
+
+-------------------------------------------------------------------------------
+WHAT THIS REPOSITORY IS NOT
+-------------------------------------------------------------------------------
+
+BAF is privacy-preserving synthetic account-opening data. Nothing here is a
+production result, an observed lending outcome, or a claim about any real
+portfolio, institution or person. The recorded outcome of the analysis is a
+refusal to recommend the model it evaluates.

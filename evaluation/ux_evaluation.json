@@ -1,0 +1,152 @@
+{
+  "base_url": "http://127.0.0.1:8060",
+  "screens": {
+    "dashboard": {
+      "contrast_dark": {
+        "failure_count": 0,
+        "measured": false,
+        "minimum_ratio": null,
+        "reason": "surface commits to one light rendition; see DESIGN.md"
+      },
+      "contrast_light": {
+        "failure_count": 0,
+        "failures": [],
+        "minimum_ratio": 5.11,
+        "text_nodes_checked": 656
+      },
+      "error_state": {
+        "recovery_action_named": true,
+        "visible": true
+      },
+      "focus_ring": {
+        "checked": true,
+        "outline_color": "rgb(43, 58, 103)",
+        "outline_style": "solid",
+        "outline_width": "2px"
+      },
+      "interactions": {
+        "case_drill_down_named": true,
+        "case_drill_down_visible": true,
+        "production_data_gaps_visible": true,
+        "refusal_preserved_after_controls": true,
+        "retrospective_filter_returns_rows": true,
+        "risk_disposition_visible": true,
+        "scenario_comparison_updates": true,
+        "seven_owned_controls_rendered": true,
+        "url_state_recorded": true
+      },
+      "keyboard": {
+        "first_focusable": "Skip to the decision",
+        "focusable": 34,
+        "positive_tabindex": 0,
+        "visual_order_breaks": 2
+      },
+      "responsive": {
+        "desktop": {
+          "overflowing_elements": [],
+          "page_scrolls_horizontally": false,
+          "ready_ms": 45.9
+        },
+        "laptop": {
+          "overflowing_elements": [],
+          "page_scrolls_horizontally": false,
+          "ready_ms": 39.4
+        },
+        "phone": {
+          "overflowing_elements": [
+            "table",
+            "caption",
+            "thead",
+            "tr",
+            "th.bar-cell"
+          ],
+          "page_scrolls_horizontally": false,
+          "ready_ms": 109.2
+        },
+        "tablet": {
+          "overflowing_elements": [],
+          "page_scrolls_horizontally": false,
+          "ready_ms": 45.0
+        },
+        "wide": {
+          "overflowing_elements": [],
+          "page_scrolls_horizontally": false,
+          "ready_ms": 42.8
+        }
+      },
+      "route": "/",
+      "self_contained_file": {
+        "data_unavailable": false,
+        "ready": true
+      },
+      "structure": {
+        "charts_labelled": 3,
+        "controls_without_name": 0,
+        "h1_count": 1,
+        "has_empty_state": true,
+        "has_loading_state": true,
+        "heading_level_skips": 0,
+        "headings": 24,
+        "images_without_alt": 0,
+        "landmarks": {
+          "footer": 1,
+          "header": 1,
+          "main": 1,
+          "nav": 1
+        },
+        "tables": 8,
+        "tables_without_header_cells": 0,
+        "visible_em_dash_count": 0
+      }
+    }
+  },
+  "screenshots": [
+    "docs/screenshots/dashboard-phone.png",
+    "docs/screenshots/dashboard-stakeholder.png",
+    "docs/screenshots/dashboard-technical.png"
+  ],
+  "summary": {
+    "contrast_failures": 0,
+    "controls_without_accessible_name": 0,
+    "heading_level_skips": 0,
+    "interaction_failures": 0,
+    "max_ready_ms": 109.2,
+    "median_ready_ms": 45.0,
+    "minimum_contrast_ratio": 5.11,
+    "positive_tabindex_total": 0,
+    "screens_checked": 1,
+    "screens_scrolling_horizontally": 0,
+    "screens_without_single_h1": 0,
+    "state_pattern_failures": 0,
+    "visible_em_dash_total": 0
+  },
+  "themes": {},
+  "tool": "playwright chromium (headless)",
+  "viewports": [
+    {
+      "height": 844,
+      "name": "phone",
+      "width": 390
+    },
+    {
+      "height": 1024,
+      "name": "tablet",
+      "width": 768
+    },
+    {
+      "height": 900,
+      "name": "laptop",
+      "width": 1280
+    },
+    {
+      "height": 1000,
+      "name": "desktop",
+      "width": 1440
+    },
+    {
+      "height": 1000,
+      "name": "wide",
+      "width": 1680
+    }
+  ]
+}

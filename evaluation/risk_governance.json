@@ -1,0 +1,270 @@
+{
+  "evidence_id": "risk-governance-v1",
+  "decision": "no robust recommendation",
+  "production_readiness": "not established",
+  "incumbent_disposition": {
+    "status": "temporary ranking baseline",
+    "approval_state": "retained for comparison, not approved as a probability model",
+    "permitted_use": [
+      "Rank a bounded manual-review queue while the challenger remains rejected",
+      "Provide the fixed comparator for monitoring and future challenger evaluation"
+    ],
+    "prohibited_use": [
+      "Automatic approval, decline, pricing, or account-opening decisions",
+      "Interpretation of its score as a calibrated fraud probability",
+      "Group-specific thresholds or unrecorded overrides"
+    ],
+    "owner_role": "Fraud Strategy Owner",
+    "review_cadence": "Monthly after labels mature, and immediately after an escalation trigger",
+    "compensating_controls": [
+      "Manual review is the only case-level action",
+      "Queue demand is checked against an explicit capacity ceiling",
+      "Calibration, stability, friction, and segment evidence remain visible to governance",
+      "Every challenger continues to face the fixed eleven-check promotion contract"
+    ],
+    "escalation_triggers": [
+      "Any use outside manual-review ranking or fixed comparison",
+      "Review demand exceeds the approved capacity ceiling",
+      "A calibration, stability, friction, or segment control breaches",
+      "Labels are too immature to support the reported performance period"
+    ],
+    "exit_criteria": [
+      "Replace only after a challenger passes every pre-agreed promotion check and governance approves use",
+      "Suspend ranking use if compensating controls cannot be operated",
+      "Retire when a production-validated strategy with accountable monitoring is approved"
+    ],
+    "limitation": "These are designed operating responsibilities. They do not show that a real organization assigned or accepted them."
+  },
+  "uncertainty": {
+    "status": "decision evidence, not a promotion gate",
+    "approach": "catboost_hybrid",
+    "baseline": "incumbent_proxy",
+    "capacity": 0.05,
+    "fraud_caught_delta": {
+      "estimate": 472,
+      "paired_interval_95": [
+        425,
+        519
+      ]
+    },
+    "good_reviewed_delta": {
+      "estimate": -472,
+      "paired_interval_95": [
+        -628,
+        -317
+      ]
+    },
+    "temporal_folds": [
+      {
+        "period": 3,
+        "challenger_caught": 755,
+        "incumbent_caught": 315,
+        "incremental_caught": 440
+      },
+      {
+        "period": 4,
+        "challenger_caught": 783,
+        "incumbent_caught": 309,
+        "incremental_caught": 474
+      },
+      {
+        "period": 5,
+        "challenger_caught": 731,
+        "incumbent_caught": 271,
+        "incremental_caught": 460
+      },
+      {
+        "period": 6,
+        "challenger_caught": 711,
+        "incumbent_caught": 272,
+        "incremental_caught": 439
+      },
+      {
+        "period": 7,
+        "challenger_caught": 766,
+        "incumbent_caught": 294,
+        "incremental_caught": 472
+      }
+    ],
+    "positive_temporal_folds": 5,
+    "resamples": 5000,
+    "seed": 20260818,
+    "method": "Fixed-seed paired row bootstrap of frozen month-7 queue membership. The challenger and incumbent use identical five-percent capacity and deterministic score ordering.",
+    "limitation": "The interval measures sampling uncertainty conditional on one synthetic period and frozen rankings. Five synthetic time folds do not establish future production performance."
+  },
+  "rule_dispositions": [
+    {
+      "key": "dob_email_concentration",
+      "label": "Eight or more recent emails share the birth-date signal",
+      "disposition": "reject",
+      "rationale": "Reject as a queue override. It overwhelms capacity and displaces higher-ranked fraud.",
+      "capacity": 0.05,
+      "flagged_records": 42579,
+      "flagged_fraud": 485,
+      "flagged_good": 42094,
+      "overlap_with_model_queue": 1328,
+      "overlap_with_other_rules": 1082,
+      "unique_fraud_added": 270,
+      "fraud_displaced": 551,
+      "incremental_fraud_caught": -281,
+      "incremental_good_reviewed": 38018,
+      "queue_overflow": 37737,
+      "policy_boundary": "Non-binding reason code only. Never automatic decline or unbounded review.",
+      "limitation": "One synthetic held-back period. Overlap is between application records, not shared identities or fraud rings."
+    },
+    {
+      "key": "device_email_concentration",
+      "label": "Two or more recent emails share the device",
+      "disposition": "refer",
+      "rationale": "Refer for controlled validation as a reason code only. It worsens the challenger queue and has no temporal validation.",
+      "capacity": 0.05,
+      "flagged_records": 1133,
+      "flagged_fraud": 73,
+      "flagged_good": 1060,
+      "overlap_with_model_queue": 283,
+      "overlap_with_other_rules": 456,
+      "unique_fraud_added": 12,
+      "fraud_displaced": 65,
+      "incremental_fraud_caught": -53,
+      "incremental_good_reviewed": 53,
+      "queue_overflow": 0,
+      "policy_boundary": "Non-binding reason code only. Never automatic decline or unbounded review.",
+      "limitation": "One synthetic held-back period. Overlap is between application records, not shared identities or fraud rings."
+    },
+    {
+      "key": "foreign_low_identity_similarity",
+      "label": "Foreign request with weak name-and-email similarity",
+      "disposition": "reject",
+      "rationale": "Reject as a queue override. It adds friction and reduces fraud caught at fixed capacity.",
+      "capacity": 0.05,
+      "flagged_records": 548,
+      "flagged_fraud": 27,
+      "flagged_good": 521,
+      "overlap_with_model_queue": 94,
+      "overlap_with_other_rules": 265,
+      "unique_fraud_added": 8,
+      "fraud_displaced": 35,
+      "incremental_fraud_caught": -27,
+      "incremental_good_reviewed": 27,
+      "queue_overflow": 0,
+      "policy_boundary": "Non-binding reason code only. Never automatic decline or unbounded review.",
+      "limitation": "One synthetic held-back period. Overlap is between application records, not shared identities or fraud rings."
+    },
+    {
+      "key": "branch_concentration",
+      "label": "Selected-branch application concentration in the top 1%",
+      "disposition": "reject",
+      "rationale": "Reject as a queue override. It adds friction, reduces fraud caught, and uses a final-period cutoff.",
+      "capacity": 0.05,
+      "flagged_records": 970,
+      "flagged_fraud": 12,
+      "flagged_good": 958,
+      "overlap_with_model_queue": 47,
+      "overlap_with_other_rules": 396,
+      "unique_fraud_added": 6,
+      "fraud_displaced": 71,
+      "incremental_fraud_caught": -65,
+      "incremental_good_reviewed": 65,
+      "queue_overflow": 0,
+      "policy_boundary": "Non-binding reason code only. Never automatic decline or unbounded review.",
+      "limitation": "One synthetic held-back period. Overlap is between application records, not shared identities or fraud rings."
+    }
+  ],
+  "monitoring_controls": [
+    {
+      "key": "calibration",
+      "label": "Calibration",
+      "availability": "measurable retrospectively; production feed unavailable",
+      "owner_role": "Model Risk",
+      "cadence": "Each label-mature evaluation period",
+      "threshold_basis": "Pre-agreed gate: absolute calibration intercept at most 0.10",
+      "trigger": "Absolute calibration intercept exceeds 0.10",
+      "action": "Prohibit probability interpretation and promotion; convene recalibration review",
+      "evidence_source": "evaluation/model_evaluation.json and docs/label-latency.md",
+      "limitation": "BAF has no outcome timestamps, so it cannot establish a production trigger."
+    },
+    {
+      "key": "stability",
+      "label": "Population stability",
+      "availability": "measurable retrospectively; production feed unavailable",
+      "owner_role": "Fraud Strategy Owner",
+      "cadence": "Each period close",
+      "threshold_basis": "Pre-agreed PSI warning at 0.10 and promotion block at 0.25",
+      "trigger": "Any feature reaches the 0.25 promotion-block level",
+      "action": "Keep rollout blocked; investigate seasonal versus durable shift before refitting",
+      "evidence_source": "evaluation/model_evaluation.json drift record",
+      "limitation": "The static evidence has no continuing production population feed."
+    },
+    {
+      "key": "review_yield",
+      "label": "Investigator review yield",
+      "availability": "needs production data",
+      "owner_role": "Fraud Operations",
+      "cadence": "Weekly after a measured baseline exists",
+      "threshold_basis": "Proposed: compare with the trailing four label-mature periods",
+      "trigger": "Material fall against the governed trailing baseline",
+      "action": "Investigate queue and rule composition; do not retrain automatically",
+      "evidence_source": "docs/feedback-loop.md",
+      "limitation": "No investigator handling or operating-yield baseline exists in BAF."
+    },
+    {
+      "key": "capacity",
+      "label": "Review capacity",
+      "availability": "measurable in the scenario",
+      "owner_role": "Fraud Operations",
+      "cadence": "Daily in a production process",
+      "threshold_basis": "Demand must fit the explicitly selected staffed ceiling",
+      "trigger": "Any governance referral beyond the selected capacity",
+      "action": "Stop expanding referrals and return the policy to governance; never auto decline",
+      "evidence_source": "dashboard/data/dashboard.json policy grid",
+      "limitation": "Capacity is an analyst input here, not observed staffing."
+    },
+    {
+      "key": "friction",
+      "label": "Customer friction",
+      "availability": "needs production data",
+      "owner_role": "Customer and Conduct Risk",
+      "cadence": "Monthly after labels and customer outcomes mature",
+      "threshold_basis": "Proposed: governance-approved good-review and segment-friction bands",
+      "trigger": "Good-review rate or segment gap leaves its approved band",
+      "action": "Pause the policy change and review causes before resuming",
+      "evidence_source": "Scenario insult rate and evaluation fairness evidence",
+      "limitation": "Review is only a friction proxy; BAF has no abandonment or customer-value outcome."
+    },
+    {
+      "key": "label_maturity",
+      "label": "Label maturity",
+      "availability": "needs production data",
+      "owner_role": "Data and Model Governance",
+      "cadence": "Each outcome vintage",
+      "threshold_basis": "A measured maturity curve and event timestamps must precede outcome reporting",
+      "trigger": "No measured maturity curve, timestamp lineage, or sufficiently mature vintage",
+      "action": "Keep outcome metrics non-operational and require an append-only outcome feed",
+      "evidence_source": "docs/label-latency.md and docs/feedback-loop.md",
+      "limitation": "The current maturity curve is declared, not measured from BAF."
+    },
+    {
+      "key": "segments",
+      "label": "Segment performance",
+      "availability": "measurable retrospectively under conditional acceptance",
+      "owner_role": "Fair Lending and Model Governance",
+      "cadence": "Each label-mature evaluation period",
+      "threshold_basis": "Accepted gaps reopen if they widen by more than 0.05",
+      "trigger": "An accepted disparity widens by more than 0.05 or acceptance lapses",
+      "action": "Reopen governance review; never set a group-specific decision threshold",
+      "evidence_source": "evaluation/governance_acceptance.json and docs/model-card.md",
+      "limitation": "Aggregate synthetic evidence does not establish production treatment effects."
+    }
+  ],
+  "reopen_decision_when": [
+    "A challenger passes all eleven unchanged promotion checks on untouched evidence",
+    "Production label maturity, investigator handling, capacity, and customer-friction feeds are verified",
+    "Every monitoring control has an accepted accountable owner and response process",
+    "Governance approves the bounded use after reviewing calibration, stability, and segment evidence"
+  ],
+  "limitations": [
+    "The BAF records are synthetic account-opening data, not observed production outcomes.",
+    "The source records no realized exposure, loss, review cost, customer value, or investigator handling data.",
+    "Nothing in this record authorizes an applicant decision or model rollout."
+  ]
+}

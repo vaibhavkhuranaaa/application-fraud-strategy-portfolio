@@ -1,0 +1,257 @@
+{
+  "acceptance_rule": {
+    "blind_spot": "A pair varying both email and phone cannot be accepted at any score, including a perfect match on device and address.",
+    "expression": "score >= 0.72 and ({email, phone} intersects exact signals)",
+    "signal_weights": {
+      "address": 0.15,
+      "device": 0.2,
+      "email": 0.35,
+      "phone": 0.3
+    },
+    "signals": [
+      "email",
+      "phone",
+      "device",
+      "address"
+    ],
+    "why_it_exists": "Requiring a strong identifier suppresses false merges across shared households and shared devices. A false merge produces a wrong decline on someone who did nothing, which is the more expensive error."
+  },
+  "base_rate_sweep": [
+    {
+      "accepted_pairs": 1000,
+      "candidate_pairs": 3000,
+      "duplicate_pair_rate": 0.02,
+      "f1": 1.0,
+      "false_merge_rate": 0.0,
+      "positive_pairs": 1000,
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "accepted_pairs": 500,
+      "candidate_pairs": 2500,
+      "duplicate_pair_rate": 0.01,
+      "f1": 1.0,
+      "false_merge_rate": 0.0,
+      "positive_pairs": 500,
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "accepted_pairs": 200,
+      "candidate_pairs": 2200,
+      "duplicate_pair_rate": 0.004,
+      "f1": 1.0,
+      "false_merge_rate": 0.0,
+      "positive_pairs": 200,
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "accepted_pairs": 100,
+      "candidate_pairs": 2100,
+      "duplicate_pair_rate": 0.002,
+      "f1": 1.0,
+      "false_merge_rate": 0.0,
+      "positive_pairs": 100,
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "accepted_pairs": 50,
+      "candidate_pairs": 2050,
+      "duplicate_pair_rate": 0.001,
+      "f1": 1.0,
+      "false_merge_rate": 0.0,
+      "positive_pairs": 50,
+      "precision": 1.0,
+      "recall": 1.0
+    }
+  ],
+  "baseline_clean": {
+    "accepted_pairs": 1000,
+    "candidate_pairs": 3000,
+    "duplicate_pair_rate": 0.02,
+    "f1": 1.0,
+    "false_merge_rate": 0.0,
+    "positive_pairs": 1000,
+    "precision": 1.0,
+    "recall": 1.0
+  },
+  "boundary": "Fixture only. BAF has no cross-row identity truth and no BAF application is linked, duplicated, or described as part of a ring anywhere in this analysis.",
+  "code_sha": "66cbe208811db7e26c36cc4b8265c1d52e889ede",
+  "control_corruption": [
+    {
+      "accepted_pairs": 1000,
+      "candidate_pairs": 3000,
+      "corrupted_signals": [
+        "device",
+        "address"
+      ],
+      "corruption_rate": 0.0,
+      "duplicate_pair_rate": 0.02,
+      "f1": 1.0,
+      "false_merge_rate": 0.0,
+      "positive_pairs": 1000,
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "accepted_pairs": 1000,
+      "candidate_pairs": 2729,
+      "corrupted_signals": [
+        "device",
+        "address"
+      ],
+      "corruption_rate": 0.25,
+      "duplicate_pair_rate": 0.02,
+      "f1": 1.0,
+      "false_merge_rate": 0.0,
+      "positive_pairs": 1000,
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "accepted_pairs": 1000,
+      "candidate_pairs": 2107,
+      "corrupted_signals": [
+        "device",
+        "address"
+      ],
+      "corruption_rate": 0.5,
+      "duplicate_pair_rate": 0.02,
+      "f1": 1.0,
+      "false_merge_rate": 0.0,
+      "positive_pairs": 1000,
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "accepted_pairs": 1000,
+      "candidate_pairs": 1605,
+      "corrupted_signals": [
+        "device",
+        "address"
+      ],
+      "corruption_rate": 0.75,
+      "duplicate_pair_rate": 0.02,
+      "f1": 1.0,
+      "false_merge_rate": 0.0,
+      "positive_pairs": 1000,
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "accepted_pairs": 1000,
+      "candidate_pairs": 1208,
+      "corrupted_signals": [
+        "device",
+        "address"
+      ],
+      "corruption_rate": 1.0,
+      "duplicate_pair_rate": 0.02,
+      "f1": 1.0,
+      "false_merge_rate": 0.0,
+      "positive_pairs": 1000,
+      "precision": 1.0,
+      "recall": 1.0
+    }
+  ],
+  "dataset_version": "baf-2026-08-05-fb8d6d8b96f9",
+  "elapsed_seconds": 109.6843480420066,
+  "evidence_id": "m8-linking-adversarial-v1",
+  "evidence_source": "synthetic_link_fixture",
+  "findings": {
+    "base_rate_interpretation": "Precision does not move as the duplicate rate falls, and that is a statement about the fixture rather than about the matcher. Precision degrades under a falling base rate only when the population contains near-misses the matcher can confuse for duplicates. This fixture generates distinct entities from independent hashes, so there are no hard negatives to confuse and the matcher produces no false positives at any base rate. The test therefore cannot measure what it was written to measure, which is the same generator-and-matcher-share-assumptions problem in a second place. A fixture that could test precision would have to synthesise plausible non-duplicates: shared households, recycled phone numbers, family email patterns, address standardisation collisions.",
+    "base_rate_test_is_informative": false,
+    "control_corruption_holds_recall": true,
+    "precision_at_richest_base_rate": 1.0,
+    "precision_at_sparsest_base_rate": 1.0,
+    "recall_at_full_targeted_corruption": 0.051,
+    "recall_at_matching_control_corruption": 1.0,
+    "sparsest_duplicate_pair_rate": 0.001,
+    "targeted_corruption_collapses_recall": true
+  },
+  "limitations": [
+    "The fixture generator and the matcher still share assumptions about what a duplicate looks like. Targeted corruption tests the acceptance rule, not the modelling of identity.",
+    "Real duplicate rates are lower still than the sparsest point measured here, and real evasion is adaptive rather than random character corruption.",
+    "Nothing here transfers to BAF, which has no cross-row identity truth."
+  ],
+  "targeted_corruption": [
+    {
+      "accepted_pairs": 1000,
+      "candidate_pairs": 3000,
+      "corrupted_signals": [
+        "email",
+        "phone"
+      ],
+      "corruption_rate": 0.0,
+      "duplicate_pair_rate": 0.02,
+      "f1": 1.0,
+      "false_merge_rate": 0.0,
+      "positive_pairs": 1000,
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    {
+      "accepted_pairs": 837,
+      "candidate_pairs": 3000,
+      "corrupted_signals": [
+        "email",
+        "phone"
+      ],
+      "corruption_rate": 0.25,
+      "duplicate_pair_rate": 0.02,
+      "f1": 0.9112683723462166,
+      "false_merge_rate": 0.0,
+      "positive_pairs": 1000,
+      "precision": 1.0,
+      "recall": 0.837
+    },
+    {
+      "accepted_pairs": 499,
+      "candidate_pairs": 3001,
+      "corrupted_signals": [
+        "email",
+        "phone"
+      ],
+      "corruption_rate": 0.5,
+      "duplicate_pair_rate": 0.02,
+      "f1": 0.6657771847898598,
+      "false_merge_rate": 0.0,
+      "positive_pairs": 1000,
+      "precision": 1.0,
+      "recall": 0.499
+    },
+    {
+      "accepted_pairs": 200,
+      "candidate_pairs": 3000,
+      "corrupted_signals": [
+        "email",
+        "phone"
+      ],
+      "corruption_rate": 0.75,
+      "duplicate_pair_rate": 0.02,
+      "f1": 0.33333333333333337,
+      "false_merge_rate": 0.0,
+      "positive_pairs": 1000,
+      "precision": 1.0,
+      "recall": 0.2
+    },
+    {
+      "accepted_pairs": 51,
+      "candidate_pairs": 3001,
+      "corrupted_signals": [
+        "email",
+        "phone"
+      ],
+      "corruption_rate": 1.0,
+      "duplicate_pair_rate": 0.02,
+      "f1": 0.09705042816365367,
+      "false_merge_rate": 0.0,
+      "positive_pairs": 1000,
+      "precision": 1.0,
+      "recall": 0.051
+    }
+  ]
+}
